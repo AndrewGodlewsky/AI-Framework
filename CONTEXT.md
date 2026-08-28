@@ -95,8 +95,11 @@ the two leading proposals contradict each other
 **Human oversight**:
 What a human actually gates, named specifically. The registerial default: regulators use this
 phrase, never the loop vocabulary.
-_Avoid_: "human-in-the-loop" as a reassurance claim — approval rates on permission prompts run
-around 93%, so the mechanism does not imply the outcome
+_Avoid_: "human-in-the-loop" as a reassurance claim. The vendor holding the telemetry reports
+permission-prompt approval at **~93% rising to 97%** across two dates, states that attention
+degrades as approvals accumulate, and measures human review catching **13.6%** of dangerous
+commands against **89%** for automated checking. The mechanism does not imply the outcome, and
+it weakens precisely as the agent is given more to do
 
 **Containment**:
 Restricting what an agent *can* do — sandboxes, egress controls, least-privilege tool scopes —
