@@ -1,0 +1,229 @@
+<!doctype html>
+<!-- PROTOTYPE — throwaway demo of the hub-page spectrum visual + expandable
+     archetype cards (ticket #9). The real home of this markup is index.html
+     when the hub is written; card copy here is DRAFT and is finalised by the
+     archetype writing tickets. Keep the answer, delete this file. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PROTOTYPE — hub spectrum visual</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="wordmark" href="index.html">The AI Usage Spectrum</a>
+  <a href="glossary.html">Glossary</a>
+</nav>
+
+<div class="page">
+  <header>
+    <p class="specimen-badge">Prototype — hub demo, draft copy, delete after ticket #9 resolves</p>
+    <p class="eyebrow">The spectrum</p>
+    <h1>Five archetypes, ordered by reach</h1>
+    <p class="standfirst">An archetype is a team's configured ceiling for model-generated changes.
+    Each boundary is a capability the previous archetype structurally lacks. Click an archetype to
+    see what it is made of.</p>
+  </header>
+
+  <div class="spectrum-scroll full">
+  <svg class="spectrum" viewBox="0 0 1080 170" xmlns="http://www.w3.org/2000/svg"
+       aria-label="The five archetypes: Autocomplete reaches the open file; gaining file-write and shell tools makes Workspace, reaching the working tree; gaining a push credential makes Contributor, reaching the shared repository; gaining merge rights makes Committer, reaching trunk unread; a pre-authorised path makes Operator, reaching running production. Each archetype links to its summary card below.">
+
+    <text class="axis-caption" x="10" y="18">ORDERED BY REACH — WHAT THE AGENT'S OUTPUT CAN TOUCH WITH NO HUMAN IN BETWEEN</text>
+
+    <a href="#a-autocomplete" aria-label="Autocomplete — expand summary">
+      <rect class="surface" x="10" y="46" width="170" height="64" rx="8"/>
+      <text class="surface-name" x="95" y="74" text-anchor="middle">Autocomplete</text>
+      <text class="surface-reach" x="95" y="94" text-anchor="middle">the open file</text>
+    </a>
+
+    <line class="gate-line" x1="206" y1="42" x2="206" y2="118"/>
+    <text class="gate-label" x="206" y="136" text-anchor="middle">gains</text>
+    <text class="gate-gain" x="206" y="152" text-anchor="middle">file-write + shell</text>
+
+    <a href="#a-workspace" aria-label="Workspace — expand summary">
+      <rect class="surface" x="232" y="46" width="170" height="64" rx="8"/>
+      <text class="surface-name" x="317" y="74" text-anchor="middle">Workspace</text>
+      <text class="surface-reach" x="317" y="94" text-anchor="middle">the working tree</text>
+    </a>
+
+    <line class="gate-line" x1="428" y1="42" x2="428" y2="118"/>
+    <text class="gate-label" x="428" y="136" text-anchor="middle">gains</text>
+    <text class="gate-gain" x="428" y="152" text-anchor="middle">push credential</text>
+
+    <a href="#a-contributor" aria-label="Contributor — expand summary">
+      <rect class="surface" x="454" y="46" width="170" height="64" rx="8"/>
+      <text class="surface-name" x="539" y="74" text-anchor="middle">Contributor</text>
+      <text class="surface-reach" x="539" y="94" text-anchor="middle">the shared repository</text>
+    </a>
+
+    <line class="gate-line" x1="650" y1="42" x2="650" y2="118"/>
+    <text class="gate-label" x="650" y="136" text-anchor="middle">gains</text>
+    <text class="gate-gain" x="650" y="152" text-anchor="middle">merge rights</text>
+
+    <a href="#a-committer" aria-label="Committer — expand summary">
+      <rect class="surface" x="676" y="46" width="170" height="64" rx="8"/>
+      <text class="surface-name" x="761" y="74" text-anchor="middle">Committer</text>
+      <text class="surface-reach" x="761" y="94" text-anchor="middle">trunk, unread</text>
+    </a>
+
+    <line class="gate-line" x1="872" y1="42" x2="872" y2="118"/>
+    <text class="gate-label" x="872" y="136" text-anchor="middle">path becomes</text>
+    <text class="gate-gain" x="872" y="152" text-anchor="middle">pre-authorised</text>
+
+    <a href="#a-operator" aria-label="Operator — expand summary">
+      <rect class="surface" x="898" y="46" width="170" height="64" rx="8"/>
+      <text class="surface-name" x="983" y="74" text-anchor="middle">Operator</text>
+      <text class="surface-reach" x="983" y="94" text-anchor="middle">running production</text>
+    </a>
+  </svg>
+  </div>
+  <p class="spectrum-caption">Kinds, not ranks: no archetype is the goal state. Moving further
+  along the spectrum means replacing human-in-the-loop verification with <em>engineered</em>
+  verification — more rigor, not less. Human oversight varies independently within every
+  archetype.</p>
+
+  <!-- ===================== expandable archetype cards ===================== -->
+
+  <div class="arch-cards">
+
+    <details class="arch-card" id="a-autocomplete">
+      <summary><span class="chev">▸</span><span class="name">Autocomplete</span>
+        <span class="reach">reaches the open file</span></summary>
+      <div class="body">
+        <dl class="facts">
+          <dt>Made of</dt><dd>no tool surface — the model proposes into the open file and a human accepts every edit</dd>
+          <dt>Demands first</dt><dd>nothing new — the existing review process carries all the weight it always did</dd>
+        </dl>
+        <div class="tradeoff">
+          <div><span class="label">What it gains you</span><ul>
+            <li>Every line is read by the person shipping it.</li>
+            <li>No new verification or governance surface at all.</li>
+          </ul></div>
+          <div><span class="label">What it costs you</span><ul>
+            <li>Human attention is the throughput ceiling.</li>
+            <li>None of the review burden is relieved.</li>
+          </ul></div>
+        </div>
+        <p class="fits">Fits a team that believes reading every line is non-negotiable, and that
+        anything reducing what a human reads costs more than it saves.</p>
+        <a class="more" href="#">Read the full document →</a>
+      </div>
+    </details>
+
+    <details class="arch-card" id="a-workspace">
+      <summary><span class="chev">▸</span><span class="name">Workspace</span>
+        <span class="reach">reaches the working tree</span></summary>
+      <div class="body">
+        <dl class="facts">
+          <dt>Made of</dt><dd>file-write and shell tool surfaces, no push credential — the agent acts across the working tree, locally</dd>
+          <dt>Demands first</dt><dd>containment: a sandbox or container, an egress allowlist, least-privilege tool scopes</dd>
+        </dl>
+        <div class="tradeoff">
+          <div><span class="label">What it gains you</span><ul>
+            <li>Real multi-file work happens without a human approving each step.</li>
+            <li>Blast radius is bounded by the machine, whoever is watching.</li>
+          </ul></div>
+          <div><span class="label">What it costs you</span><ul>
+            <li>Containment becomes load-bearing and must be engineered.</li>
+            <li>The review burden arrives all at once, at push time.</li>
+          </ul></div>
+        </div>
+        <p class="fits">Fits a team that believes risk is bounded by what the agent can reach, not
+        by who is watching it.</p>
+        <a class="more" href="#">Read the full document →</a>
+      </div>
+    </details>
+
+    <details class="arch-card" id="a-contributor">
+      <summary><span class="chev">▸</span><span class="name">Contributor</span>
+        <span class="reach">reaches the shared repository</span></summary>
+      <div class="body">
+        <dl class="facts">
+          <dt>Made of</dt><dd>a push credential — the agent opens pull requests; a human merges every one</dd>
+          <dt>Demands first</dt><dd>review hygiene at volume: queue visibility, and honesty about rubber-stamping as approvals accumulate</dd>
+        </dl>
+        <div class="tradeoff">
+          <div><span class="label">What it gains you</span><ul>
+            <li>The agent works end to end; everything still passes a human gate.</li>
+            <li>Agent work comes through the same front door as anyone else's.</li>
+          </ul></div>
+          <div><span class="label">What it costs you</span><ul>
+            <li>The review queue becomes the bottleneck.</li>
+            <li>Reviewer attention degrades exactly as volume grows.</li>
+          </ul></div>
+        </div>
+        <p class="fits">Fits a team that believes review is the load-bearing control and should
+        stay human — and that an agent's work should come through the same front door as anyone
+        else's.</p>
+        <a class="more" href="#">Read the full document →</a>
+      </div>
+    </details>
+
+    <details class="arch-card" id="a-committer">
+      <summary><span class="chev">▸</span><span class="name">Committer</span>
+        <span class="reach">reaches trunk, unread</span></summary>
+      <div class="body">
+        <dl class="facts">
+          <dt>Made of</dt><dd>merge rights for a defined change class — that class reaches trunk with no human reading it; a human gates release</dd>
+          <dt>Demands first</dt><dd>the qualifying gate itself: a mechanical definition of which changes may merge unread, and revert machinery for when it is wrong</dd>
+        </dl>
+        <div class="tradeoff">
+          <div><span class="label">What it gains you</span><ul>
+            <li>Mechanically-checkable classes stop queueing behind humans.</li>
+            <li>Review attention concentrates where a human can actually help.</li>
+          </ul></div>
+          <div><span class="label">What it costs you</span><ul>
+            <li>The qualifying line must be engineered, argued for, and policed.</li>
+            <li>Verification is load-bearing the moment no one reads the diff.</li>
+          </ul></div>
+        </div>
+        <p class="fits">Fits a team that believes trust should be earned by change class rather
+        than by author — and that where a class can be checked mechanically, a human reading it
+        adds cost without adding safety.</p>
+        <a class="more" href="#">Read the full document →</a>
+      </div>
+    </details>
+
+    <details class="arch-card" id="a-operator">
+      <summary><span class="chev">▸</span><span class="name">Operator</span>
+        <span class="reach">reaches running production</span></summary>
+      <div class="body">
+        <dl class="facts">
+          <dt>Made of</dt><dd>a pre-authorised path to production — nothing human stands between the agent's change and running prod, whether by CD-from-trunk or agent-held deploy credentials</dd>
+          <dt>Demands first</dt><dd>the full engineered chain: gates, canaries, auto-revert, provenance — built before the path opens, not after</dd>
+        </dl>
+        <div class="tradeoff">
+          <div><span class="label">What it gains you</span><ul>
+            <li>Full pipeline speed for the change classes that qualify.</li>
+          </ul></div>
+          <div><span class="label">What it costs you</span><ul>
+            <li>Engineered verification must be made a stronger check than a human in the path.</li>
+            <li>Observed as no team's ceiling — reached by narrowing what qualifies, never by widening who may act.</li>
+          </ul></div>
+        </div>
+        <p class="fits">Fits a team that believes engineered verification can be made a stronger
+        check than a human in the path — and that the honest route there is to narrow what
+        qualifies, never to widen who may act.</p>
+        <a class="more" href="#">Read the full document →</a>
+      </div>
+    </details>
+
+  </div>
+</div>
+
+<script>
+  // A spectrum cell links to its card; open it (and close the others) on arrival.
+  function openCard(hash) {
+    if (!hash) return;
+    document.querySelectorAll('details.arch-card').forEach(function (d) {
+      d.open = ('#' + d.id) === hash;
+    });
+  }
+  addEventListener('hashchange', function () { openCard(location.hash); });
+  openCard(location.hash);
+</script>
+</body>
+</html>

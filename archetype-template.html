@@ -1,0 +1,257 @@
+<!doctype html>
+<!-- ======================================================================
+  ARCHETYPE PAGE TEMPLATE — the contract from ticket #9.
+
+  Every archetype document copies this file and replaces the specimen
+  content. The section numbers, order, and ids are FIXED across the set —
+  that sameness is the design: a reader lands anywhere and already knows
+  the shape. Rules a writing ticket must follow:
+
+  1. Keep all eight numbered sections, in this order, with these ids.
+  2. Remove the .specimen-badge and this comment.
+  3. Every claim carries a .cite chip -> entry in #sources, with an
+     evidence tier (survey | study | vendor | anecdote) on both ends.
+  4. Update the spectrum SVG cell states: .is-reach on every cell the
+     agent's output can reach, .is-here on this archetype's cell,
+     .is-beyond on the rest; move the here-flag and the human-mark.
+  5. Language: "further along the spectrum", never "higher"; archetype,
+     never tier/level/stage (ADR-0003). CONTEXT.md _Avoid_ lines are
+     binding.
+  6. Relative links only (hub: index.html, glossary: glossary.html).
+====================================================================== -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Committer — The AI Usage Spectrum</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="wordmark" href="index.html">The AI Usage Spectrum</a>
+  <a href="index.html">All archetypes</a>
+  <a href="glossary.html">Glossary</a>
+</nav>
+
+<div class="page">
+
+  <header>
+    <p class="specimen-badge">Template specimen — every word below is placeholder</p>
+    <p class="eyebrow">Archetype · fourth of five</p>
+    <h1>Committer</h1>
+    <p class="standfirst">The team's ceiling lets model-generated changes of a defined class reach
+    trunk unread. A human still gates the release.</p>
+    <div class="docmeta">
+      <span>Vocabulary as of 2026-08-31</span>
+      <span>Taxonomy: ADR-0004</span>
+      <span>Sources last verified 2026-08-31</span>
+    </div>
+  </header>
+
+  <!-- ================= spectrum: "you are here" variant ================ -->
+  <div class="spectrum-scroll full" role="img"
+       aria-label="The five archetypes ordered by reach. Committer is this page's archetype: the agent's output reaches trunk with no human action in between; a human still gates release.">
+  <svg class="spectrum" viewBox="0 0 1080 200" xmlns="http://www.w3.org/2000/svg">
+
+    <text class="axis-caption" x="10" y="18">ORDERED BY REACH — WHAT THE AGENT'S OUTPUT CAN TOUCH WITH NO HUMAN IN BETWEEN</text>
+
+    <!-- cell 1 -->
+    <g class="is-reach">
+      <rect class="surface" x="10" y="46" width="170" height="64" rx="8"/>
+      <text class="surface-name" x="95" y="74" text-anchor="middle">Autocomplete</text>
+      <text class="surface-reach" x="95" y="94" text-anchor="middle">the open file</text>
+    </g>
+
+    <!-- gate 1 -->
+    <line class="gate-line" x1="206" y1="42" x2="206" y2="118"/>
+    <text class="gate-label" x="206" y="136" text-anchor="middle">gains</text>
+    <text class="gate-gain" x="206" y="152" text-anchor="middle">file-write + shell</text>
+
+    <!-- cell 2 -->
+    <g class="is-reach">
+      <rect class="surface" x="232" y="46" width="170" height="64" rx="8"/>
+      <text class="surface-name" x="317" y="74" text-anchor="middle">Workspace</text>
+      <text class="surface-reach" x="317" y="94" text-anchor="middle">the working tree</text>
+    </g>
+
+    <!-- gate 2 -->
+    <line class="gate-line" x1="428" y1="42" x2="428" y2="118"/>
+    <text class="gate-label" x="428" y="136" text-anchor="middle">gains</text>
+    <text class="gate-gain" x="428" y="152" text-anchor="middle">push credential</text>
+
+    <!-- cell 3 -->
+    <g class="is-reach">
+      <rect class="surface" x="454" y="46" width="170" height="64" rx="8"/>
+      <text class="surface-name" x="539" y="74" text-anchor="middle">Contributor</text>
+      <text class="surface-reach" x="539" y="94" text-anchor="middle">the shared repository</text>
+    </g>
+
+    <!-- gate 3 -->
+    <line class="gate-line" x1="650" y1="42" x2="650" y2="118"/>
+    <text class="gate-label" x="650" y="136" text-anchor="middle">gains</text>
+    <text class="gate-gain" x="650" y="152" text-anchor="middle">merge rights</text>
+
+    <!-- cell 4 — THIS PAGE -->
+    <g class="is-here">
+      <text class="here-flag" x="761" y="38" text-anchor="middle">YOU ARE READING ABOUT</text>
+      <rect class="surface" x="676" y="46" width="170" height="64" rx="8"/>
+      <text class="surface-name" x="761" y="74" text-anchor="middle">Committer</text>
+      <text class="surface-reach" x="761" y="94" text-anchor="middle">trunk, unread</text>
+    </g>
+
+    <!-- gate 4 — the last human action for this archetype -->
+    <line class="gate-line" x1="872" y1="42" x2="872" y2="118"/>
+    <text class="gate-label" x="872" y="136" text-anchor="middle">path becomes</text>
+    <text class="gate-gain" x="872" y="152" text-anchor="middle">pre-authorised</text>
+    <line class="human-mark-line" x1="872" y1="160" x2="872" y2="172"/>
+    <text class="human-mark" x="872" y="188" text-anchor="middle">a human gates release here</text>
+
+    <!-- cell 5 -->
+    <g class="is-beyond">
+      <rect class="surface" x="898" y="46" width="170" height="64" rx="8"/>
+      <text class="surface-name" x="983" y="74" text-anchor="middle">Operator</text>
+      <text class="surface-reach" x="983" y="94" text-anchor="middle">running production</text>
+    </g>
+  </svg>
+  </div>
+  <p class="spectrum-caption">Kinds, not ranks: no archetype is the goal state, and moving further
+  along the spectrum means <em>more</em> engineered verification, not less discipline. Human
+  oversight varies independently within every archetype.</p>
+
+  <!-- ============================ contract ============================= -->
+
+  <nav class="toc" aria-label="Sections">
+    <ol>
+      <li><span class="no">01</span><a href="#what-this-is">What this archetype is</a></li>
+      <li><span class="no">02</span><a href="#the-boundary">The boundary crossed</a></li>
+      <li><span class="no">03</span><a href="#still-gated">What a human still gates</a></li>
+      <li><span class="no">04</span><a href="#who-works-this-way">Who works this way</a></li>
+      <li><span class="no">05</span><a href="#gains-and-costs">What it gains you, what it costs</a></li>
+      <li><span class="no">06</span><a href="#verification">What it demands of verification</a></li>
+      <li><span class="no">07</span><a href="#governance">Governance implications</a></li>
+      <li><span class="no">08</span><a href="#posture">The posture that fits</a></li>
+      <li><span class="no">—</span><a href="#sources">Sources</a></li>
+    </ol>
+  </nav>
+
+  <section class="contract" id="what-this-is">
+    <h2><span class="no">01</span>What this archetype is</h2>
+    <p>A Committer team's configured ceiling permits model-generated changes of a defined class to
+    merge to trunk with no human reading them. The archetype names the ceiling — what the settings
+    permit — not what any individual change receives: most changes on a Committer team may still be
+    human-reviewed, and the auto-merged class is deliberately narrow. Spotify draws exactly this
+    line, auto-merging deterministic transforms while human-reviewing every LLM
+    PR<a class="cite" data-tier="vendor" href="#src-1">Spotify, Jun 2026</a>.</p>
+  </section>
+
+  <section class="contract" id="the-boundary">
+    <h2><span class="no">02</span>The boundary crossed</h2>
+    <p>What separates Committer from Contributor is <strong>merge rights</strong>: crossing this
+    boundary, the agent's output reaches trunk with no human action in between. The boundary is a
+    discontinuity, not a matter of degree — a credential the previous archetype structurally lacks.
+    On GitHub it must be built deliberately (a bot account, a bespoke workflow, a ruleset bypass),
+    because the platform forbids its own agent from merging its own pull
+    requests<a class="cite" data-tier="vendor" href="#src-2">GitHub Docs, Aug 2026</a>.</p>
+  </section>
+
+  <section class="contract" id="still-gated">
+    <h2><span class="no">03</span>What a human still gates</h2>
+    <p>Reach fixes the archetype; oversight varies within it. On a Committer team a human still
+    gates the release train, and typically also gates which change classes qualify for unread
+    merge. State what is gated specifically — the independence rule forbids implying that further
+    along the spectrum means less supervised.</p>
+    <div class="note"><span class="label">Independence rule</span>
+    <p>Containment and human oversight move independently. This section names the oversight; the
+    spectrum position above names only the reach.</p></div>
+  </section>
+
+  <section class="contract" id="who-works-this-way">
+    <h2><span class="no">04</span>Who works this way</h2>
+    <p>Named practitioners with their stake declared — and an honest occupancy statement where the
+    evidence is thin. The genuine agent-authored cases of unreviewed merge as stated policy number
+    three, and every one is a narrow carve-out<a class="cite" data-tier="study" href="#src-3">Practitioner
+    Exemplars, Aug 2026</a>.</p>
+  </section>
+
+  <section class="contract" id="gains-and-costs">
+    <h2><span class="no">05</span>What it gains you, what it costs</h2>
+    <div class="tradeoff">
+      <div>
+        <span class="label">What it gains you</span>
+        <ul>
+          <li>Review attention concentrates on changes a human can actually help.</li>
+          <li>Mechanically-checkable classes stop queueing behind human availability.</li>
+        </ul>
+      </div>
+      <div>
+        <span class="label">What it costs you</span>
+        <ul>
+          <li>The qualifying line must be engineered, argued for, and policed.</li>
+          <li>Verification machinery becomes load-bearing the moment no one reads the diff.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="contract" id="verification">
+    <h2><span class="no">06</span>What it demands of verification</h2>
+    <p>The entailment: whatever a human stopped doing must be replaced by engineered verification —
+    and the demand is written as a requirement, never as a claim that teams meet it. The machinery
+    exists but is almost never wired to autonomy<a class="cite" data-tier="study" href="#src-4">Verification
+    Infrastructure, Aug 2026</a>.</p>
+  </section>
+
+  <section class="contract" id="governance">
+    <h2><span class="no">07</span>Governance implications</h2>
+    <p>What the settings mean contractually and legally at this ceiling — liability keyed to the
+    setting, authorship versus adoption, attribution survival. Nothing in law or standards requires
+    a human to read source code, so compliance is not what stops teams
+    here<a class="cite" data-tier="study" href="#src-5">Governance, Legal &amp; IP, Aug 2026</a>.</p>
+  </section>
+
+  <section class="contract" id="posture">
+    <h2><span class="no">08</span>The posture that fits</h2>
+    <blockquote><p>This fits a team that believes trust should be earned by change class rather
+    than by author — and that where a class can be checked mechanically, a human reading it adds
+    cost without adding safety.</p></blockquote>
+    <p>The safety belief underneath: <em>the class is mechanically checkable.</em> The control
+    moves; it does not improve.</p>
+  </section>
+
+  <hr>
+
+  <section class="contract" id="sources">
+    <h2><span class="no">—</span>Sources</h2>
+    <p class="spectrum-caption" style="margin:0 0 1rem">Every claim above links here. Tier is
+    stated with the claim itself: <span class="tier" data-tier="survey">survey</span> hard survey
+    data · <span class="tier" data-tier="study">study</span> controlled study or verified primary
+    artifact · <span class="tier" data-tier="vendor">vendor</span> vendor-reported metric ·
+    <span class="tier" data-tier="anecdote">anecdote</span> practitioner account.</p>
+    <ol class="sources">
+      <li id="src-1"><span><span class="tier" data-tier="vendor">vendor</span>
+        Spotify Engineering, on Fleetshift auto-merge and LLM PR review.
+        <span class="when">Published Jun 2026 · accessed 2026-08-27.</span></span></li>
+      <li id="src-2"><span><span class="tier" data-tier="vendor">vendor</span>
+        GitHub Docs, “Risks and mitigations for GitHub Copilot cloud agent.”
+        <span class="when">Accessed 2026-08-27.</span></span></li>
+      <li id="src-3"><span><span class="tier" data-tier="study">study</span>
+        This project, <code>research/practitioner-exemplars.md</code> — the far-end count.
+        <span class="when">Closed 2026-08-27.</span></span></li>
+      <li id="src-4"><span><span class="tier" data-tier="study">study</span>
+        This project, <code>research/verification-infrastructure.md</code>.
+        <span class="when">Closed 2026-08-28.</span></span></li>
+      <li id="src-5"><span><span class="tier" data-tier="study">study</span>
+        This project, <code>research/governance-legal-ip.md</code>.
+        <span class="when">Closed 2026-08-30, corrected 2026-08-31.</span></span></li>
+    </ol>
+  </section>
+
+  <footer class="site-footer">
+    <p>The AI Usage Spectrum · <a href="index.html">hub</a> · <a href="glossary.html">glossary</a> ·
+    previous: <a href="#">Contributor</a> · further along: <a href="#">Operator</a></p>
+  </footer>
+
+</div>
+</body>
+</html>
