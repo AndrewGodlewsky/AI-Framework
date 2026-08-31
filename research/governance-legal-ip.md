@@ -61,10 +61,13 @@ the CRA, NIST SSDF, SLSA, HIPAA, DO-178C — **no verified requirement was found
 read source code.** The one remaining candidate, PCI DSS 6.2.3.1, returned HTTP 403 for the second
 ticket running and is recorded as unverified rather than characterised.
 
-Three artifacts would settle it more decisively than the absence of a rule does — **and all three are
-currently pending verification.** They are stated here with that status attached, and **must not be
-quoted in an archetype document until [Verify Blocked-Source Quotes](https://github.com/AndrewGodlewsky/AI-Framework/issues/11)
-has cleared them:**
+Three artifacts would settle it more decisively than the absence of a rule does. ✅ **Update
+2026-08-31: [Verify Blocked-Source Quotes](https://github.com/AndrewGodlewsky/AI-Framework/issues/11)
+has cleared two of the three** — the NIST SP 800-218A sentence (verified verbatim from the nvlpubs
+PDF, quotable with its AI-model-development scope caveat) and the CISA/OMB attestation form wording
+(verified verbatim from the form PDF: "automated tools or comparable processes" four times, "code
+review" zero times in ten pages). **The SOC 2 CC8.1 zero-counts remain pending** (AICPA PDF
+registration-walled) and must not be quoted in an archetype document until cleared:
 
 - ⏳ **SOC 2 CC8.1 is reported as 24 words with no human in it** — across all 33 Common Criteria the
   words `code`, `review`, `human` and `developer` reported at **zero** occurrences; `approves` and
@@ -260,7 +263,7 @@ accepts any share of defect liability.**
 |---|---|---|---|---|
 | **SOC 2** (TSC CC8.1) | No | **No** — ⏳ reported as 24 words with no human; pending verification | A documented, followed change process | Nowhere on this axis |
 | **ISO/IEC 27001** Annex A | No | **No** | Documented secure-development controls | Nowhere on this axis |
-| **NIST SSDF** / CISA attestation | 🚨 the SP 800-218A claim is unsupported — that profile governs building AI *models* | **No** — ⏳ *"automated tools or comparable processes"*, pending verification (CISA page 403) | Federal software supply | Nowhere on this axis |
+| **NIST SSDF** / CISA attestation | ✅ the SP 800-218A sentence was verified verbatim 2026-08-31 from the nvlpubs PDF (#11) — quotable **with** its scope caveat: the Profile governs building AI *models*, and its practices "do not distinguish between human-written and AI-generated source code" | **No** — ✅ *"automated tools or comparable processes"* verified verbatim 2026-08-31 from the form PDF (#11): four occurrences; "code review" zero occurrences in ten pages | Federal software supply | Nowhere on this axis |
 | **EU AI Act** (as amended by 2026/1744) | Yes | No — for coding assistants it reduces to Art. 4 | Being a *deployer*; **Annex III(4)(b)** for workforce analytics | The analytics layer, not the coding layer |
 | **DORA** | **Never mentions AI** | No | Procurement — Art. 28(3) ICT third-party terms | Vendor contracts, not the workflow |
 | **CRA** | No | No | Art. 14 applies **11 September 2026** | Product security, not authorship |

@@ -242,11 +242,11 @@ The HTML-comment placement is deliberate: it targets an agent reading the raw fi
   ```
 - Checks author, committer, `Co-authored-by:` **and** `assisted-by:`.
 
-### 1.14 Debian — General Resolution, VOTING STILL OPEN
+### 1.14 Debian — General Resolution 2026-002: "Responsible Use of Generative AI" won; the ban failed
 
-**[PRIMARY]** https://www.debian.org/vote/2026/vote_002
+**[PRIMARY]** https://www.debian.org/vote/2026/vote_002 · results: https://www.debian.org/vote/2026/vote_002_results
 
-> ⚠️ **TIME-SENSITIVE. Discussion 2026-07-23 → 2026-08-13. Voting 2026-08-15 → 2026-08-28.** Status on 2026-08-27: **"Voting open."** `vote_002_results` returns **404 because voting has not closed**, not because of an access failure. **Do not publish an outcome. Re-check after 2026-08-28.**
+> ✅ **RESOLVED. Voting closed 2026-08-28; results calculated 2026-08-29, read from the primary in-browser 2026-08-31** (Verify Blocked-Source Quotes, #11). **Winner: Option 5, "Responsible Use of Generative AI" — Proposal E (Marc Haber; neither endorse nor prohibit)**, the sole member of the Schwartz set, defeating runner-up B ("Allow AI-Assisted Contributions with conditions") 203–148. 425 votes tallied; every substantive option reached quorum. **The Social-Contract ban (Proposal A) failed its 3:1 supermajority decisively** — ratio 0.560 (144/257), short even of a simple majority — and C ("reject as far as practical") also failed majority at 0.765. The ballot-structure observation below was borne out: the neutral option won, and the outright ban was rejected arithmetically, not just structurally. **Documents may now state this outcome.**
 
 **Eight ballot options.** **Proposal A requires a 3:1 supermajority** (it amends the Social Contract); all others simple majority.
 
@@ -451,7 +451,15 @@ Worth stating plainly because it is often assumed otherwise.
 
 Contributors remain fully accountable; content must be reviewed, tested and verified; "AI slop" unacceptable; disclosure via `Assisted-by:`; **AI may assist reviewers but cannot automate final acceptance.** Also: AI/ML **cannot score submissions for code-of-conduct matters, funding requests, conference talks, or leadership positions.**
 
-⚠️ **The ratified text at docs.fedoraproject.org is blocked by Anubis anti-bot. The above is the proposal, not the final text.** LLVM's policy states some of its text was copied from this proposal under CC-BY-4.0.
+✅ **The ratified text was read in full in a real browser session 2026-08-31** (Verify Blocked-Source Quotes, #11 — the Anubis block applies to automated fetch only): **"AI-Assisted Contributions Policy," Version 1.0, last review 2025-10-24**, https://docs.fedoraproject.org/en-US/council/policy/ai-contribution-policy/. Ratified wording, verbatim:
+
+> "You MAY use AI assistance for contributing to Fedora, as long as you follow the principles described below."
+> "**Accountability:** You MUST take the responsibility for your contribution… The contributor is always the author and is fully accountable for the entirety of these contributions."
+> "**Transparency:** You MUST disclose the use of AI tools **when the significant part of the contribution is taken from a tool without changes**. You SHOULD disclose the other uses of AI tools, where it might be useful. Routine use of assistive tools for correcting grammar and spelling, or for clarifying language, does not require disclosure."
+> "…the recommended method is an `Assisted-by:` commit message trailer."
+> "You MUST NOT use AI as the sole or final arbiter in making a substantive or subjective judgment on a contribution, nor may it be used to evaluate a person's standing within the community (e.g., for funding, leadership roles, or Code of Conduct matters)… The final accountability for accepting a contribution, even if implemented by an automated system, always rests with the human contributor who authorizes the action."
+
+**Differences from the proposal worth noting:** the ratified text (i) narrows the mandatory disclosure duty to significant-part-taken-unchanged, with everything else SHOULD-level; (ii) does not carry the proposal's "AI slop" phrasing; (iii) adds a carve-out — "large scale initiatives which may significantly change the ways the project operates or lead to exponential growth in contributions… need to be discussed separately with the Fedora Council"; (iv) formalises MAY/MUST/MUST NOT/SHOULD per RFC 2119. LLVM's policy states some of its text was copied from the *proposal* under CC-BY-4.0.
 
 ### 1.25 Smaller clean bans and other regimes
 
@@ -620,7 +628,13 @@ Searched for named companies or certification bodies with a published position o
 
 **This corroborates the curl and FFmpeg maintainer complaints from the opposite direction.** The same AI-driven vulnerability-discovery surge Stenberg experiences as slop, the Bank of England experiences as systemic patching load. **Same phenomenon, both ends of the pipe.**
 
-⚠️ **Biggest single gap in the whole research:** the **CMORG "Firm Guidance For Frontier AI" (Final, June 2026, v1.0, TLP:CLEAR)** PDF at cmorg.org.uk returns **HTTP 403**. It is the document most likely to contain concrete UK financial-sector controls on developer AI use.
+✅ **RESOLVED 2026-08-31 (Verify Blocked-Source Quotes, #11): the CMORG "Firm Guidance For Frontier AI" (Final, June 2026, v1.0, TLP:CLEAR; published 2026-06-04; 10 pages) was read in full.** The HTTP 403 applies to automated fetch only; the PDF is served publicly at cmorg.org.uk and the artefact page states it "has been published as TLP CLEAR to ensure it is readily available to all firms." What it contains, verbatim where quoted:
+
+- **It governs AI agents in the containment register, as privileged identities on the attack surface.** AI systems "form part of the attack surface where they access data, call tools, execute code, or operate through identities and APIs. These should be governed as privileged applications, with tightly controlled access, clearly defined purpose, robust logging, human oversight for high-impact actions, and effective containment mechanisms."
+- Its key takeaway is the cleanest official statement of containment-over-supervision located anywhere in this corpus: "**Govern AI on the basis that it operates with privileged access: tightly control high-risk capabilities (including tools, code execution and APIs), enforce scoped permissions, robust logging, human oversight, and effective kill-switch mechanisms.**"
+- Agent design and monitoring: "Design automation and AI agents to fail safely, applying least privilege, scoped tool access, comprehensive logging, rate limits, approval steps, rollback options, and kill-switch mechanisms"; agents should be "actively monitored **as potential malicious insiders** for unsafe behaviour, unreliable outputs, or data leakage."
+- **On developer AI use — the reason this document was the gap — it contains no requirement that a human read or review AI-written code.** The nearest instrument is a self-assessment question: "**Are AI-assisted outputs tested and validated to the same standard as human-generated work?**" — validation-parity, not a review mandate — plus "clear human accountability … for high-impact decisions affecting customers, services, or privileged access." **The headline finding therefore survives its most likely counterexample.**
+- Scope caveat: this is voluntary operational-resilience guidance (frontier AI as threat and defensive capability, four dimensions: Take control / Protect your organisation / Prepare to respond at pace / Work collectively), developed collectively by industry with the support of the financial authorities — not rules.
 
 ### 3.7 JPMorgan Chase — restriction → internal platform → 90%+ adoption
 
@@ -720,8 +734,8 @@ He states that "some national defense organizations have responded… by restric
 
 ## Blocked sources (stated for auditability — none circumvented)
 
-- **CMORG "Firm Guidance For Frontier AI"** (cmorg.org.uk) — **HTTP 403** to both WebFetch and curl. *The single most consequential gap.*
-- **Fedora ratified policy** (docs.fedoraproject.org) — **Anubis anti-bot block**. Only the proposal text was obtained.
+- **CMORG "Firm Guidance For Frontier AI"** — ✅ resolved 2026-08-31: read in full (the 403 was automation-only; the PDF is public and TLP:CLEAR). See §3.6 for the findings — no human-review mandate; containment-register agent governance.
+- **Fedora ratified policy** — ✅ resolved 2026-08-31: read in full in a real browser (see §1.24); the Anubis block applies to automated fetch only.
 - **businessinsider.com** — blocked to automated fetch throughout; all Kelley/Zig reasoning quotes are secondhand as a result.
 - **Financial Times** — paywalled (Amazon engineering meeting; JPMorgan Hong Kong scoop).
 - **The Pragmatic Engineer** — paid subscriber content.

@@ -32,6 +32,21 @@
 > [Verify Blocked-Source Quotes](https://github.com/AndrewGodlewsky/AI-Framework/issues/11) and
 > **should not be quoted in an archetype document until verified.**
 >
+> ✅ **Update 2026-08-31 (#11): the NIST SP 800-218A sentence is now independently verified** —
+> the PDF was re-downloaded from nvlpubs.nist.gov (30 pp.) and the §2 Scope sentence confirmed
+> verbatim: "Practices and tasks in this Profile do not distinguish between human-written and
+> AI-generated source code, because it is assumed that all source code should be evaluated for
+> vulnerabilities and other issues before use." The surrounding scope text also confirms the
+> caveat that must travel with it (the Profile governs secure development *of* AI models;
+> deployment/operation out of scope). **Quotable, with the caveat.**
+>
+> ✅ **The CISA/OMB attestation form wording is also now verified** — the Self-Attestation Common
+> Form (OMB Control #1670-0052, expiration 2027-03-31) was downloaded from cisa.gov in the same
+> pass: **"automated tools or comparable processes" appears four times, verbatim** (trusted source
+> code supply chains; checking for security vulnerabilities, operated on an ongoing basis and
+> prior to releases), and **the phrase "code review" appears zero times** in the ten-page form.
+> **Quotable.** Only the SOC 2 CC8.1 zero-counts (AICPA PDF registration-walled) remain pending.
+>
 > The headline negative — *no regime verified here requires a human to read source code* — rests on
 > many regimes read directly and is not thought to be affected. But it is now a finding whose three
 > most quotable pieces of evidence are pending verification, and it should be written that way.
@@ -1896,7 +1911,13 @@ discovery creating patch-and-validate pressure — is recorded verbatim in
 duplicated. Its load-bearing line for this strand is that "**faster patching can itself create
 operational risks if changes are rushed, insufficiently tested or difficult to coordinate**" — a
 change-*volume* concern independent of change *authorship*. The **CMORG *Firm Guidance For Frontier
-AI*** (June 2026) remains **HTTP 403** and remains the largest UK gap.
+AI*** (June 2026) — formerly the largest UK gap — **was read in full on 2026-08-31** (the 403 was
+automation-only; the PDF is public and TLP:CLEAR). **It contains no human-review mandate for code**:
+its nearest instrument is the self-assessment question "Are AI-assisted outputs tested and validated
+to the same standard as human-generated work?", and its agent governance is pure containment register
+("Govern AI on the basis that it operates with privileged access… scoped permissions, robust logging,
+human oversight, and effective kill-switch mechanisms"). Full findings in
+[`refusal-policies-primary-sources.md`](./refusal-policies-primary-sources.md) §3.6.
 
 **Verdict for the UK: effective process.** The FCA has made no AI rules and says it does not plan to;
 its binding rule text contains zero references to source code, software or human review; its
@@ -2212,7 +2233,7 @@ Each item with its next known date where one exists.
 | **UK GDPR Art. 22A commencement** | Text as enacted read; **DUAA assent date and s.80 commencement not verified** | Unknown |
 | **PRA position on AI and on software change control** | ⚠️ **Not verified.** SS2/21, SS1/21, SS1/23, PS16/24 and the joint BoE/FCA AI survey not read from source | Unknown |
 | **ISO/IEC 22989:2022/DAmd 1 "Generative AI"** | An indexed iso.org title exists; the page returned 403. **Existence and content unconfirmed** | Unknown |
-| **CMORG *Firm Guidance For Frontier AI*** (June 2026) | **HTTP 403**, unchanged from `refusal-policies-primary-sources.md`. The document most likely to contain concrete UK financial-sector controls on developer AI use | Still blocked |
+| **CMORG *Firm Guidance For Frontier AI*** (June 2026) | ✅ **Read in full 2026-08-31** (403 was automation-only; PDF public, TLP:CLEAR). No human-review mandate for code; validation-parity question plus containment-register agent governance. See `refusal-policies-primary-sources.md` §3.6 | **Resolved** |
 | **Harmonised standards under AI Act Art. 40** | Standardisation work ongoing; no harmonised standard confirmed here | Unknown |
 
 ---

@@ -75,8 +75,8 @@ Anthropic (engineering blog and platform docs), LangChain/LangGraph, Google (Phi
 
 ### Origin
 
-- **19 Jun 2025 — Tobi Lütke**, on X: "I really like the term 'context engineering' over prompt engineering. It describes the core skill better: the art of providing all the context for the task to be plausibly solvable by the LLM." This is the coinage event most sources point to. `[SECONDARY]` for the exact date — x.com is not fetchable (HTTP 402); the text is quoted verbatim and consistently by Simon Willison, Phil Schmid and LangChain, so the wording is high-confidence and the date (18 or 19 June 2025) is low-variance but not first-party verified.
-- **~25 Jun 2025 — Andrej Karpathy** amplified it: "+1 for 'context engineering' over 'prompt engineering'. People associate prompts with short task descriptions you'd give an LLM in your day-to-day use. When in every industrial-strength LLM app, context engineering is the delicate art and science of filling the context window with just the right information for the next step." `[SECONDARY]`, same reason.
+- **19 Jun 2025 (03:01 UTC) — Tobi Lütke**, on X: "I really like the term 'context engineering' over prompt engineering. It describes the core skill better: the art of providing all the context for the task to be plausibly solvable by the LLM." This is the coinage event most sources point to. `[PRIMARY]` — **verified against the original post in a browser session 2026-08-31** (Verify Blocked-Source Quotes, #11): wording confirmed verbatim. The one-day date variance across secondary sources is a timezone artifact — the post is 2025-06-19 03:01:43 UTC, which renders as Jun 18, 11:01 PM US-Eastern. Cite as **19 June 2025 (UTC)**.
+- **25 Jun 2025 (15:54 UTC) — Andrej Karpathy** amplified it, quote-tweeting Lütke: "+1 for 'context engineering' over 'prompt engineering'. People associate prompts with short task descriptions you'd give an LLM in your day-to-day use. When in every industrial-strength LLM app, context engineering is the delicate art and science of filling the context window with just the right information for the next step." `[PRIMARY]` — verified against the original post in a browser session 2026-08-31; wording confirmed, date pinned from the post itself. The full post runs well past the commonly-quoted opening: science ("few shot examples, RAG, related (possibly multimodal) data, tools, state and history, compacting…") versus art ("the guiding intuition around LLM psychology of people spirits"), then widens to the app layer (control flows, dispatch, generation-verification UIUX, "guardrails, security, evals, parallelism, prefetching") and closes: "The term 'ChatGPT wrapper' is tired and really, really wrong."
 - **23 Jun 2025 — Harrison Chase / LangChain**, "The rise of context engineering" — first substantial vendor treatment.
 - **27 Jun 2025 — Simon Willison** endorsed the rename.
 - **17 Jul 2025 — Mei et al.**, "A Survey of Context Engineering for Large Language Models" (arXiv:2507.13334) — first formal academic framing.
@@ -106,7 +106,8 @@ Anthropic (engineering blog and platform docs), LangChain/LangGraph, Google (Phi
 - https://arxiv.org/abs/2507.13334 (17 Jul 2025; accessed 2026-08-27)
 - https://github.com/humanlayer/12-factor-agents (accessed 2026-08-27)
 - https://x.com/tobi/status/1935533422589399127 (Jun 2025; **not fetchable**, quoted via Willison/Schmid)
-- https://x.com/karpathy/status/1937902205765607626 (Jun 2025; **not fetchable**, quoted via Willison)
+- https://x.com/tobi/status/1935533422589399127 (19 Jun 2025 UTC; **verified in-browser 2026-08-31**)
+- https://x.com/karpathy/status/1937902205765607626 (25 Jun 2025; **verified in-browser 2026-08-31**)
 
 ---
 
@@ -147,7 +148,7 @@ That paper proposes a four-part test (T1 loop, T2 tool interface, T3 active cont
 
 **Harness *engineering*** is the practice: Mitchell Hashimoto's original formulation is "anytime you find an agent makes a mistake, you take the time to engineer a solution such that the agent never makes that mistake again."
 
-OpenAI's framing (11 Feb 2026): the harness "gathers context, invokes tools, enforces sandbox and approval boundaries, streams execution progress, and carries work across multi-turn sessions" `[SECONDARY]` — openai.com/index/harness-engineering/ returns HTTP 403 to automated fetch; content is via search summarisation and InfoQ's 21 Feb 2026 report. The framing OpenAI gives for the *engineering* practice is that the team's job shifts from writing code to designing environments, specifying intent, and building feedback loops, asking on each failure: "what capability is missing, and how do we make it both legible and enforceable for the agent?"
+OpenAI's framing (11 Feb 2026), `[PRIMARY]` — **verified against the post in a browser session 2026-08-31**: the team's primary job is no longer to write code but "to design environments, specify intent, and build feedback loops that allow Codex agents to do reliable work"; the hardest problems "center on designing environments, feedback loops, and control systems"; and on each failure the engineers ask "what capability is missing, and how do we make it both legible and enforceable for the agent?" (all verbatim). 🚨 A sentence previously carried here — the harness "gathers context, invokes tools, enforces sandbox and approval boundaries, streams execution progress, and carries work across multi-turn sessions" — **does not appear in the post**; it arrived via search summarisation and is withdrawn as unsourced. **Do not quote it.**
 
 ### Components
 
@@ -176,10 +177,10 @@ So through 2024 the discipline existed under the name **scaffolding**. "Harness"
 
 1. **26 Nov 2025 — Anthropic**, "Effective harnesses for long-running agents" (Justin Young et al.). Earliest major-lab use of "harness" in the *agent* sense that I found — **two and a half months before Hashimoto**, and a gap in Wikipedia's account.
 2. **9 Jan 2026 — Anthropic**, "Demystifying evals for AI agents" — defines *evaluation harness* and *agent harness* in adjacent sentences (quoted in §5.1). The best single citation for the distinction.
-3. **5 Feb 2026 — Mitchell Hashimoto**, "My AI Adoption Journey," Step 5: "Engineer the Harness." He explicitly disclaims coining it while doing so: **"I don't know if there is a broad industry-accepted term for this yet, but I've grown to calling this 'harness engineering.'"** This is the coinage of the *discipline name*.
-4. **11 Feb 2026 — OpenAI**, "Harness engineering: leveraging Codex in an agent-first world" (Ryan Lopopolo `[SECONDARY]`, via InfoQ). Six days later, and this is what converted a personal coinage into industry vocabulary.
+3. **5 Feb 2026 — Mitchell Hashimoto**, "My AI Adoption Journey," Step 5: "Engineer the Harness." He explicitly disclaims coining it while doing so: **"I don't know if there is a broad industry-accepted term for this yet, but I've grown to calling this 'harness engineering.'"** This is the coinage of the *discipline name*. `[PRIMARY]` — **re-verified verbatim in-browser 2026-08-31**, including his definition ("anytime you find an agent makes a mistake, you take the time to engineer a solution such that the agent never makes that mistake again") and the bandwagon disclaimer ("I don't need to invent any new terms here; if another one exists, I'll jump on the bandwagon").
+4. **11 Feb 2026 — OpenAI**, "Harness engineering: leveraging Codex in an agent-first world" (Ryan Lopopolo; `[PRIMARY]`, **verified in-browser 2026-08-31** — author and date confirmed from the post itself). Six days later, and this is what converted a personal coinage into industry vocabulary.
 
-   > ⚠️ **Honest caveat that slightly weakens the "OpenAI endorsed it" reading.** The post is *titled* "Harness engineering," but the body uses the word "harness" essentially once — in a list of agent outputs ("Evaluation harnesses"). Böckeler noticed the same thing: "Maybe the term was an afterthought inspired by Mitchell Hashimoto's recent blog post." The title, not the argument, is what carried the term.
+   > ⚠️ **Honest caveat that slightly weakens the "OpenAI endorsed it" reading.** The post is *titled* "Harness engineering," but the body uses the word "harness" essentially once — in a list of agent outputs ("Evaluation harnesses"). Böckeler noticed the same thing: "Maybe the term was an afterthought inspired by Mitchell Hashimoto's recent blog post." The title, not the argument, is what carried the term. **Verified 2026-08-31:** the body uses "harness" exactly once ("Evaluation harnesses", in a list of agent outputs) and the phrase "harness engineering" appears only in the title; the post *practises* the discipline throughout — environments, feedback loops, agent legibility — but never argues or defines it by name. Cite it as evidence the term circulated, not as OpenAI arguing the discipline. The quote circulating in coverage ("We built Harness to provide a consistent and reliable way to run large-scale AI workloads") is **confirmed absent from the post** — unusable.
 5. **17 Feb 2026 — Birgitta Böckeler (Thoughtworks)**, "Harness Engineering – first thoughts" on martinfowler.com — the first sceptical treatment, joking about the day "somebody calls their one-prompt, LLM-based code review agent a harness."
 6. **10 Mar 2026 — LangChain**, "The Anatomy of an Agent Harness" (Vivek Trivedy) — the cleanest systematic derivation.
 7. **2 Apr 2026 — Böckeler**, the full martinfowler.com article, "Harness engineering for coding agent users" — the most rigorous treatment for coding-agent *users* specifically.
@@ -235,7 +236,7 @@ So: **context engineering ⊂ harness engineering.** Harness engineering additio
 
 ### Sources
 - https://mitchellh.com/writing/my-ai-adoption-journey (5 Feb 2026; accessed 2026-08-27)
-- https://openai.com/index/harness-engineering/ (11 Feb 2026; **403 to automated fetch**, accessed via search + InfoQ 2026-08-27)
+- https://openai.com/index/harness-engineering/ (11 Feb 2026; **read in full in-browser 2026-08-31** — the 403 applies to automated fetch only)
 - https://www.infoq.com/news/2026/02/openai-harness-engineering-codex/ (21 Feb 2026; accessed 2026-08-27)
 - https://www.langchain.com/blog/the-anatomy-of-an-agent-harness (10 Mar 2026; accessed 2026-08-27)
 - https://martinfowler.com/articles/harness-engineering.html (2 Apr 2026; accessed 2026-08-27)
@@ -1176,6 +1177,7 @@ All URLs accessed **2026-08-27** unless otherwise noted. Fetch failures are mark
 ## Confidence and gaps
 
 ### High confidence
+- **The coinage primaries are now first-party verified** (in-browser, 2026-08-31 — Verify Blocked-Source Quotes #11): Lütke 19 Jun 2025 03:01 UTC (verbatim; one-day variance was timezone); Karpathy 25 Jun 2025 15:54 UTC (verbatim, full text on record); Hashimoto's self-disclaiming sentence verbatim in "My AI Adoption Journey" (5 Feb 2026); OpenAI's post (11 Feb 2026, Ryan Lopopolo) confirmed title-only for the term, and the circulating infra-product quote confirmed absent.
 - **Harness engineering is real vocabulary.** Five credible venues (OpenAI, Anthropic, Thoughtworks/Fowler, LangChain, Cursor) plus academia plus Wikipedia, with a documented six-day coinage-to-adoption trail — *and* independent quantitative evidence that the harness is roughly as load-bearing as the model (Claw-SWE-Bench: 27.4 vs 29.4 percentage points on Pass@1).
 - **"Graph engineering" is not a term of art.** Verified negatively against LangGraph's own docs, OpenAI's Agents SDK docs, and the absence of any primary usage anywhere.
 - **"Scaffold" was the 2024 name for the agent harness.** Verified by word-count against two primary artifacts: OpenAI's SWE-bench Verified post (Aug 2024) and METR's elicitation guidelines (Mar 2024, "scaffold" x11 vs "harness" x0).
@@ -1190,8 +1192,6 @@ All URLs accessed **2026-08-27** unless otherwise noted. Fetch failures are mark
 - **Anthropic's telemetry: ~93% of Claude Code permission prompts were approved**, published by Anthropic itself.
 
 ### Medium confidence
-- **Exact dates of the June 2025 Lütke and Karpathy tweets.** x.com returns HTTP 402 to automated fetch. The *wording* is high-confidence (quoted verbatim and identically by Willison, Schmid and LangChain); the dates vary by one day across sources.
-- **OpenAI's harness-engineering post content.** openai.com returns HTTP 403. Existence, title and date are certain; the specific quotes should be re-verified in a browser before publication. ⚠️ One quote circulating in coverage ("We built Harness to provide a consistent and reliable way to run large-scale AI workloads") reads as though it describes an OpenAI *infrastructure product* rather than the discipline — **do not use it.**
 - **MCP spec revision lineage.** Both ends are primary-confirmed; the middle revisions rest on secondary timelines.
 - **Attribution of "harness engineering."** Anthropic is first for the noun (Nov 2025), Hashimoto first for the phrase (Feb 2026), Trivedy first for the derivation (Mar 2026). Wikipedia records it as contested and misses the Anthropic use.
 - **Vendor tooling launch dates** (Braintrust, LangSmith, Weave, Guardrails AI founding) — `[SECONDARY]`.
@@ -1213,7 +1213,7 @@ All URLs accessed **2026-08-27** unless otherwise noted. Fetch failures are mark
 - **OpenAI's "five levels" (Chatbots → Reasoners → …)** — reported by Bloomberg from an internal all-hands; **not published on openai.com**. Do not cite as an OpenAI publication.
 
 ### Blocked sources (stated for auditability — none circumvented)
-`openai.com` (HTTP 403 to automated fetch), `x.com` (HTTP 402), `apps.dtic.mil` (403), HathiTrust (Cloudflare 403), `esd.whs.mil` (403 — DoDD 3000.09 2023 came from an Internet Archive capture), `iso.org` (403 — ISO/IEC 22989 verified via the official iTeh preview PDF), IEEE Xplore (paywalled), ISTQB glossary (JS-rendered), Medium (403 on some posts).
+`openai.com` and `x.com` (403/402 to automated fetch; **both since read in a real browser session 2026-08-31** — the quotes above are now first-party), `apps.dtic.mil` (403), HathiTrust (Cloudflare 403), `esd.whs.mil` (403 — DoDD 3000.09 2023 came from an Internet Archive capture), `iso.org` (403 — ISO/IEC 22989 verified via the official iTeh preview PDF), IEEE Xplore (paywalled), ISTQB glossary (JS-rendered), Medium (403 on some posts).
 
 ### Things this project will need to reckon with
 1. **The eval-harness / agent-harness collision is not cosmetic, and it has a number attached.** Claw-SWE-Bench measures harness choice moving Pass@1 by 27.4 points against 29.4 for model choice; The Scaffold Effect measures up to a **40× difference in tokens per solved task** from harness choice alone. A headline like "model X resolves N% of SWE-bench" is a joint measurement. Any document citing agent benchmark scores without naming the harness is making a claim it cannot support.
