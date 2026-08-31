@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glossary — The AI Usage Spectrum</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="wordmark" href="index.html">The AI Usage Spectrum</a>
+  <a href="index.html">All archetypes</a>
+  <a href="glossary.html" aria-current="page">Glossary</a>
+</nav>
+
+<div class="page">
+
+  <header>
+    <p class="eyebrow">Reference</p>
+    <h1>Glossary</h1>
+    <p class="standfirst">The vocabulary these documents are written in. Definitions are the
+    project's ruling usage, established against primary sources; where a common term is avoided,
+    the reason is given.</p>
+    <div class="docmeta">
+      <span>Vocabulary as of 2026-08-31</span>
+      <span>Taxonomy: ADR-0004</span>
+      <span>Evidence in <code>research/vocabulary-and-disciplines.md</code></span>
+    </div>
+  </header>
+
+  <section class="contract" id="archetypes">
+    <h2><span class="no">01</span>The five archetypes</h2>
+    <div class="gloss">
+      <p>An <strong>archetype</strong> is a grouping of teams that work with AI in the same way —
+      named by the team's configured <em>ceiling</em> for model-generated changes, and ordered by
+      what the agent's output can reach with no human action in between.</p>
+      <dl>
+        <dt><a href="autocomplete.html">Autocomplete</a></dt>
+        <dd>The agent's output reaches the open file; a human accepts every edit. The spectrum's
+        fixed low extreme: inline AI edits with nothing else about the process changing.</dd>
+        <dt><a href="workspace.html">Workspace</a></dt>
+        <dd>The agent holds file-write and shell tool surfaces and acts across the working tree,
+        locally. No push credential — nothing leaves the machine without a human.</dd>
+        <dt><a href="contributor.html">Contributor</a></dt>
+        <dd>The agent holds a push credential; its output enters the shared repository, and a human
+        merges every change. The large middle of observed practice.</dd>
+        <dt><a href="committer.html">Committer</a></dt>
+        <dd>A defined class of model-generated changes holds merge rights and reaches trunk unread;
+        a human still gates release.</dd>
+        <dt><a href="operator.html">Operator</a></dt>
+        <dd>Nothing human stands between the agent's change and running production — by
+        continuous deployment from trunk or agent-held deploy credentials. Reachable per
+        change-class; observed as no team's ceiling.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section class="contract" id="spectrum-terms">
+    <h2><span class="no">02</span>The spectrum's own terms</h2>
+    <div class="gloss">
+      <dl>
+        <dt>Archetype</dt>
+        <dd>A grouping of teams that work with AI in the same way, defined by what the human stops
+        doing and what engineered verification replaces them with. An archetype is a team's
+        configured <em>ceiling</em> — not what any individual change receives. Archetypes are
+        kinds, not ranks: none is the goal state.</dd>
+        <p class="avoid"><b>Avoid</b> tier and level (imply ranking) · framework (means React or
+        Django to this audience) · model (reads as <em>language model</em>) · stage, maturity
+        level (imply progression)</p>
+
+        <dt>Ceiling</dt>
+        <dd>The maximum delegation a team's settings and policies permit <strong>for
+        model-generated changes</strong> — what an administrator flips, and what vendor terms key
+        liability to. A property of the configured scope where the settings live (an organisation,
+        a repository, a path); "team" is shorthand for a team at a scope. Deterministic automation
+        with no model involved sits outside the spectrum entirely.</dd>
+        <p class="avoid"><b>Avoid</b> describing a team by its typical or modal change — that is
+        unmeasurable from outside and drifts as volume shifts between change types</p>
+
+        <dt>Spectrum</dt>
+        <dd>The set of archetypes ordered by containment ceiling — what the agent is permitted to
+        reach. A boundary is crossed when the agent's output can reach the next surface (open file,
+        working tree, shared repository, trunk, production) with no human action in between; the
+        usual mechanism is a credential or tool surface, held by the agent or pre-authorised on
+        its behalf.</dd>
+        <p class="avoid"><b>Avoid</b> maturity model, adoption curve, ladder (all imply higher is
+        better) · write "further along the spectrum", never "higher up"</p>
+
+        <dt>The independence rule</dt>
+        <dd>Containment and human oversight move independently, and the spectrum orders only
+        containment. A team may grant an agent very little reach and supervise none of it, or grant
+        it production reach and gate every action. Every archetype document therefore states three
+        things separately: what the agent can reach, what a human still gates, and what
+        verification must replace them.</dd>
+        <p class="avoid"><b>Avoid</b> writing or implying that further along the spectrum means
+        less supervised — that conflation is the specific error these documents exist to break</p>
+
+        <dt>Posture</dt>
+        <dd>The set of beliefs and constraints — about trust, risk and what AI should touch — that
+        lands a team in a particular archetype. Each archetype page closes with the posture that
+        fits it.</dd>
+        <p class="avoid"><b>Avoid</b> maturity, sophistication, readiness</p>
+      </dl>
+    </div>
+  </section>
+
+  <section class="contract" id="autonomy-oversight">
+    <h2><span class="no">03</span>Autonomy, oversight, containment</h2>
+    <div class="gloss">
+      <dl>
+        <dt>Autonomy</dt>
+        <dd>A per-action property — what this agent may do without approval, in this context.
+        Described by naming what the human approves and when.</dd>
+        <p class="avoid"><b>Avoid</b> "L3 autonomy" or any bare level reference — no standards body
+        has published a scale, and the two leading proposals contradict each other</p>
+
+        <dt>Human oversight</dt>
+        <dd>What a human actually gates, named specifically. The register regulators use.</dd>
+        <p class="avoid"><b>Avoid</b> "human-in-the-loop" as a reassurance claim: the vendor holding
+        the telemetry reports ~93% rising to 97% of permission prompts approved, and human review
+        catching 13.6% of dangerous commands against 89% for automated checking — the mechanism
+        does not imply the outcome</p>
+
+        <dt>Containment</dt>
+        <dd>Restricting what an agent <em>can</em> do — sandboxes, egress controls, least-privilege
+        tool scopes — rather than approving what it does. The field's structural answer to the
+        limits of supervision, and the property the spectrum orders.</dd>
+        <p class="avoid"><b>Avoid</b> "guardrails" as a load-bearing noun; name the mechanism
+        (validation, allowlist, sandbox, classifier, tripwire, permission rule, hook)</p>
+
+        <dt>Verification</dt>
+        <dd>The engineered machinery that establishes a change is acceptable when a human has not
+        read it: tests, gates, static analysis, canaries, rollback, evals.</dd>
+        <p class="avoid"><b>Avoid</b> using "review" for both human reading and automated checking
+        — they are the two things these documents most need to keep apart</p>
+
+        <dt>Lethal trifecta</dt>
+        <dd>The combination of private data access, exposure to untrusted content, and the ability
+        to communicate externally — the configuration under which prompt injection becomes
+        exfiltration.</dd>
+
+        <dt>Perception gap</dt>
+        <dd>The measured difference between how much faster developers believe AI makes them and
+        how much faster they measurably are — consistently large, and consistently in the
+        direction of belief exceeding measurement.</dd>
+        <p class="avoid"><b>Avoid</b> presenting it as proof that AI makes developers slower; the
+        gap is well-evidenced, the slowdown is not</p>
+      </dl>
+    </div>
+  </section>
+
+  <section class="contract" id="disciplines">
+    <h2><span class="no">04</span>The disciplines</h2>
+    <div class="gloss">
+      <dl>
+        <dt>Context engineering</dt>
+        <dd>The discipline of assembling what an agent sees: instructions, retrieved code, tool
+        results, history, and what is deliberately excluded. Coined by Tobi Lütke (19 Jun 2025),
+        amplified by Andrej Karpathy (25 Jun 2025).</dd>
+        <p class="avoid"><b>Avoid</b> "prompt engineering" as the name of the discipline — it is
+        now a subset, meaning the wording of instructions specifically</p>
+
+        <dt>Agent harness</dt>
+        <dd>Everything around the model that makes it an agent: the agent loop, tool surfaces,
+        permission modes, hooks, sandboxes, and feedback loops.</dd>
+        <p class="avoid"><b>Avoid</b> bare "harness" where eval harnesses are also discussed</p>
+
+        <dt>Harness engineering</dt>
+        <dd>The discipline of designing an agent harness. Named by Mitchell Hashimoto (5 Feb 2026)
+        and industry vocabulary within months; measurably load-bearing — harness choice moves
+        benchmark results about as much as model choice.</dd>
+        <p class="avoid"><b>Avoid</b> "scaffolding" as a distinction to build an argument on — it
+        is the 2024 name for the same thing</p>
+
+        <dt>Eval harness</dt>
+        <dd>The evaluation infrastructure that runs a benchmark and scores results. A different
+        thing from an agent harness; conflating them corrupts benchmark numbers.</dd>
+
+        <dt>Agent orchestration</dt>
+        <dd>The discipline of structuring work across multiple agent steps or agents: subagent
+        fan-out, pipelines, gates, checkpoints, handoffs.</dd>
+        <p class="avoid"><b>Avoid</b> "graph engineering" — not a term of art anywhere in this
+        field, and it collides with the unrelated "knowledge graph engineering"</p>
+
+        <dt>Flow engineering</dt>
+        <dd>The narrower practice of encoding control flow explicitly rather than leaving the
+        sequence to the agent's judgement. A technique within agent orchestration, not a synonym
+        for it.</dd>
+
+        <dt>Evals</dt>
+        <dd>Task-specific, purpose-built measurements of whether a system does acceptable work.
+        Distinct in practice from public benchmarks.</dd>
+        <p class="avoid"><b>Avoid</b> treating evals and benchmarks as interchangeable</p>
+
+        <dt>Agentic engineering</dt>
+        <dd>Professional software development where agents do substantial work under engineered
+        constraint — the current name for the practice the later archetypes describe.</dd>
+        <p class="avoid"><b>Avoid</b> "vibe coding" for disciplined work (it means prototypes where
+        the diffs go unread) · "vibe engineering" (retired by its own author)</p>
+      </dl>
+    </div>
+  </section>
+
+  <section class="contract" id="citation">
+    <h2><span class="no">05</span>How these documents cite</h2>
+    <div class="gloss">
+      <dl>
+        <dt>Evidence tier</dt>
+        <dd>The classification every cited figure carries, stated with the claim itself — never as
+        a blanket disclaimer: <span class="tier" data-tier="survey">survey</span> hard survey
+        data · <span class="tier" data-tier="study">study</span> controlled study or verified
+        primary artifact · <span class="tier" data-tier="vendor">vendor</span> vendor-reported
+        metric · <span class="tier" data-tier="anecdote">anecdote</span> practitioner account.</dd>
+
+        <dt>Joint measurement</dt>
+        <dd>An agent benchmark score, which reflects model and harness together. Always reported as
+        "model X + harness Y resolves N%", never as a property of the model alone.</dd>
+        <p class="avoid"><b>Avoid</b> any bare agent benchmark score; SWE-bench Verified scores
+        entirely — deprecated by their own publisher in February 2026 for training
+        contamination</p>
+      </dl>
+    </div>
+  </section>
+
+  <section class="contract" id="external-scales">
+    <h2><span class="no">06</span>A note on external scales</h2>
+    <div class="gloss">
+      <p>No standards body has published an autonomy-levels scale — verified against NIST AI RMF,
+      ISO/IEC 22989, IEEE P3394, SAE and the EU AI Act — which is why this project defines its own
+      archetypes and says so.</p>
+      <div class="caution"><span class="label">The Mills Review is a different axis</span>
+      <p>The FCA-commissioned <strong>Mills Review</strong> (Sheldon Mills, published 6 July 2026)
+      contains an L1–L5 autonomy spectrum whose worked examples are about writing code. It orders
+      <em>autonomy</em>; this spectrum orders <em>containment</em> — independent axes. The one
+      rough correspondence: its L4 ("AI writes, tests and stages code; engineer approves each
+      release") sits near the Committer archetype. Do not map the rest, and never cite its levels
+      bare — a commissioned review is not a standard.</p></div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <p>The AI Usage Spectrum · <a href="index.html">hub</a> · the ruling vocabulary lives in
+    <code>CONTEXT.md</code>; the evidence behind these rulings in
+    <code>research/vocabulary-and-disciplines.md</code>.</p>
+  </footer>
+
+</div>
+</body>
+</html>

@@ -401,6 +401,37 @@ p { margin: 0 0 1rem; }
   margin: -1rem auto 2rem;
 }
 
+/* ---------- glossary ---------- */
+
+.gloss { max-width: var(--measure); margin: 0 auto; }
+
+.gloss dt {
+  font-family: var(--font-ui);
+  font-weight: 650;
+  font-size: 1.02rem;
+  margin: 1.75rem 0 0.35rem;
+}
+
+.gloss dd { margin: 0 0 0.5rem; }
+
+.gloss .avoid {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  color: var(--muted);
+  border-left: 3px solid var(--caution-edge);
+  padding: 0.15rem 0 0.15rem 0.75rem;
+  margin: 0.5rem 0 0;
+}
+
+.gloss .avoid b {
+  font-size: 0.7rem;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--caution-edge);
+  margin-right: 0.4em;
+}
+
 /* ---------- archetype cards (hub) ---------- */
 
 /* The hub's spectrum cells link to these cards; each expands in place to
