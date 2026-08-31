@@ -15,16 +15,48 @@ dated "as of" in any document that uses it.
 
 **Archetype**:
 A grouping of teams that work with AI in the same way, defined by what the human stops doing and
-what engineered verification replaces them with. Archetypes are kinds, not ranks — none is the
-goal state, and no archetype is "higher" than another.
+what engineered verification replaces them with. **An archetype is a team's configured *ceiling* —
+the maximum delegation its settings and policies permit — not what any individual change receives.**
+Archetypes are kinds, not ranks — none is the goal state, and no archetype is "higher" than another.
 _Avoid_: tier and level (imply ranking), framework (means React/Django to this audience), model
 (reads as *language model*), stage and maturity level (imply progression)
 
+**Ceiling**:
+The maximum delegation a team's settings and policies permit **for model-generated changes**. The
+ceiling is what an administrator flips, what vendor terms key liability to (Cursor ToS §1.7), and
+therefore what an archetype names. It is a property of the **configured scope** where the settings
+actually live — an organisation, a repository, a path; "team" is shorthand for a team at a scope,
+and one team may hold different ceilings on different repositories. Individual changes sit at or
+below the ceiling; a team is not "further along the spectrum" because one change was auto-merged,
+only because auto-merging was *permitted*. Deterministic automation with no model involved sits
+outside the spectrum entirely: Spotify auto-merges 2.5M scripted transforms while human-reviewing
+every LLM PR — its ceiling for model-generated changes is what its archetype names, and the codemod
+pipeline is context, not position.
+_Avoid_: describing a team by its typical or modal change — that is unmeasurable from outside and
+drifts as volume shifts between change types. Also avoid filing non-model automation as a position
+on the spectrum — it is the precedent the far-end pattern inherits from, not an instance of it.
+
 **Spectrum**:
-The set of archetypes ordered by degree of delegation, from minimal AI assistance to unsupervised
-autonomous delivery. Ordering is by delegation only, never by desirability.
+The set of archetypes ordered by **containment ceiling** — what the agent is permitted to reach —
+from minimal AI assistance to unsupervised autonomous delivery. Ordering is by reach only, never by
+desirability. **A boundary is crossed when the agent's output can reach the next surface — open
+file, working tree, shared repository, trunk, production — with no human action in between.** The
+usual mechanism is a credential or tool surface, held by the agent or pre-authorised on its behalf,
+which is why the boundaries are discontinuities rather than arbitrary cuts in a continuum.
 _Avoid_: maturity model, adoption curve, ladder (all imply higher is better). Write "further along
 the spectrum", never "higher up" — the ordinal grammar reintroduces the ranking the noun removes.
+
+**The independence rule**:
+**Containment and human oversight move independently, and the spectrum orders only containment.**
+A team may grant an agent very little reach and supervise none of it (Armin Ronacher runs
+`--dangerously-skip-permissions`, contained by Docker rather than by supervision), or grant it
+production reach and gate every action. Both are legible; neither is misfiled. Every archetype
+document therefore states three things separately: **what the agent can reach** (fixes the
+archetype), **what a human still gates** (varies within it), and **what verification must replace
+them** (the entailment).
+_Avoid_: writing or implying that further along the spectrum means less supervised. That conflation
+is the specific error this project exists to break — and if reach and oversight were one axis, the
+project's central claim would be circular rather than a demand.
 
 **Posture**:
 The set of beliefs and constraints — about trust, risk and what AI should touch — that lands a
