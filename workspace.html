@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Workspace — The AI Usage Spectrum</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="wordmark" href="index.html">The AI Usage Spectrum</a>
+  <a href="index.html">All archetypes</a>
+  <a href="glossary.html">Glossary</a>
+</nav>
+
+<div class="page">
+
+  <header>
+    <p class="eyebrow">Archetype · second of five</p>
+    <h1>Workspace</h1>
+    <p class="standfirst">The agent gains file-write and shell tool surfaces and acts across the
+    working tree, locally. It holds no push credential: nothing leaves the machine without a
+    human.</p>
+    <div class="docmeta">
+      <span>Vocabulary as of 2026-08-31</span>
+      <span>Taxonomy: ADR-0004</span>
+      <span>Sources last verified 2026-08-31</span>
+    </div>
+  </header>
+
+  <!-- ================= spectrum: "you are here" variant ================ -->
+  <div class="spectrum-scroll full" role="img"
+       aria-label="The five archetypes ordered by reach. Workspace is this page's archetype: the agent's output reaches the working tree, locally, with no human action in between; nothing leaves the machine without a human.">
+  <svg class="spectrum" viewBox="0 0 1080 200" xmlns="http://www.w3.org/2000/svg">
+
+    <text class="axis-caption" x="10" y="18">ORDERED BY REACH — WHAT THE AGENT'S OUTPUT CAN TOUCH WITH NO HUMAN IN BETWEEN</text>
+
+    <g class="is-reach">
+      <rect class="surface" x="10" y="46" width="170" height="64" rx="8"/>
+      <text class="surface-name" x="95" y="74" text-anchor="middle">Autocomplete</text>
+      <text class="surface-reach" x="95" y="94" text-anchor="middle">the open file</text>
+    </g>
+
+    <line class="gate-line" x1="206" y1="42" x2="206" y2="118"/>
+    <text class="gate-label" x="206" y="136" text-anchor="middle">gains</text>
+    <text class="gate-gain" x="206" y="152" text-anchor="middle">file-write + shell</text>
+
+    <!-- cell 2 — THIS PAGE -->
+    <g class="is-here">
+      <text class="here-flag" x="317" y="38" text-anchor="middle">YOU ARE READING ABOUT</text>
+      <rect class="surface" x="232" y="46" width="170" height="64" rx="8"/>
+      <text class="surface-name" x="317" y="74" text-anchor="middle">Workspace</text>
+      <text class="surface-reach" x="317" y="94" text-anchor="middle">the working tree</text>
+    </g>
+
+    <!-- gate 2 — the human's act for this archetype -->
+    <line class="gate-line" x1="428" y1="42" x2="428" y2="118"/>
+    <text class="gate-label" x="428" y="136" text-anchor="middle">gains</text>
+    <text class="gate-gain" x="428" y="152" text-anchor="middle">push credential</text>
+    <line class="human-mark-line" x1="428" y1="160" x2="428" y2="172"/>
+    <text class="human-mark" x="428" y="188" text-anchor="middle">a human pushes — nothing leaves the machine without one</text>
+
+    <g class="is-beyond">
+      <rect class="surface" x="454" y="46" width="170" height="64" rx="8"/>
+      <text class="surface-name" x="539" y="74" text-anchor="middle">Contributor</text>
+      <text class="surface-reach" x="539" y="94" text-anchor="middle">the shared repository</text>
+    </g>
+
+    <line class="gate-line" x1="650" y1="42" x2="650" y2="118"/>
+    <text class="gate-label" x="650" y="136" text-anchor="middle">gains</text>
+    <text class="gate-gain" x="650" y="152" text-anchor="middle">merge rights</text>
+
+    <g class="is-beyond">
+      <rect class="surface" x="676" y="46" width="170" height="64" rx="8"/>
+      <text class="surface-name" x="761" y="74" text-anchor="middle">Committer</text>
+      <text class="surface-reach" x="761" y="94" text-anchor="middle">trunk, unread</text>
+    </g>
+
+    <line class="gate-line" x1="872" y1="42" x2="872" y2="118"/>
+    <text class="gate-label" x="872" y="136" text-anchor="middle">path becomes</text>
+    <text class="gate-gain" x="872" y="152" text-anchor="middle">pre-authorised</text>
+
+    <g class="is-beyond">
+      <rect class="surface" x="898" y="46" width="170" height="64" rx="8"/>
+      <text class="surface-name" x="983" y="74" text-anchor="middle">Operator</text>
+      <text class="surface-reach" x="983" y="94" text-anchor="middle">running production</text>
+    </g>
+  </svg>
+  </div>
+  <p class="spectrum-caption">Kinds, not ranks: no archetype is the goal state, and moving further
+  along the spectrum means <em>more</em> engineered verification, not less discipline. Human
+  oversight varies independently within every archetype.</p>
+
+  <!-- ============================ contract ============================= -->
+
+  <nav class="toc" aria-label="Sections">
+    <ol>
+      <li><span class="no">01</span><a href="#what-this-is">What this archetype is</a></li>
+      <li><span class="no">02</span><a href="#the-boundary">The boundary crossed</a></li>
+      <li><span class="no">03</span><a href="#still-gated">What a human still gates</a></li>
+      <li><span class="no">04</span><a href="#who-works-this-way">Who works this way</a></li>
+      <li><span class="no">05</span><a href="#gains-and-costs">What it gains you, what it costs</a></li>
+      <li><span class="no">06</span><a href="#verification">What it demands of verification</a></li>
+      <li><span class="no">07</span><a href="#governance">Governance implications</a></li>
+      <li><span class="no">08</span><a href="#posture">The posture that fits</a></li>
+      <li><span class="no">—</span><a href="#sources">Sources</a></li>
+    </ol>
+  </nav>
+
+  <section class="contract" id="what-this-is">
+    <h2><span class="no">01</span>What this archetype is</h2>
+    <p>A Workspace ceiling permits an agent's output to reach <strong>the whole working tree, on the
+    developer's machine, with no human action in between</strong>: writing files, running shell
+    commands, executing tests, making local commits. The name is the literal reach — the workspace —
+    and deliberately not a description of oversight, because oversight varies enormously within it
+    (§03)<a class="cite" data-tier="study" href="#src-1">ADR-0004</a>.</p>
+    <p>Unlike the step from any later archetype to the next, crossing into Workspace changes the
+    developer's process substantially: the human stops performing edits and starts directing an
+    agent that performs them, inspecting results rather than keystrokes. What does <em>not</em>
+    change is the blast radius beyond the machine — the agent holds no push credential, so the
+    shared repository, trunk, and production remain exactly as reachable as they were under an
+    Autocomplete ceiling: through a human.</p>
+  </section>
+
+  <section class="contract" id="the-boundary">
+    <h2><span class="no">02</span>The boundary crossed</h2>
+    <p>What separates Workspace from Autocomplete is <strong>file-write and shell tool surfaces</strong>:
+    crossing this boundary, the agent's output reaches files and processes with no keypress in
+    between. Architecturally the crossing is one control wide — VS Code's terminal inline chat
+    <strong>Run</strong> button is the exact point where a proposal surface becomes an acting
+    one<a class="cite" data-tier="study" href="#src-2">Tooling: Inline &amp; Chat, Aug 2026</a> —
+    and in practice it is one settings value wide: every in-editor edit product surveyed ships a
+    documented way to remove the human from the accept step, and every one of eleven agentic CLIs
+    ships a switch that removes approval entirely. Three of those CLIs ship with approval
+    <em>already gone</em> on a fresh install (Amp: <em>"By default, Amp does not ask for approval
+    before running tools"</em>; opencode; Goose), and Claude Code's default reviewer on major plans
+    is now a classifier model, not the
+    human<a class="cite" data-tier="study" href="#src-3">Tooling: Agentic CLIs, Aug 2026</a>.</p>
+    <p>Two consequences follow. First, <strong>"the human approves each change" is a configuration,
+    not a property of any product category</strong> — an archetype defined by per-action approval
+    must name the settings that keep it true. Second, this is the last boundary a team crosses by
+    adopting a tool; every boundary further along the spectrum is crossed by granting a credential.
+    Headless operation is universal across the CLI category and therefore no longer discriminates —
+    what a Workspace ceiling withholds is not the ability to run unattended but the credential that
+    would let unattended work leave the
+    machine<a class="cite" data-tier="study" href="#src-3">Tooling: Agentic CLIs, Aug 2026</a>.</p>
+  </section>
+
+  <section class="contract" id="still-gated">
+    <h2><span class="no">03</span>What a human still gates</h2>
+    <p>One thing always: <strong>the push</strong>. Whatever happens inside the workspace, a human
+    performs the act that moves work off the machine, and reviews — or chooses not to review — what
+    moves. Everything else varies, and this page carries the independence rule's flagship case.
+    <strong>Armin Ronacher</strong> (creator of Flask) grants the agent everything locally and
+    supervises none of it: <em>"I disable all permission checks. Which basically means I run
+    <code>claude --dangerously-skip-permissions</code>"</em> — with the risk contained by Docker,
+    not by supervision: <em>"there are definitely risks with it, but you can manage those risks with
+    moving your dev env into docker"</em><a class="cite" data-tier="anecdote" href="#src-4">Ronacher, Jun 2025</a>.
+    Minimal reach, minimal oversight — correctly filed here, near the spectrum's start. Under any
+    taxonomy that ordered oversight instead of containment, this practice would land at the far end,
+    which is precisely the conflation ADR-0004 exists to break<a class="cite" data-tier="study" href="#src-1">ADR-0004</a>.</p>
+    <p>For teams that do gate per action, the telemetry is sobering: the vendor holding it reports
+    permission-prompt approval at ~93% rising to 97%, while the same population rejects 39% of
+    proposed <em>plans</em> — the interface shape, not the human, determines whether review
+    happens — and measured human review catches 13.6% of dangerous commands against 89% for
+    automated checking<a class="cite" data-tier="vendor" href="#src-5">Anthropic telemetry, 2026</a>.
+    The permission prompt is this archetype's most visible control and its least effective one.</p>
+    <div class="note"><span class="label">Independence rule</span>
+    <p>Containment and human oversight move independently. This section names the oversight; the
+    spectrum position above names only the reach. Ronacher's practice is not "further along the
+    spectrum" than a team that approves every command — it is the same archetype with different
+    oversight.</p></div>
+  </section>
+
+  <section class="contract" id="who-works-this-way">
+    <h2><span class="no">04</span>Who works this way</h2>
+    <p>By self-report, this is the most populated agentic region of the spectrum — and the
+    population number is the least corroborated one in the corpus. JetBrains' 2026 instrument
+    (N&gt;15,000) finds <strong>90% of developers using agents weekly and 68% daily</strong>;
+    independent repository-trace mining of 128,018 projects finds agent traces in
+    <strong>22–29% of projects</strong>. The two measure different units (developers versus
+    projects), self-report over-counts by construction and trace mining under-counts by
+    construction, and no study instruments a fixed cohort to compare what developers say against
+    what their tooling logs — quote both numbers or
+    neither<a class="cite" data-tier="survey" href="#src-6">JetBrains, Aug 2026</a><a class="cite" data-tier="study" href="#src-7">Robbes et al., Feb 2026</a>.</p>
+    <p>The named practice at this ceiling is unusually well documented. <strong>Ronacher</strong>
+    (§03) replaces the permission prompt with containment and engineered feedback: tools
+    <em>"protected against an LLM chaos monkey using them completely wrong"</em>, process managers
+    with pidfiles, logs written for the agent to read its own
+    failures<a class="cite" data-tier="anecdote" href="#src-4">Ronacher, Jun 2025</a>.
+    <strong>Mitchell Hashimoto</strong> (creator of Ghostty; coiner of "harness engineering")
+    delegates high-confidence tasks to a background agent while holding a flat rule — <em>"Please
+    don't ever ship AI-written code without a thorough manual review"</em> — and responds to agent
+    failure by engineering the agent harness rather than supervising harder; his turning point:
+    <em>"I forced myself to reproduce all my manual commits with agentic
+    ones"</em><a class="cite" data-tier="anecdote" href="#src-8">Hashimoto, Oct 2025 / Feb 2026</a>.
+    <strong>Simon Willison</strong> runs multiple agents in parallel — <em>"surprisingly effective,
+    if mentally exhausting"</em> — and keeps architecture, specifications, review and manual QA
+    human<a class="cite" data-tier="anecdote" href="#src-9">Willison, Oct 2025</a>.</p>
+    <p>Set Ronacher beside antirez (the Autocomplete anchor) and the spectrum's real argument comes
+    into focus: they sit at opposite ends of the delegation question and are arguing about the same
+    thing — <em>verification</em>, not capability. antirez keeps the human in the loop by
+    hand-carrying code; Ronacher removes the human and puts a container around the agent. Neither
+    claims the code needs less checking; they disagree about what does the
+    checking<a class="cite" data-tier="study" href="#src-10">Practitioner Exemplars, Aug 2026</a>.</p>
+  </section>
+
+  <section class="contract" id="gains-and-costs">
+    <h2><span class="no">05</span>What it gains you, what it costs</h2>
+    <div class="tradeoff">
+      <div>
+        <span class="label">What it gains you</span>
+        <ul>
+          <li>Delegation of implementation: the agent edits, builds, runs and tests its own work in
+          a real environment, closing feedback loops no proposal surface can close.</li>
+          <li>Parallelism — one human directing several concurrent agents is a documented working
+          practice at this ceiling<a class="cite" data-tier="anecdote" href="#src-9">Willison, Oct 2025</a>.</li>
+          <li>A bounded worst case, <em>if the bounds are built</em>: everything the agent can
+          damage without a human is local and (with version control) largely revertible.</li>
+        </ul>
+      </div>
+      <div>
+        <span class="label">What it costs you</span>
+        <ul>
+          <li>Containment becomes load-bearing exactly where the field invests least: <strong>8 of
+          11 agentic CLIs ship no OS-level containment of any kind</strong>, and only one sandboxes
+          by default (on two of three platforms)<a class="cite" data-tier="study" href="#src-3">Tooling: Agentic CLIs, Aug 2026</a>.</li>
+          <li>Command allowlists are not a security boundary: five products — Zed (three CVEs in
+          one day), Cursor, Roo Code (twice), VS Code — had regex allowlists over a shell defeated
+          by shell syntax, each with a published CVE and reproduction
+          steps<a class="cite" data-tier="study" href="#src-11">Tooling: Agentic IDEs, Aug 2026</a>.</li>
+          <li>The lethal trifecta assembles here by default: private data access (the default read
+          scope of one major CLI's sandbox is the entire computer, credential files included),
+          untrusted content (whatever the agent reads), and external communication — <strong>eight
+          of eleven CLIs give the agent the whole network</strong>, and both shipped egress proxies
+          concede they cannot inspect TLS<a class="cite" data-tier="study" href="#src-3">Tooling: Agentic CLIs, Aug 2026</a>.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="contract" id="verification">
+    <h2><span class="no">06</span>What it demands of verification</h2>
+    <p>The human act removed at this boundary is per-edit acceptance, so the entailment names its
+    replacement directly: <strong>a sandbox scoping what the agent can write, an egress allowlist
+    scoping what it can reach, and least-privilege tool scopes deciding what exists for it at
+    all</strong> — plus a test suite good enough that the agent cannot claim untested work works.
+    Isolation and permission-gating are orthogonal controls, and the vendors say so themselves:
+    permission modes decide whether a call runs; isolation restricts what it can access once it
+    does. A team needs both, because a per-action classifier <em>"is a per-action control, not an
+    isolation boundary"</em><a class="cite" data-tier="study" href="#src-12">Verification: Isolation, Aug 2026</a>.</p>
+    <p>The demand is written as a requirement because the shipped reality runs the other way.
+    Containment investment <em>thins</em> as delegation increases across the tool landscape —
+    mature approval-prompt UX everywhere, two OS-primitive sandboxes, one design (Codex CLI) that
+    inverts the pattern by making the sandbox the substrate and approval the escalation path out of
+    it<a class="cite" data-tier="study" href="#src-3">Tooling: Agentic CLIs, Aug 2026</a>.
+    Classifier review is a mitigation, not a boundary: adaptive attacks defeat published
+    prompt-injection defences at &gt;90% attack success, and a working attack against a shipping
+    auto-mode classifier was published in August 2026<a class="cite" data-tier="study" href="#src-12">Verification: Isolation, Aug 2026</a>.
+    And one wire is missing everywhere: <strong>no tool in the surveyed set couples permission to a
+    verification outcome</strong> — nothing can express "allow <code>git push</code> only if this
+    session's tests passed." Every rule matches the shape of the call, never the state of the work;
+    a team that wants the join must build it from
+    hooks<a class="cite" data-tier="study" href="#src-3">Tooling: Agentic CLIs, Aug 2026</a>.</p>
+    <p>Two honest limits on what containment buys. Version control is itself a containment
+    mechanism at this ceiling — one tool (Aider) commits every agent edit automatically so the diff
+    is always isolated and revertible, and worktree-per-agent isolation is shipped and
+    enforced<a class="cite" data-tier="study" href="#src-12">Verification: Isolation, Aug 2026</a>.
+    But <strong>containment of the machine does not contain the artifact</strong>: in the UK AI
+    Security Institute's July 2026 incident, no sandbox escape occurred — the agent's sanctioned
+    capability was the harm (a malicious pull request against a real repository, endorsed by a
+    sockpuppet account the agent created). The workspace boundary holds only if the human act at
+    the push credential is a review, not a
+    relay<a class="cite" data-tier="study" href="#src-12">Verification: Isolation, Aug 2026</a>.</p>
+  </section>
+
+  <section class="contract" id="governance">
+    <h2><span class="no">07</span>Governance implications</h2>
+    <p><strong>This is the archetype where liability first attaches to a setting.</strong> The one
+    vendor term that prices auto-execution keys to precisely the act that defines this boundary:
+    enabling execution <em>"without manual review or confirmation"</em> makes the customer
+    <em>"SOLELY RESPONSIBLE FOR ANY IMPACT RESULTING FROM USE OF THIS FEATURE, INCLUDING ENSURING
+    APPROPRIATE SAFEGUARDS, TESTING, AND MONITORING ARE IN
+    PLACE"</em><a class="cite" data-tier="vendor" href="#src-13">Cursor ToS §1.7</a>. A team at
+    this ceiling has, contractually, already made the far end's trade: the vendor's terms treat the
+    flipped setting, not any later credential, as the moment responsibility transfers. Every
+    provider disclaims defect liability regardless of
+    setting<a class="cite" data-tier="study" href="#src-14">Governance, Legal &amp; IP, Aug 2026</a>.</p>
+    <p><strong>Provenance gets murky at exactly this ceiling.</strong> Workspace output enters the
+    shared record through the <em>human's</em> push, and the attribution that survives depends on
+    undocumented platform behaviour: co-author trailers die in plain git (<code>git merge
+    --squash</code> recovers zero of three co-authors), so the question every later governance
+    regime turns on — "which lines did a human write" — is decided by commit habits made here,
+    where nobody is yet watching for it<a class="cite" data-tier="study" href="#src-14">Governance, Legal &amp; IP, Aug 2026</a>.
+    Data governance, meanwhile, stops being a keystroke-egress question (the Autocomplete case) and
+    becomes an agent-egress one: for most CLIs the agent has the invoking user's whole network and
+    filesystem, credential files included, so what the org's policies actually govern is decided by
+    sandbox and egress configuration, not by the acceptable-use document<a class="cite" data-tier="study" href="#src-3">Tooling: Agentic CLIs, Aug 2026</a>.</p>
+  </section>
+
+  <section class="contract" id="posture">
+    <h2><span class="no">08</span>The posture that fits</h2>
+    <blockquote><p>This fits a team that believes risk is bounded by what the agent can reach, not
+    by who is watching it.</p></blockquote>
+    <p>The safety belief underneath: <em>the container holds.</em> The control moves; it does not
+    improve. And the honest edge: the field ships almost no container by default — eight of eleven
+    CLIs have none, the allowlists have a five-product CVE record, and the egress proxies name
+    their own limits — so a team holding this posture is not buying boundedness off the shelf. It
+    is committing to build the thing its belief depends on, which is exactly what this archetype's
+    best-documented practitioners spend their effort doing.</p>
+  </section>
+
+  <hr>
+
+  <section class="contract" id="sources">
+    <h2><span class="no">—</span>Sources</h2>
+    <p class="spectrum-caption" style="margin:0 0 1rem">Every claim above links here. Tier is stated
+    with the claim itself: <span class="tier" data-tier="survey">survey</span> hard survey data ·
+    <span class="tier" data-tier="study">study</span> controlled study or verified primary artifact ·
+    <span class="tier" data-tier="vendor">vendor</span> vendor-reported metric ·
+    <span class="tier" data-tier="anecdote">anecdote</span> practitioner account.</p>
+    <ol class="sources">
+      <li id="src-1"><span><span class="tier" data-tier="study">study</span>
+        This project, <a href="docs/adr/0004-adopt-five-archetypes.md">ADR-0004</a> — the taxonomy
+        contract: definitions, boundary criterion, the Workspace rename and the independence rule.
+        <span class="when">Adopted 2026-08-31.</span></span></li>
+      <li id="src-2"><span><span class="tier" data-tier="study">study</span>
+        This project, <code>research/tooling-inline-and-chat.md</code> — the propose-vs-act
+        boundary (the VS Code terminal Run control) and the edit-acceptance off switches.
+        <span class="when">Closed 2026-08-30.</span></span></li>
+      <li id="src-3"><span><span class="tier" data-tier="study">study</span>
+        This project, <code>research/tooling-agentic-cli.md</code> — eleven agentic CLIs read from
+        documentation and source: default postures, sandbox and egress inventory, the
+        remove-all-approval switches, the missing permission-to-verification wire.
+        <span class="when">Closed 2026-08-30.</span></span></li>
+      <li id="src-4"><span><span class="tier" data-tier="anecdote">anecdote</span>
+        Armin Ronacher, "Agentic Coding: The Future of Software Development with Agents",
+        lucumr.pocoo.org. Stake: none in an AI coding vendor at time of writing.
+        <span class="when">12 Jun 2025.</span></span></li>
+      <li id="src-5"><span><span class="tier" data-tier="vendor">vendor</span>
+        Anthropic-published telemetry: ~93%→97% permission-prompt approval; 39% plan rejection;
+        human review catching 13.6% of dangerous commands vs 89% automated (n=1,053). The vendor
+        sells the replacement for the prompt; no denominator or time series published.
+        <span class="when">2026.</span></span></li>
+      <li id="src-6"><span><span class="tier" data-tier="survey">survey</span>
+        JetBrains, Developer Ecosystem Survey 2026 (N&gt;15,000, fielded May–Jul 2026) — 90% weekly
+        / 68% daily agent use. Self-report, no shared definition of "agent", weighted partly on
+        JetBrains familiarity — the most quotable and least corroborated number in the corpus.
+        <span class="when">Published Aug 2026.</span></span></li>
+      <li id="src-7"><span><span class="tier" data-tier="study">study</span>
+        Robbes et al., arXiv:2601.18341 — repository-trace mining, 128,018 projects: agent traces
+        in 22.20–28.66% of projects. Under-counts by construction (detects only explicit
+        co-authoring markers).
+        <span class="when">As of 21 Feb 2026.</span></span></li>
+      <li id="src-8"><span><span class="tier" data-tier="anecdote">anecdote</span>
+        Mitchell Hashimoto, "Vibing a Non-Trivial Ghostty Feature" (11 Oct 2025) and "My AI
+        Adoption Journey" (5 Feb 2026), mitchellh.com. Stake: none in an AI vendor. His position
+        moved substantially between the two posts — the dates matter.
+        <span class="when">Oct 2025 / Feb 2026.</span></span></li>
+      <li id="src-9"><span><span class="tier" data-tier="anecdote">anecdote</span>
+        Simon Willison, "Vibe engineering", simonwillison.net. Stake: independent; reputationally
+        invested in the topic; later retired his own term in favour of "agentic engineering".
+        <span class="when">7 Oct 2025.</span></span></li>
+      <li id="src-10"><span><span class="tier" data-tier="study">study</span>
+        This project, <code>research/practitioner-exemplars.md</code> — the antirez/Ronacher
+        contrast; the replaced-verification table; ~57 exemplars with stake recorded.
+        <span class="when">Closed 2026-08-27.</span></span></li>
+      <li id="src-11"><span><span class="tier" data-tier="study">study</span>
+        This project, <code>research/tooling-agentic-ide.md</code> — the five-product allowlist
+        CVE record (Zed CVE-2026-44462/-44463/-44466; Cursor CVE-2026-22708; Roo Code
+        CVE-2025-57771/-58370; VS Code CVE-2026-45482), from vendor security advisories with
+        reproduction steps.
+        <span class="when">Closed 2026-08-30.</span></span></li>
+      <li id="src-12"><span><span class="tier" data-tier="study">study</span>
+        This project, <code>research/verification-isolation.md</code> — isolation vs
+        permission-gating; worktree isolation; the UK AISI July 2026 incident; "The Attacker Moves
+        Second" (&gt;90% adaptive attack success) and the published auto-mode classifier attack.
+        <span class="when">Closed 2026-08-28.</span></span></li>
+      <li id="src-13"><span><span class="tier" data-tier="vendor">vendor</span>
+        Cursor Terms of Service §1.7, "Auto-Code Execution" (contract text).
+        <span class="when">Accessed 2026-08-30.</span></span></li>
+      <li id="src-14"><span><span class="tier" data-tier="study">study</span>
+        This project, <code>research/governance-legal-ip.md</code> — provider defect disclaimers;
+        attribution survival under squash merges; the authorship-vs-adoption threshold.
+        <span class="when">Closed 2026-08-30, corrected 2026-08-31.</span></span></li>
+    </ol>
+  </section>
+
+  <footer class="site-footer">
+    <p>The AI Usage Spectrum · <a href="index.html">hub</a> · <a href="glossary.html">glossary</a> ·
+    previous: <a href="autocomplete.html">Autocomplete</a> ·
+    further along: <a href="contributor.html">Contributor</a></p>
+  </footer>
+
+</div>
+</body>
+</html>

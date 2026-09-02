@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Autocomplete — The AI Usage Spectrum</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="wordmark" href="index.html">The AI Usage Spectrum</a>
+  <a href="index.html">All archetypes</a>
+  <a href="glossary.html">Glossary</a>
+</nav>
+
+<div class="page">
+
+  <header>
+    <p class="eyebrow">Archetype · first of five</p>
+    <h1>Autocomplete</h1>
+    <p class="standfirst">The agent's output reaches the open file and nothing else. A human accepts
+    every edit with a keypress, and nothing else about the process changes. The fixed low extreme of
+    the spectrum — and the only archetype whose defining property is architectural rather than
+    configured.</p>
+    <div class="docmeta">
+      <span>Vocabulary as of 2026-08-31</span>
+      <span>Taxonomy: ADR-0004</span>
+      <span>Sources last verified 2026-08-31</span>
+    </div>
+  </header>
+
+  <!-- ================= spectrum: "you are here" variant ================ -->
+  <div class="spectrum-scroll full" role="img"
+       aria-label="The five archetypes ordered by reach. Autocomplete is this page's archetype: the agent's output reaches only the open file, and a human accepts every edit.">
+  <svg class="spectrum" viewBox="0 0 1080 200" xmlns="http://www.w3.org/2000/svg">
+
+    <text class="axis-caption" x="10" y="18">ORDERED BY REACH — WHAT THE AGENT'S OUTPUT CAN TOUCH WITH NO HUMAN IN BETWEEN</text>
+
+    <!-- cell 1 — THIS PAGE -->
+    <g class="is-here">
+      <text class="here-flag" x="95" y="38" text-anchor="middle">YOU ARE READING ABOUT</text>
+      <rect class="surface" x="10" y="46" width="170" height="64" rx="8"/>
+      <text class="surface-name" x="95" y="74" text-anchor="middle">Autocomplete</text>
+      <text class="surface-reach" x="95" y="94" text-anchor="middle">the open file</text>
+    </g>
+
+    <!-- the human's act for this archetype sits inside the cell, not at a gate -->
+    <line class="human-mark-line" x1="95" y1="118" x2="95" y2="172"/>
+    <text class="human-mark" x="95" y="188" text-anchor="middle">a human accepts every edit, at the keypress</text>
+
+    <!-- gate 1 -->
+    <line class="gate-line" x1="206" y1="42" x2="206" y2="118"/>
+    <text class="gate-label" x="206" y="136" text-anchor="middle">gains</text>
+    <text class="gate-gain" x="206" y="152" text-anchor="middle">file-write + shell</text>
+
+    <g class="is-beyond">
+      <rect class="surface" x="232" y="46" width="170" height="64" rx="8"/>
+      <text class="surface-name" x="317" y="74" text-anchor="middle">Workspace</text>
+      <text class="surface-reach" x="317" y="94" text-anchor="middle">the working tree</text>
+    </g>
+
+    <line class="gate-line" x1="428" y1="42" x2="428" y2="118"/>
+    <text class="gate-label" x="428" y="136" text-anchor="middle">gains</text>
+    <text class="gate-gain" x="428" y="152" text-anchor="middle">push credential</text>
+
+    <g class="is-beyond">
+      <rect class="surface" x="454" y="46" width="170" height="64" rx="8"/>
+      <text class="surface-name" x="539" y="74" text-anchor="middle">Contributor</text>
+      <text class="surface-reach" x="539" y="94" text-anchor="middle">the shared repository</text>
+    </g>
+
+    <line class="gate-line" x1="650" y1="42" x2="650" y2="118"/>
+    <text class="gate-label" x="650" y="136" text-anchor="middle">gains</text>
+    <text class="gate-gain" x="650" y="152" text-anchor="middle">merge rights</text>
+
+    <g class="is-beyond">
+      <rect class="surface" x="676" y="46" width="170" height="64" rx="8"/>
+      <text class="surface-name" x="761" y="74" text-anchor="middle">Committer</text>
+      <text class="surface-reach" x="761" y="94" text-anchor="middle">trunk, unread</text>
+    </g>
+
+    <line class="gate-line" x1="872" y1="42" x2="872" y2="118"/>
+    <text class="gate-label" x="872" y="136" text-anchor="middle">path becomes</text>
+    <text class="gate-gain" x="872" y="152" text-anchor="middle">pre-authorised</text>
+
+    <g class="is-beyond">
+      <rect class="surface" x="898" y="46" width="170" height="64" rx="8"/>
+      <text class="surface-name" x="983" y="74" text-anchor="middle">Operator</text>
+      <text class="surface-reach" x="983" y="94" text-anchor="middle">running production</text>
+    </g>
+  </svg>
+  </div>
+  <p class="spectrum-caption">Kinds, not ranks: no archetype is the goal state, and moving further
+  along the spectrum means <em>more</em> engineered verification, not less discipline. Human
+  oversight varies independently within every archetype.</p>
+
+  <!-- ============================ contract ============================= -->
+
+  <nav class="toc" aria-label="Sections">
+    <ol>
+      <li><span class="no">01</span><a href="#what-this-is">What this archetype is</a></li>
+      <li><span class="no">02</span><a href="#the-boundary">The boundary crossed</a></li>
+      <li><span class="no">03</span><a href="#still-gated">What a human still gates</a></li>
+      <li><span class="no">04</span><a href="#who-works-this-way">Who works this way</a></li>
+      <li><span class="no">05</span><a href="#gains-and-costs">What it gains you, what it costs</a></li>
+      <li><span class="no">06</span><a href="#verification">What it demands of verification</a></li>
+      <li><span class="no">07</span><a href="#governance">Governance implications</a></li>
+      <li><span class="no">08</span><a href="#posture">The posture that fits</a></li>
+      <li><span class="no">—</span><a href="#sources">Sources</a></li>
+    </ol>
+  </nav>
+
+  <section class="contract" id="what-this-is">
+    <h2><span class="no">01</span>What this archetype is</h2>
+    <p>An Autocomplete ceiling permits model-generated text to reach <strong>the open file, and
+    nothing else</strong> — and only through a human keypress. The surface is a decoration in an
+    editor buffer: a candidate string is drawn as ghost text, <kbd>Tab</kbd> commits it, continued
+    typing discards it. Nothing becomes an edit until the developer commits it while looking at
+    it<a class="cite" data-tier="study" href="#src-2">Tooling: Inline &amp; Chat, Aug 2026</a>.</p>
+    <p>Concretely, the step the human stops doing is <strong>typing the characters — and nothing
+    else</strong>. The developer still decides what to build, still reads what appears, still decides
+    whether it is right, and still runs it. Reading is not removed; it is moved earlier and made
+    continuous. This archetype does markedly less than its reputation: the widely-quoted figures —
+    50% of code characters completed by AI at Google, <em>"an average of 46% of a developers'
+    code"</em> from GitHub — describe <em>character provenance</em>, not delegated
+    decisions<a class="cite" data-tier="vendor" href="#src-8">Google, Jun 2024</a><a class="cite" data-tier="vendor" href="#src-9">GitHub, Feb 2023</a>.
+    No decision changes hands. That is why the owner fixed this as the spectrum's low extreme:
+    inline AI edits, with nothing else about the process changing<a class="cite" data-tier="study" href="#src-1">ADR-0004</a>.</p>
+  </section>
+
+  <section class="contract" id="the-boundary">
+    <h2><span class="no">02</span>The boundary crossed</h2>
+    <p>None — this is the fixed low extreme. The boundary that defines Autocomplete is the one
+    <strong>not</strong> crossed: <strong>propose versus act</strong>. Across fourteen completion
+    products surveyed, not one documents a completion engine that executes a command, writes to a
+    file the developer is not editing, or makes any outbound call beyond the inference request
+    itself. The architecture forecloses it: a completion engine has no tool surface, so there is
+    nothing to grant<a class="cite" data-tier="study" href="#src-2">Tooling: Inline &amp; Chat, Aug 2026</a>.</p>
+    <p>That crossing point is one keypress wide and has a street address: VS Code's terminal inline
+    chat offers a <strong>Run (⌘Enter)</strong> control that executes the suggested command.
+    Everything on the completion side of that control proposes text; everything past it can
+    act<a class="cite" data-tier="vendor" href="#src-10">VS Code docs, Aug 2026</a>. And the two
+    sides differ in kind, not degree: <strong>completion acceptance cannot be batched or automated
+    anywhere in the surveyed field</strong> — no vendor ships an auto-accept for ghost text — while
+    in-editor <em>edit</em> acceptance acquires an off switch the moment a team crosses over
+    (VS Code's <code>chat.editing.autoAcceptDelay</code> converts diff review into a countdown
+    timer)<a class="cite" data-tier="study" href="#src-2">Tooling: Inline &amp; Chat, Aug 2026</a>.
+    Autocomplete is therefore the only archetype whose ceiling is enforced by architecture. Every
+    archetype further along the spectrum holds its position by configuration.</p>
+  </section>
+
+  <section class="contract" id="still-gated">
+    <h2><span class="no">03</span>What a human still gates</h2>
+    <p>Everything. Every character enters the file through a keypress made while looking at the
+    suggestion, and the unit of approval is often <em>smaller</em> than one suggestion — word-by-word
+    and line-by-line partial acceptance is universal across the
+    category<a class="cite" data-tier="study" href="#src-2">Tooling: Inline &amp; Chat, Aug 2026</a>.</p>
+    <p>What varies within the archetype is not whether the human gates, but <strong>what the gating
+    is worth</strong>. GitHub's own researchers found that acceptance rate — the obvious measure of
+    this archetype's central act — tracks how productive developers <em>feel</em>, not what persists
+    in the code<a class="cite" data-tier="study" href="#src-7">Ziegler et al., 2022</a>. And the one
+    input-scoping control the category ships leaks: Copilot content exclusion suppresses suggestions
+    in excluded files, yet <em>"Copilot may use semantic information from an excluded file if the
+    information is provided by the IDE indirectly"</em> — and it stops working entirely in edit and
+    agent modes<a class="cite" data-tier="vendor" href="#src-11">GitHub Docs, Aug 2026</a>.</p>
+    <div class="note"><span class="label">Independence rule</span>
+    <p>Containment and human oversight move independently. Autocomplete pins containment at its
+    minimum; it does not guarantee attentive oversight — §06 takes that up. The spectrum position
+    above names only the reach.</p></div>
+  </section>
+
+  <section class="contract" id="who-works-this-way">
+    <h2><span class="no">04</span>Who works this way</h2>
+    <p>The anchor exemplar is <strong>Salvatore Sanfilippo (antirez)</strong>, creator of Redis —
+    with no commercial stake in any AI product, one of the cleanest evidence classes available. He
+    uses frontier models daily and refuses agents entirely, and the withholding is the method: he
+    moves code by hand between his terminal and a web chat interface — <em>"Always be part of the
+    loop by moving code by hand from your terminal to the LLM web interface: this guarantees that
+    you follow every process."</em> The friction is deliberate; it is what guarantees he reads
+    every line. His objection to agents is a quality claim, not a productivity one: autonomous
+    agents produce <em>"fragile code bases that are larger than needed, complex, full of local
+    minima choices"</em><a class="cite" data-tier="anecdote" href="#src-3">antirez, mid-2025</a>.
+    Note that his practice sits <em>below</em> even this archetype's ceiling — he denies the model
+    the open file too — which illustrates that an archetype names what the settings permit, not
+    what any individual does.</p>
+    <p><strong>As a population, this end is measured worse than its reputation suggests.</strong>
+    The only direct measurement of "inline only" found anywhere: 13.8% of Stack Overflow 2025
+    respondents prefer copilot/autocomplete mode exclusively<a class="cite" data-tier="survey" href="#src-5">Stack Overflow 2025</a>.
+    The headline adoption number this archetype is usually folded into is unusable as a point
+    estimate: four credible instruments asking four different questions of four different
+    populations produce <strong>75–90%</strong>, every one opt-in, none publishing a non-response
+    analysis — quote the range and name the instrument, never a single
+    figure<a class="cite" data-tier="study" href="#src-4">Evidence Base, Aug 2026</a>. (There is no
+    Stack Overflow 2026 survey; anything citing one is citing mislabelled 2025 data.) The refusal
+    axis puts this archetype in context: 16.2% of developers won't use AI tools at all, and 37.9%
+    have no plans to use agents — abstainers and autocomplete-only developers together are a far
+    larger population than the discourse implies<a class="cite" data-tier="study" href="#src-6">Practitioner Exemplars, Aug 2026</a>.</p>
+  </section>
+
+  <section class="contract" id="gains-and-costs">
+    <h2><span class="no">05</span>What it gains you, what it costs</h2>
+    <div class="tradeoff">
+      <div>
+        <span class="label">What it gains you</span>
+        <ul>
+          <li>The only region of the spectrum with clean randomised evidence in its favour: three
+          field RCTs across 4,867 developers found <strong>+26.08% completed tasks</strong> for
+          inline completion — peer-reviewed, pre-registered, the strongest single piece of positive
+          evidence in the field<a class="cite" data-tier="study" href="#src-12">Cui et al., Feb 2026</a>.</li>
+          <li>No new verification machinery is demanded — the existing process, human included, is
+          unchanged (§06).</li>
+          <li>The only region where the egress question can be <em>eliminated</em> rather than
+          managed: JetBrains Full Line completion <em>"runs entirely on your local device without
+          sending any code over the internet"</em>, and air-gapped deployments are
+          shipped<a class="cite" data-tier="vendor" href="#src-13">JetBrains docs, Aug 2026</a>.
+          Teams with a hard data-egress constraint have a real product choice here and progressively
+          fewer further along the spectrum.</li>
+        </ul>
+      </div>
+      <div>
+        <span class="label">What it costs you</span>
+        <ul>
+          <li>The smallest delta on the spectrum: the human still does everything except type. Teams
+          adopting "AI" at this ceiling and expecting transformation are buying character provenance
+          (§01).</li>
+          <li>Reading is made continuous — a per-keystroke stream of accept/reject micro-decisions —
+          and the best-evidenced fact about that stream is that its acceptance rate measures
+          satisfaction, not output<a class="cite" data-tier="study" href="#src-7">Ziegler et al., 2022</a>.</li>
+          <li>For every cloud product, each keystroke can send local editing context to the
+          provider — the category's one genuinely non-zero risk surface, and privacy modes govern
+          training use, not transmission<a class="cite" data-tier="study" href="#src-2">Tooling: Inline &amp; Chat, Aug 2026</a>.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="contract" id="verification">
+    <h2><span class="no">06</span>What it demands of verification</h2>
+    <p>The entailment — whatever a human stopped doing must be replaced by engineered verification —
+    reaches its minimum here, because almost nothing human was removed. No completion product ships
+    a test run, a lint gate, or a static-analysis check between suggestion and acceptance; the sole
+    automated check found in the category is Copilot's public-code matching, and it is a licensing
+    check, not a correctness one<a class="cite" data-tier="study" href="#src-2">Tooling: Inline &amp; Chat, Aug 2026</a>.
+    The safety case is one mechanism: a human reads every line, at the moment it appears.</p>
+    <p>Two honest caveats keep that from being a comfortable sentence. First, <strong>the mechanism
+    is attention, and attention is the control this project's evidence trusts least</strong>: the
+    vendor holding the telemetry reports permission-prompt approval at ~93% rising to 97% and
+    measures human review catching 13.6% of dangerous commands against 89% for automated
+    checking<a class="cite" data-tier="vendor" href="#src-14">Anthropic telemetry, 2026</a>. Those
+    figures were measured on agent permission prompts, not ghost text — but they establish that
+    "a human looked at it" degrades with volume, and this archetype runs the highest approval
+    volume on the spectrum. antirez's hand-carried workflow is best read as engineering against
+    exactly this: he adds friction to protect the reading (§04). Second, <strong>what this archetype
+    demands is the discipline of staying in it deliberately</strong>. The category boundary is
+    architectural (§02), but most completion products now ship inside editors that also carry edit
+    and agent surfaces whose approval steps have off switches. A team whose archetype is
+    Autocomplete holds that position by not crossing a line that is one keypress — or one settings
+    value — away<a class="cite" data-tier="study" href="#src-2">Tooling: Inline &amp; Chat, Aug 2026</a>.</p>
+  </section>
+
+  <section class="contract" id="governance">
+    <h2><span class="no">07</span>Governance implications</h2>
+    <p>The least exposed position on the spectrum — and the exposure that remains is instructive
+    because every archetype inherits it. The provider disclaims defect liability even here:
+    <em>"You are responsible for reviewing, testing, and validating any Output before
+    use"</em><a class="cite" data-tier="vendor" href="#src-15">GitHub ToS §J.4, 2026</a>. At this
+    ceiling the team is actually doing the thing the terms assume, line by line — the disclaimer
+    and the practice align, which is not true anywhere further along the spectrum.</p>
+    <p>Authorship is at its most defensible here: a human continuously selects, edits, and
+    integrates suggestions at character granularity, retaining control over the expressive
+    elements — the very thing the US Copyright Office's threshold turns on. Nothing in law or
+    standards requires a human to read source code, so this archetype's discipline is a choice, not
+    a compliance obligation; teams here should know they are exceeding every verified regime, not
+    meeting one<a class="cite" data-tier="study" href="#src-16">Governance, Legal &amp; IP, Aug 2026</a>.
+    The practical governance question that remains is data egress (§05) — a procurement and
+    deployment question with a complete answer (the local lane), not a process one.</p>
+  </section>
+
+  <section class="contract" id="posture">
+    <h2><span class="no">08</span>The posture that fits</h2>
+    <blockquote><p>This fits a team that believes reading every line is non-negotiable, and that
+    anything reducing what a human reads costs more than it saves.</p></blockquote>
+    <p>The safety belief underneath: <em>a human reads every line.</em> Uniquely on the spectrum,
+    the architecture backs the belief — there is no configuration under which the reading moment
+    disappears. What the architecture cannot supply is the reading itself: the belief is honest only
+    while the attention is real, and the exemplar who holds this posture most publicly spends his
+    engineering effort making the attention unavoidable rather than assuming it.</p>
+  </section>
+
+  <hr>
+
+  <section class="contract" id="sources">
+    <h2><span class="no">—</span>Sources</h2>
+    <p class="spectrum-caption" style="margin:0 0 1rem">Every claim above links here. Tier is stated
+    with the claim itself: <span class="tier" data-tier="survey">survey</span> hard survey data ·
+    <span class="tier" data-tier="study">study</span> controlled study or verified primary artifact ·
+    <span class="tier" data-tier="vendor">vendor</span> vendor-reported metric ·
+    <span class="tier" data-tier="anecdote">anecdote</span> practitioner account.</p>
+    <ol class="sources">
+      <li id="src-1"><span><span class="tier" data-tier="study">study</span>
+        This project, <a href="docs/adr/0004-adopt-five-archetypes.md">ADR-0004</a> — the taxonomy
+        contract: definitions, boundary criterion, the fixed low extreme.
+        <span class="when">Adopted 2026-08-31.</span></span></li>
+      <li id="src-2"><span><span class="tier" data-tier="study">study</span>
+        This project, <code>research/tooling-inline-and-chat.md</code> — fourteen completion
+        products and the in-editor edit surfaces, read from vendor documentation; the propose-vs-act
+        boundary, acceptance mechanics, egress, and <code>chat.editing.autoAcceptDelay</code>.
+        <span class="when">Closed 2026-08-30.</span></span></li>
+      <li id="src-3"><span><span class="tier" data-tier="anecdote">anecdote</span>
+        Salvatore Sanfilippo, "Coding with LLMs in the summer of 2025 (an update)",
+        antirez.com/news/154. Stake: none — independent, no product. Position dated mid-2025 and may
+        have moved since.
+        <span class="when">Jul 2025.</span></span></li>
+      <li id="src-4"><span><span class="tier" data-tier="study">study</span>
+        This project, <code>research/evidence-base.md</code> — the four adoption instruments and
+        their traps; the no-2026-survey finding.
+        <span class="when">Closed 2026-08-27.</span></span></li>
+      <li id="src-5"><span><span class="tier" data-tier="survey">survey</span>
+        Stack Overflow Developer Survey 2025 (49,000+ respondents; per-question N ~26.5k–33.7k;
+        opt-in) — 13.8% prefer copilot/autocomplete mode exclusively.
+        <span class="when">Fielded May–Aug 2025.</span></span></li>
+      <li id="src-6"><span><span class="tier" data-tier="study">study</span>
+        This project, <code>research/practitioner-exemplars.md</code> — the refusal axis
+        (16.2% / 37.9%, reconstructed with corrected denominators) and the antirez entry.
+        <span class="when">Closed 2026-08-27.</span></span></li>
+      <li id="src-7"><span><span class="tier" data-tier="study">study</span>
+        Ziegler et al., "Productivity Assessment of Neural Code Completion", arXiv:2205.06537 —
+        observational, vendor-authored (GitHub): acceptance rate drives <em>perceived</em>
+        productivity.
+        <span class="when">May 2022.</span></span></li>
+      <li id="src-8"><span><span class="tier" data-tier="vendor">vendor</span>
+        Google Research blog, "AI in Software Engineering at Google" — 37% acceptance rate; 50% of
+        code characters. Google measuring Google.
+        <span class="when">2024-06-06.</span></span></li>
+      <li id="src-9"><span><span class="tier" data-tier="vendor">vendor</span>
+        GitHub blog — "an average of 46% of a developers' code" completed by Copilot.
+        <span class="when">2023-02-14.</span></span></li>
+      <li id="src-10"><span><span class="tier" data-tier="vendor">vendor</span>
+        VS Code documentation, inline chat — the terminal Run (⌘Enter) control.
+        <span class="when">Page dated 2026-08-26.</span></span></li>
+      <li id="src-11"><span><span class="tier" data-tier="vendor">vendor</span>
+        GitHub Docs, "Content exclusion for GitHub Copilot" — indirect-context leak; unsupported in
+        Edit and Agent modes.
+        <span class="when">Read 2026-08-30.</span></span></li>
+      <li id="src-12"><span><span class="tier" data-tier="study">study</span>
+        Cui, Demirer, Jaffe, Musolff, Peng &amp; Salz, <em>Management Science</em> — three field
+        RCTs, N=4,867, GitHub Copilot inline completion, +26.08% completed tasks (SE 10.3%);
+        pre-registered AEARCTR-0014530.
+        <span class="when">Published 2026-02-27.</span></span></li>
+      <li id="src-13"><span><span class="tier" data-tier="vendor">vendor</span>
+        JetBrains documentation, Full Line Code Completion — fully local inference; Tabnine
+        documents an air-gapped deployment.
+        <span class="when">Read 2026-08-30.</span></span></li>
+      <li id="src-14"><span><span class="tier" data-tier="vendor">vendor</span>
+        Anthropic-published telemetry: ~93%→97% permission-prompt approval; human review catching
+        13.6% of dangerous commands vs 89% automated (n=1,053). Measured on agent prompts, not
+        completion.
+        <span class="when">2026.</span></span></li>
+      <li id="src-15"><span><span class="tier" data-tier="vendor">vendor</span>
+        GitHub Terms of Service §J.4 (contract text).
+        <span class="when">Effective 2026-04-27.</span></span></li>
+      <li id="src-16"><span><span class="tier" data-tier="study">study</span>
+        This project, <code>research/governance-legal-ip.md</code> — no verified regime requires a
+        human to read source code; the USCO control-over-expression threshold.
+        <span class="when">Closed 2026-08-30, corrected 2026-08-31.</span></span></li>
+    </ol>
+  </section>
+
+  <footer class="site-footer">
+    <p>The AI Usage Spectrum · <a href="index.html">hub</a> · <a href="glossary.html">glossary</a> ·
+    further along: <a href="workspace.html">Workspace</a></p>
+  </footer>
+
+</div>
+</body>
+</html>
