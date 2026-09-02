@@ -3,9 +3,9 @@
 **Digest date:** 2026-09-02
 **Ticket:** [#20 Digest the AI-Native SDLC Playbook](https://github.com/AndrewGodlewsky/AI-Framework/issues/20)
 **Source:** Compiled transcript of the Anthropic Academy course *The AI-Native SDLC Playbook*
-(14 lessons, academy.claude.com, retrieved 2026-09-02, content © Anthropic). Local reference copy:
-`reference/ai-native-sdlc-playbook.html` (**gitignored — this repo is public; the transcript is
-never committed or republished**). Quotes here are short and attributed.
+(14 lessons, academy.claude.com, retrieved 2026-09-02, content © Anthropic). Reference copy:
+`reference/ai-native-sdlc-playbook.html`, committed at the owner's decision (2026-09-02) with
+its compilation notice and © attribution intact. Quotes here are short and attributed.
 
 **Evidence tier for everything in this file: vendor.** Anthropic describing its own product and
 its Applied AI team's recommended practice ("inspired by working with our customers"). The course
