@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contributor — The AI Usage Spectrum</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="wordmark" href="index.html">The AI Usage Spectrum</a>
+  <a href="index.html">All archetypes</a>
+  <a href="glossary.html">Glossary</a>
+</nav>
+
+<div class="page">
+
+  <header>
+    <p class="eyebrow">Archetype · third of five</p>
+    <h1>Contributor</h1>
+    <p class="standfirst">The agent gains a push credential: its output enters the shared repository
+    as branches and pull requests, and a human merges every change. The large middle of observed
+    practice — and the archetype the platform itself enforces.</p>
+    <div class="docmeta">
+      <span>Vocabulary as of 2026-08-31</span>
+      <span>Taxonomy: ADR-0004</span>
+      <span>Sources last verified 2026-08-31</span>
+    </div>
+  </header>
+
+  <!-- ================= spectrum: "you are here" variant ================ -->
+  <div class="spectrum-scroll full" role="img"
+       aria-label="The five archetypes ordered by reach. Contributor is this page's archetype: the agent's output reaches the shared repository with no human action in between; a human merges every change.">
+  <svg class="spectrum" viewBox="0 0 1080 200" xmlns="http://www.w3.org/2000/svg">
+
+    <text class="axis-caption" x="10" y="18">ORDERED BY REACH — WHAT THE AGENT'S OUTPUT CAN TOUCH WITH NO HUMAN IN BETWEEN</text>
+
+    <g class="is-reach">
+      <rect class="surface" x="10" y="46" width="170" height="64" rx="8"/>
+      <text class="surface-name" x="95" y="74" text-anchor="middle">Autocomplete</text>
+      <text class="surface-reach" x="95" y="94" text-anchor="middle">the open file</text>
+    </g>
+
+    <line class="gate-line" x1="206" y1="42" x2="206" y2="118"/>
+    <text class="gate-label" x="206" y="136" text-anchor="middle">gains</text>
+    <text class="gate-gain" x="206" y="152" text-anchor="middle">file-write + shell</text>
+
+    <g class="is-reach">
+      <rect class="surface" x="232" y="46" width="170" height="64" rx="8"/>
+      <text class="surface-name" x="317" y="74" text-anchor="middle">Workspace</text>
+      <text class="surface-reach" x="317" y="94" text-anchor="middle">the working tree</text>
+    </g>
+
+    <line class="gate-line" x1="428" y1="42" x2="428" y2="118"/>
+    <text class="gate-label" x="428" y="136" text-anchor="middle">gains</text>
+    <text class="gate-gain" x="428" y="152" text-anchor="middle">push credential</text>
+
+    <!-- cell 3 — THIS PAGE -->
+    <g class="is-here">
+      <text class="here-flag" x="539" y="38" text-anchor="middle">YOU ARE READING ABOUT</text>
+      <rect class="surface" x="454" y="46" width="170" height="64" rx="8"/>
+      <text class="surface-name" x="539" y="74" text-anchor="middle">Contributor</text>
+      <text class="surface-reach" x="539" y="94" text-anchor="middle">the shared repository</text>
+    </g>
+
+    <!-- gate 3 — the human's act for this archetype -->
+    <line class="gate-line" x1="650" y1="42" x2="650" y2="118"/>
+    <text class="gate-label" x="650" y="136" text-anchor="middle">gains</text>
+    <text class="gate-gain" x="650" y="152" text-anchor="middle">merge rights</text>
+    <line class="human-mark-line" x1="650" y1="160" x2="650" y2="172"/>
+    <text class="human-mark" x="650" y="188" text-anchor="middle">a human merges every change, here</text>
+
+    <g class="is-beyond">
+      <rect class="surface" x="676" y="46" width="170" height="64" rx="8"/>
+      <text class="surface-name" x="761" y="74" text-anchor="middle">Committer</text>
+      <text class="surface-reach" x="761" y="94" text-anchor="middle">trunk, unread</text>
+    </g>
+
+    <line class="gate-line" x1="872" y1="42" x2="872" y2="118"/>
+    <text class="gate-label" x="872" y="136" text-anchor="middle">path becomes</text>
+    <text class="gate-gain" x="872" y="152" text-anchor="middle">pre-authorised</text>
+
+    <g class="is-beyond">
+      <rect class="surface" x="898" y="46" width="170" height="64" rx="8"/>
+      <text class="surface-name" x="983" y="74" text-anchor="middle">Operator</text>
+      <text class="surface-reach" x="983" y="94" text-anchor="middle">running production</text>
+    </g>
+  </svg>
+  </div>
+  <p class="spectrum-caption">Kinds, not ranks: no archetype is the goal state, and moving further
+  along the spectrum means <em>more</em> engineered verification, not less discipline. Human
+  oversight varies independently within every archetype.</p>
+
+  <!-- ============================ contract ============================= -->
+
+  <nav class="toc" aria-label="Sections">
+    <ol>
+      <li><span class="no">01</span><a href="#what-this-is">What this archetype is</a></li>
+      <li><span class="no">02</span><a href="#the-boundary">The boundary crossed</a></li>
+      <li><span class="no">03</span><a href="#still-gated">What a human still gates</a></li>
+      <li><span class="no">04</span><a href="#who-works-this-way">Who works this way</a></li>
+      <li><span class="no">05</span><a href="#gains-and-costs">What it gains you, what it costs</a></li>
+      <li><span class="no">06</span><a href="#verification">What it demands of verification</a></li>
+      <li><span class="no">07</span><a href="#governance">Governance implications</a></li>
+      <li><span class="no">08</span><a href="#posture">The posture that fits</a></li>
+      <li><span class="no">—</span><a href="#sources">Sources</a></li>
+    </ol>
+  </nav>
+
+  <section class="contract" id="what-this-is">
+    <h2><span class="no">01</span>What this archetype is</h2>
+    <p>A Contributor ceiling permits an agent's output to reach <strong>the shared repository with
+    no human action in between</strong>: the agent pushes branches and opens pull requests under
+    its own identity, and a human merges every change. The name keeps the open-source governance
+    intuition deliberately — a contributor opens pull requests that someone else merges — and the
+    posture it encodes is that an agent's work should come through the same front door as anyone
+    else's<a class="cite" data-tier="study" href="#src-1">ADR-0004</a>.</p>
+    <p>This is the large middle of observed practice: the least-covered region of the spectrum
+    because it makes a bad headline, and the one where nearly every named organisation delegating
+    at scale actually sits. It is also the archetype the dominant platform pins teams into by
+    construction: GitHub's own cloud agent <em>"cannot approve or merge a pull request"</em>, and
+    its pull requests require an additional human
+    approval<a class="cite" data-tier="vendor" href="#src-8">GitHub Docs, Aug 2026</a>. A team that
+    adopts a cloud or background agent lands here by default and stays here until an administrator
+    deliberately builds a way out.</p>
+  </section>
+
+  <section class="contract" id="the-boundary">
+    <h2><span class="no">02</span>The boundary crossed</h2>
+    <p>What separates Contributor from Workspace is <strong>a push credential</strong>: crossing
+    this boundary, the agent's work leaves the machine and becomes shared state — visible to the
+    team, running in CI, attributed to the agent's own identity — with no human relaying it. The
+    boundary is a credential, enumerable and binary, which is what makes it a discontinuity rather
+    than a matter of degree<a class="cite" data-tier="study" href="#src-1">ADR-0004</a>.</p>
+    <p>Two structural facts define the position. First, this is the archetype the tool market
+    <em>ships</em>: background and cloud agents are products whose entire output surface is the
+    pull request. Second, the boundary above is the only one on the spectrum enforced by the
+    platform rather than by the team: <strong>no product merges its own pull request on its own
+    judgement</strong> — the far-end survey found every real mechanism beyond this point has the
+    shape of a human pre-authorising a merge, never an agent deciding
+    one<a class="cite" data-tier="study" href="#src-12">Tooling Landscape, Aug 2026</a>. Workspace
+    is exited by adopting a tool; Contributor is exited only by an administrator changing a
+    policy. That makes it the cheapest archetype to hold and the one many teams occupy without
+    ever having decided to.</p>
+  </section>
+
+  <section class="contract" id="still-gated">
+    <h2><span class="no">03</span>What a human still gates</h2>
+    <p>The merge — every change. And on the best-run teams, two upstream gates as well:
+    <strong>invitation</strong> (in Microsoft's <code>dotnet/runtime</code>, every agent PR
+    <em>"was created at the explicit request of a human with maintainer rights… CCA cannot open
+    PRs on its own"</em><a class="cite" data-tier="vendor" href="#src-7">Microsoft, Mar 2026</a>)
+    and <strong>task selection</strong> (Monzo chooses per task what the agent may see; Atlassian
+    runs a classifier tuned to 97% precision on <em>out-of-scope</em>
+    work)<a class="cite" data-tier="study" href="#src-2">Practitioner Exemplars, Aug 2026</a>.</p>
+    <p>What the merge gate is <em>worth</em> is this page's hardest question, because
+    rubber-stamping under agent volume is now measured. A within-reviewer longitudinal study of
+    400 repeat reviewers across 11,429 reviews found approval rates on agent PRs rising
+    <strong>30.1% → 36.8%</strong>, inline comments falling <strong>−22%</strong>, and review
+    latency rising <strong>+3.5×</strong> — while the same reviewers' approval of human-authored
+    PRs <em>declined</em>, ruling out general drift. Reviewers wait longer, look less, and approve
+    more<a class="cite" data-tier="study" href="#src-9">Habituation study, Jun 2026</a>. In open
+    source the erosion is further along: most AI-generated PRs receive no reviews at all, and
+    where review occurs it is automation-mediated<a class="cite" data-tier="study" href="#src-10">Duma et al., May 2026</a>.</p>
+    <div class="note"><span class="label">Independence rule</span>
+    <p>Containment and human oversight move independently. This section names the oversight; the
+    spectrum position above names only the reach. "A human merges every change" states who acts —
+    whether the merge is a review or a relay is a separate, measurable question, and §06 treats
+    protecting the difference as this archetype's engineering problem.</p></div>
+  </section>
+
+  <section class="contract" id="who-works-this-way">
+    <h2><span class="no">04</span>Who works this way</h2>
+    <p>The anchor is <strong>Stripe</strong>. <em>"Over 1,300 Stripe pull requests… merged each
+    week are completely minion-produced, and while they're human-reviewed, they contain no
+    human-written code."</em> The containment is environmental, stated as the reason permission
+    prompts can be skipped: devboxes are <em>"isolated from production resources and the
+    internet"</em>, so minions <em>"don't have access to real user data, Stripe's production
+    services, or arbitrary network egress"</em> — and the agent gets exactly two attempts at CI
+    before the branch goes back to its human operator<a class="cite" data-tier="vendor" href="#src-3">Stripe, Feb 2026</a>.</p>
+    <p>The middle is well populated with named practice. <strong>Monzo</strong>, a regulated UK
+    bank: "Agent Chip" authors ~10% of all merged PRs, runs 1,800+ tasks a day, and was built
+    in-house for an explicitly stated withholding reason — <em>"We need to know exactly what the
+    agent can see, what it can do, and constrain it as
+    appropriate"</em><a class="cite" data-tier="vendor" href="#src-4">Monzo, Aug 2026</a>.
+    <strong>Dropbox</strong>: "Nova" produces roughly 1 in 12 pull requests, a human makes the
+    final judgment, and the four-stage measurement model (Fuel → Adoption → Output → Impact) is
+    the most disciplined found — with no values published, an exemplary framework and a
+    non-existent result<a class="cite" data-tier="vendor" href="#src-5">Dropbox, May 2026</a>.
+    <strong>Uber</strong>: 11% of PRs opened by agents, a purpose-built review-squeeze toolchain
+    (Code Inbox, uReview, Autocover), and the corpus's most falsifiable cost admission — AI-related
+    costs up 6× since 2024<a class="cite" data-tier="anecdote" href="#src-6">Pragmatic Engineer, Mar 2026</a>.</p>
+    <p>The best-measured public dataset at this archetype — in the whole corpus — is
+    <strong>Microsoft's <code>dotnet/runtime</code></strong>: 878 agent PRs over ten months,
+    <strong>67.9% merged</strong>, with a revert rate of <strong>0.6% against 0.8%</strong> for
+    non-agent PRs, all in a public repository where the numbers can be independently
+    checked<a class="cite" data-tier="vendor" href="#src-7">Microsoft, Mar 2026</a>. One
+    structural fact recurs across every account in this section, reported independently by almost
+    all of them: <strong>the constraint moved to review, and nobody reports having solved
+    it</strong><a class="cite" data-tier="study" href="#src-2">Practitioner Exemplars, Aug 2026</a>.</p>
+  </section>
+
+  <section class="contract" id="gains-and-costs">
+    <h2><span class="no">05</span>What it gains you, what it costs</h2>
+    <div class="tradeoff">
+      <div>
+        <span class="label">What it gains you</span>
+        <ul>
+          <li>Authoring at volume with review preserved: unattended agents produce finished,
+          CI-tested work while the team's existing merge discipline stays exactly where it
+          was<a class="cite" data-tier="vendor" href="#src-3">Stripe, Feb 2026</a>.</li>
+          <li>The same front door: agent work arrives attributed to the agent's own identity,
+          through the same PR machinery, CI gates, and audit trail as everyone else's — the
+          cleanest provenance of any archetype (§07).</li>
+          <li>The cheapest ceiling to hold: the boundary above is platform-enforced, so staying
+          here requires no engineering — only <em>not</em> building a
+          bypass<a class="cite" data-tier="study" href="#src-12">Tooling Landscape, Aug 2026</a>.</li>
+        </ul>
+      </div>
+      <div>
+        <span class="label">What it costs you</span>
+        <ul>
+          <li>The review queue becomes the bottleneck, with numbers: agentic PRs wait
+          <strong>5.3× longer</strong> for reviewer pickup (1,055 vs 201 minutes), AI-assisted
+          PRs run ~154% larger and are accepted at 32.7% against 84.5%
+          unassisted<a class="cite" data-tier="vendor" href="#src-11">LinearB, May 2026</a>. The
+          cost lands on colleagues: one maintainer opened nine agent PRs in a few hours and
+          priced them at <em>"5 to 9 hours of review work, spread across team members… The
+          bottleneck has moved"</em><a class="cite" data-tier="vendor" href="#src-7">Microsoft, Mar 2026</a>.</li>
+          <li>The load erodes the very control the archetype trusts: habituation is measured, and
+          it worsens with the volume this archetype generates (§03).</li>
+          <li>The platform bill scales with the PRs, not the merges: Uber's 6× cost growth is the
+          only figure of its kind published, and it cuts against the productivity
+          narrative<a class="cite" data-tier="anecdote" href="#src-6">Pragmatic Engineer, Mar 2026</a>.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="contract" id="verification">
+    <h2><span class="no">06</span>What it demands of verification</h2>
+    <p>Nothing human was removed at this boundary — the human stopped <em>authoring</em>, not
+    checking — so the entailment takes an unusual form here: what must be engineered is
+    <strong>the protection of the review itself</strong>, against the volume the archetype
+    generates. The habituation numbers in §03 are the forcing function: left unprotected, the
+    merge gate degrades toward a relay, and the team drifts further along the spectrum whether or
+    not it chose to<a class="cite" data-tier="study" href="#src-9">Habituation study, Jun 2026</a>.</p>
+    <p>The tools most teams name in their verification story cannot carry it. <strong>The major
+    vendors deliberately built their AI code reviewers so they cannot be the gate</strong>:
+    GitHub Copilot code review always leaves a non-counting <em>Comment</em> review, and
+    Anthropic's check run <em>"always completes with a neutral conclusion"</em> — which GitHub's
+    required-status-check rule counts as passing, so marking it required accomplishes nothing.
+    The only independent evaluation of any AI reviewer found 56.3% of its comments rejected, and
+    six of eight surveyed tools have no published accuracy figure from anyone, vendor
+    included<a class="cite" data-tier="study" href="#src-13">Verification: Gates, Aug 2026</a>.</p>
+    <p>What the well-run occupants build instead: <strong>gates that live server-side, outside
+    the agent's reach</strong> — CI and branch protection, not the agent harness (GitHub describes
+    its own agent-side approval queue as <em>"a workflow convenience, not a security control"</em>,
+    and Anthropic documents that its strongest agent-side stop is overridden by the harness after
+    eight consecutive blocks)<a class="cite" data-tier="study" href="#src-13">Verification: Gates, Aug 2026</a> —
+    plus upstream demand control: invitation-only PR creation, task-eligibility classifiers,
+    deterministic pipeline nodes for the steps that need no model, and hard retry caps that
+    return failing work to a human rather than burning reviewer attention on the agent's third
+    attempt<a class="cite" data-tier="vendor" href="#src-3">Stripe, Feb 2026</a><a class="cite" data-tier="study" href="#src-2">Practitioner Exemplars, Aug 2026</a>.
+    The pattern across all of it: protect the reviewer's attention as an engineered budget, not an
+    assumed resource.</p>
+  </section>
+
+  <section class="contract" id="governance">
+    <h2><span class="no">07</span>Governance implications</h2>
+    <p><strong>Provenance is at its cleanest here — and only here.</strong> The agent authors
+    under its own platform identity, so "which lines did a human write" has a recorded answer at
+    the moment of contribution; merging remains adoption, not authorship — <em>"providing
+    instructions to a machine and selecting an output does not equate to
+    authorship"</em><a class="cite" data-tier="study" href="#src-14">Governance, Legal &amp; IP, Aug 2026</a>.
+    The caveat travels with the record: the surviving attribution is platform-hosted, not
+    repository-hosted, and dies in plain git under squash — the clean answer exists on the forge,
+    not in every clone<a class="cite" data-tier="study" href="#src-14">Governance, Legal &amp; IP, Aug 2026</a>.</p>
+    <p><strong>Compliance neither forces this archetype nor forbids the next.</strong> The
+    strongest human-review requirement in any published framework sits exactly at this archetype's
+    upper boundary — SLSA's Source Track Level 4 requires changes to protected branches be agreed
+    by <em>"two or more trusted persons"</em> — and the same document writes the machine exception
+    into the requirement: an organization <em>"MAY choose to grant a Trusted Robot a perpetual
+    exception"</em>. The line frameworks actually draw is identity and control of the automated
+    actor, not human versus machine; NIST's SSDF likewise defines review as <em>"code review…
+    and/or code analysis"</em> — alternatives, by the framework's own
+    wording<a class="cite" data-tier="study" href="#src-13">Verification: Gates, Aug 2026</a>. So
+    a team here should be clear-eyed that its safety belief is a chosen discipline: the regimes it
+    answers to would mostly permit the next boundary, and the platform terms it operates under
+    already assume the review it performs (<em>"You are responsible for reviewing, testing, and
+    validating any Output before use"</em>)<a class="cite" data-tier="vendor" href="#src-15">GitHub ToS §J.4, 2026</a>.</p>
+  </section>
+
+  <section class="contract" id="posture">
+    <h2><span class="no">08</span>The posture that fits</h2>
+    <blockquote><p>This fits a team that believes review is the load-bearing control and should
+    stay human — and that an agent's work should come through the same front door as anyone
+    else's.</p></blockquote>
+    <p>The safety belief underneath: <em>a human reads every change before it lands.</em> The
+    honest edge: that belief is now the best-measured erosion on the spectrum — under agent
+    volume, reviewers wait longer, look less, and approve more. Holding this posture is not the
+    default it feels like; it means engineering the review's protection, because the archetype's
+    own output volume is the thing wearing it away.</p>
+  </section>
+
+  <hr>
+
+  <section class="contract" id="sources">
+    <h2><span class="no">—</span>Sources</h2>
+    <p class="spectrum-caption" style="margin:0 0 1rem">Every claim above links here. Tier is stated
+    with the claim itself: <span class="tier" data-tier="survey">survey</span> hard survey data ·
+    <span class="tier" data-tier="study">study</span> controlled study or verified primary artifact ·
+    <span class="tier" data-tier="vendor">vendor</span> vendor-reported metric ·
+    <span class="tier" data-tier="anecdote">anecdote</span> practitioner account.</p>
+    <ol class="sources">
+      <li id="src-1"><span><span class="tier" data-tier="study">study</span>
+        This project, <a href="docs/adr/0004-adopt-five-archetypes.md">ADR-0004</a> — the taxonomy
+        contract: definitions, boundary criterion, the OSS-governance naming rationale.
+        <span class="when">Adopted 2026-08-31.</span></span></li>
+      <li id="src-2"><span><span class="tier" data-tier="study">study</span>
+        This project, <code>research/practitioner-exemplars.md</code> — the large middle: ~57
+        exemplars with stake recorded; the constraint-moved-to-review pattern; Atlassian's
+        eligibility classifier.
+        <span class="when">Closed 2026-08-27.</span></span></li>
+      <li id="src-3"><span><span class="tier" data-tier="vendor">vendor</span>
+        Stripe Engineering, "Minions: Stripe's one-shot, end-to-end coding agents" (Parts 1 and 2).
+        Throughput figure with no control period, defect or revert rate. Stake: unaffiliated
+        practitioner; mild recruiting incentive.
+        <span class="when">9 / 19 Feb 2026.</span></span></li>
+      <li id="src-4"><span><span class="tier" data-tier="vendor">vendor</span>
+        Monzo, "Building Agent Chip". Explicitly a recruiting post.
+        <span class="when">13 Aug 2026.</span></span></li>
+      <li id="src-5"><span><span class="tier" data-tier="vendor">vendor</span>
+        Dropbox, "Beyond code generation: rethinking engineering productivity in the age of AI
+        agents" — the four-stage measurement model; metrics named, no values published.
+        <span class="when">28 May 2026.</span></span></li>
+      <li id="src-6"><span><span class="tier" data-tier="anecdote">anecdote</span>
+        The Pragmatic Engineer, "How Uber uses AI for development" — secondary account of a
+        Pragmatic Summit talk by Uber engineering leadership; paywalled past the preview, not
+        circumvented.
+        <span class="when">10 Mar 2026.</span></span></li>
+      <li id="src-7"><span><span class="tier" data-tier="vendor">vendor</span>
+        Stephen Toub (Microsoft), "Ten months with CCA in dotnet/runtime" — 878 agent PRs, 67.9%
+        merged, 0.6% vs 0.8% revert; invited-only creation; the review-cost admission. Vendor on
+        own product, but the data sits in a public repository and is independently checkable.
+        <span class="when">23 Mar 2026.</span></span></li>
+      <li id="src-8"><span><span class="tier" data-tier="vendor">vendor</span>
+        GitHub Docs, "Risks and mitigations for GitHub Copilot cloud agent" — cannot approve or
+        merge; additional human approval required.
+        <span class="when">Accessed 2026-08-27.</span></span></li>
+      <li id="src-9"><span><span class="tier" data-tier="study">study</span>
+        Within-reviewer longitudinal study, arXiv:2606.22721 — 400 repeat reviewers, 11,429
+        reviews: agent-PR approval 30.1%→36.8%, inline comments −22%, latency +3.5×, human-PR
+        approval declining over the same period.
+        <span class="when">Jun 2026.</span></span></li>
+      <li id="src-10"><span><span class="tier" data-tier="study">study</span>
+        Duma et al., EASE 2026, arXiv:2605.02273 — mining the AIDev corpus (932,791 agentic PRs):
+        most AI-generated PRs receive no reviews; review that occurs is automation-mediated.
+        <span class="when">4 May 2026.</span></span></li>
+      <li id="src-11"><span><span class="tier" data-tier="vendor">vendor</span>
+        LinearB, 2026 Software Engineering Benchmarks — 8.1M PRs, 4,800 teams: 5.3× reviewer
+        pickup delay; acceptance 32.7% vs 84.5%; AI PRs ~154% larger. The AI/agentic PR
+        classifier is not published.
+        <span class="when">May 2026.</span></span></li>
+      <li id="src-12"><span><span class="tier" data-tier="study">study</span>
+        This project, <code>research/tooling-landscape.md</code> — the merge boundary is
+        platform-enforced; no product merges its own PR on its own judgement; the far end is
+        reached by an administrator changing a policy.
+        <span class="when">Closed 2026-08-30.</span></span></li>
+      <li id="src-13"><span><span class="tier" data-tier="study">study</span>
+        This project, <code>research/verification-gates.md</code> — AI reviewers built unable to
+        gate (Copilot Comment-only; Anthropic neutral check); the CodeRabbit 56.3%-rejection
+        study; server-side-gate test; NIST PW.7 "and/or" and the SLSA robot exception, verified
+        verbatim.
+        <span class="when">Closed 2026-08-28.</span></span></li>
+      <li id="src-14"><span><span class="tier" data-tier="study">study</span>
+        This project, <code>research/governance-legal-ip.md</code> — adoption vs authorship
+        (USCO); attribution survival: platform-hosted, not repository-hosted.
+        <span class="when">Closed 2026-08-30, corrected 2026-08-31.</span></span></li>
+      <li id="src-15"><span><span class="tier" data-tier="vendor">vendor</span>
+        GitHub Terms of Service §J.4 (contract text).
+        <span class="when">Effective 2026-04-27.</span></span></li>
+    </ol>
+  </section>
+
+  <footer class="site-footer">
+    <p>The AI Usage Spectrum · <a href="index.html">hub</a> · <a href="glossary.html">glossary</a> ·
+    previous: <a href="workspace.html">Workspace</a> ·
+    further along: <a href="committer.html">Committer</a></p>
+  </footer>
+
+</div>
+</body>
+</html>
