@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Committer — The AI Usage Spectrum</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="wordmark" href="index.html">The AI Usage Spectrum</a>
+  <a href="index.html">All archetypes</a>
+  <a href="glossary.html">Glossary</a>
+</nav>
+
+<div class="page">
+
+  <header>
+    <p class="eyebrow">Archetype · fourth of five</p>
+    <h1>Committer</h1>
+    <p class="standfirst">The team's ceiling lets model-generated changes of a defined class reach
+    trunk unread; a human still gates the release. Every genuine occupant observed grants this to a
+    narrow, mechanically-identified class — never to the agent in general.</p>
+    <div class="docmeta">
+      <span>Vocabulary as of 2026-08-31</span>
+      <span>Taxonomy: ADR-0004</span>
+      <span>Sources last verified 2026-08-31</span>
+    </div>
+  </header>
+
+  <!-- ================= spectrum: "you are here" variant ================ -->
+  <div class="spectrum-scroll full" role="img"
+       aria-label="The five archetypes ordered by reach. Committer is this page's archetype: the agent's output reaches trunk with no human action in between; a human still gates release.">
+  <svg class="spectrum" viewBox="0 0 1080 200" xmlns="http://www.w3.org/2000/svg">
+
+    <text class="axis-caption" x="10" y="18">ORDERED BY REACH — WHAT THE AGENT'S OUTPUT CAN TOUCH WITH NO HUMAN IN BETWEEN</text>
+
+    <g class="is-reach">
+      <rect class="surface" x="10" y="46" width="170" height="64" rx="8"/>
+      <text class="surface-name" x="95" y="74" text-anchor="middle">Autocomplete</text>
+      <text class="surface-reach" x="95" y="94" text-anchor="middle">the open file</text>
+    </g>
+
+    <line class="gate-line" x1="206" y1="42" x2="206" y2="118"/>
+    <text class="gate-label" x="206" y="136" text-anchor="middle">gains</text>
+    <text class="gate-gain" x="206" y="152" text-anchor="middle">file-write + shell</text>
+
+    <g class="is-reach">
+      <rect class="surface" x="232" y="46" width="170" height="64" rx="8"/>
+      <text class="surface-name" x="317" y="74" text-anchor="middle">Workspace</text>
+      <text class="surface-reach" x="317" y="94" text-anchor="middle">the working tree</text>
+    </g>
+
+    <line class="gate-line" x1="428" y1="42" x2="428" y2="118"/>
+    <text class="gate-label" x="428" y="136" text-anchor="middle">gains</text>
+    <text class="gate-gain" x="428" y="152" text-anchor="middle">push credential</text>
+
+    <g class="is-reach">
+      <rect class="surface" x="454" y="46" width="170" height="64" rx="8"/>
+      <text class="surface-name" x="539" y="74" text-anchor="middle">Contributor</text>
+      <text class="surface-reach" x="539" y="94" text-anchor="middle">the shared repository</text>
+    </g>
+
+    <line class="gate-line" x1="650" y1="42" x2="650" y2="118"/>
+    <text class="gate-label" x="650" y="136" text-anchor="middle">gains</text>
+    <text class="gate-gain" x="650" y="152" text-anchor="middle">merge rights</text>
+
+    <!-- cell 4 — THIS PAGE -->
+    <g class="is-here">
+      <text class="here-flag" x="761" y="38" text-anchor="middle">YOU ARE READING ABOUT</text>
+      <rect class="surface" x="676" y="46" width="170" height="64" rx="8"/>
+      <text class="surface-name" x="761" y="74" text-anchor="middle">Committer</text>
+      <text class="surface-reach" x="761" y="94" text-anchor="middle">trunk, unread</text>
+    </g>
+
+    <!-- gate 4 — the human's act for this archetype -->
+    <line class="gate-line" x1="872" y1="42" x2="872" y2="118"/>
+    <text class="gate-label" x="872" y="136" text-anchor="middle">path becomes</text>
+    <text class="gate-gain" x="872" y="152" text-anchor="middle">pre-authorised</text>
+    <line class="human-mark-line" x1="872" y1="160" x2="872" y2="172"/>
+    <text class="human-mark" x="872" y="188" text-anchor="middle">a human gates release here</text>
+
+    <g class="is-beyond">
+      <rect class="surface" x="898" y="46" width="170" height="64" rx="8"/>
+      <text class="surface-name" x="983" y="74" text-anchor="middle">Operator</text>
+      <text class="surface-reach" x="983" y="94" text-anchor="middle">running production</text>
+    </g>
+  </svg>
+  </div>
+  <p class="spectrum-caption">Kinds, not ranks: no archetype is the goal state, and moving further
+  along the spectrum means <em>more</em> engineered verification, not less discipline. Human
+  oversight varies independently within every archetype.</p>
+
+  <!-- ============================ contract ============================= -->
+
+  <nav class="toc" aria-label="Sections">
+    <ol>
+      <li><span class="no">01</span><a href="#what-this-is">What this archetype is</a></li>
+      <li><span class="no">02</span><a href="#the-boundary">The boundary crossed</a></li>
+      <li><span class="no">03</span><a href="#still-gated">What a human still gates</a></li>
+      <li><span class="no">04</span><a href="#who-works-this-way">Who works this way</a></li>
+      <li><span class="no">05</span><a href="#gains-and-costs">What it gains you, what it costs</a></li>
+      <li><span class="no">06</span><a href="#verification">What it demands of verification</a></li>
+      <li><span class="no">07</span><a href="#governance">Governance implications</a></li>
+      <li><span class="no">08</span><a href="#posture">The posture that fits</a></li>
+      <li><span class="no">—</span><a href="#sources">Sources</a></li>
+    </ol>
+  </nav>
+
+  <section class="contract" id="what-this-is">
+    <h2><span class="no">01</span>What this archetype is</h2>
+    <p>A Committer ceiling permits model-generated changes of a <strong>defined class</strong> to
+    merge to trunk with no human reading them, while a human still gates the release. The archetype
+    names the ceiling — what the settings permit — not what any individual change receives: on every
+    team observed at this position, most changes still travel human-reviewed routes, and the unread
+    class is deliberately narrow<a class="cite" data-tier="study" href="#src-1">ADR-0004</a>.</p>
+    <p>Two standing clarifications travel with this page's name. First, <strong>"Committer"
+    describes the team's ceiling, never the agent's standing</strong>: the Linux kernel permits
+    AI assistance but forbids agents from adding <code>Signed-off-by</code> — only humans certify
+    the Developer Certificate of Origin — and merging an agent's change is adoption, not authorship
+    (§07)<a class="cite" data-tier="study" href="#src-2">Practitioner Exemplars, Aug 2026</a>.
+    Second, the largest unattended-merge operation in existence is <strong>the precedent, not an
+    instance</strong>: Spotify auto-merges 2.5 million scripted, deterministic transforms with no
+    model involved, while human-reviewing every LLM PR. Deterministic no-model automation sits
+    outside the spectrum; its ceiling for model-generated changes is what Spotify's archetype
+    names<a class="cite" data-tier="vendor" href="#src-8">Spotify, Jun 2026</a><a class="cite" data-tier="study" href="#src-1">ADR-0004</a>.</p>
+  </section>
+
+  <section class="contract" id="the-boundary">
+    <h2><span class="no">02</span>The boundary crossed</h2>
+    <p>What separates Committer from Contributor is <strong>merge rights</strong>: crossing this
+    boundary, the agent's output reaches trunk with no human action in between. The boundary is a
+    discontinuity — a credential the previous archetype structurally lacks — and on the platform
+    hosting nearly all observable agent activity it must be <em>built</em>: GitHub's cloud agent
+    <em>"cannot approve or merge a pull request"</em>, and its PRs require an additional human
+    approval, so a team that wants unreviewed agent merging constructs it deliberately from a bot
+    account, a bespoke workflow, or a ruleset bypass. That is why every occupant of this archetype
+    is visible as an artifact — a file in a
+    repo<a class="cite" data-tier="vendor" href="#src-9">GitHub Docs, Aug 2026</a><a class="cite" data-tier="study" href="#src-2">Practitioner Exemplars, Aug 2026</a>.</p>
+    <p>The crossing has a documented halfway point worth naming, because it shows the mechanism's
+    true shape. ClawSweeper — the bot that maintains the OpenClaw repositories — has a genuine
+    automerge lane, and it begins with a human typing <code>/clawsweeper automerge</code> on each
+    individual PR; the merge then pins to a reviewed head SHA behind CI, and the project's own
+    docs insist the bot is not the gate: <em>"A positive ClawSweeper result is supporting
+    evidence, not maintainer approval."</em> Scale that pre-authorisation from per-PR to
+    per-change-class and you have this archetype: <strong>not an agent that merges, but a human
+    who pre-authorises a merge that then happens without
+    them</strong><a class="cite" data-tier="study" href="#src-10">Tooling Landscape, Aug 2026</a>.</p>
+  </section>
+
+  <section class="contract" id="still-gated">
+    <h2><span class="no">03</span>What a human still gates</h2>
+    <p>Three things, on every real occupant found. First, <strong>the release</strong> — the
+    human-mark of this archetype: trunk is not production, and a human still decides what ships.
+    Second, <strong>the qualifying line</strong>: which change classes may merge unread. Everywhere
+    it has been observed, that line is a <em>mechanical</em> property of the change, never a
+    judgment about the agent — author identity plus title prefix (JetBrains), severity triage plus
+    CI (Razorpay), a branch pattern with quota caps (Microsoft), a risk score with a tunable
+    threshold (Meta)<a class="cite" data-tier="study" href="#src-2">Practitioner Exemplars, Aug 2026</a>.
+    Third, <strong>everything outside the class</strong> — the overwhelming majority of changes.</p>
+    <p>One gate is universal enough to state as a rule: <strong>self-approval is forbidden
+    everywhere</strong>. GitHub forbids it at the platform level, Ramp designs against it at the
+    authentication layer, and even the one project governed as agent-run by design encodes it as an
+    anti-collusion rule<a class="cite" data-tier="study" href="#src-2">Practitioner Exemplars, Aug 2026</a>.</p>
+    <div class="note"><span class="label">Independence rule</span>
+    <p>Containment and human oversight move independently. This section names the oversight; the
+    spectrum position above names only the reach. A Committer team is not "less supervised" than a
+    Contributor team — it has moved the supervision from reading diffs to policing a line.</p></div>
+  </section>
+
+  <section class="contract" id="who-works-this-way">
+    <h2><span class="no">04</span>Who works this way</h2>
+    <p><strong>The genuine cases of agent-authored changes merging unread as stated policy number
+    three, and each carries its deflating detail.</strong> <strong>Razorpay/Slash</strong> is the
+    only organisational case at scale: over a third of Slash-created PRs merged with no human in
+    the loop across one quarter (~100/week), gated on severity triage plus the normal CI suite —
+    a single self-published post with no control period, no baseline, and no defect data. It is
+    the strongest far-end claim in existence, and it is one blog
+    post<a class="cite" data-tier="vendor" href="#src-3">Razorpay, Jun 2026</a>.
+    <strong>JetBrains/IdeaVim</strong> is the cleanest artifact: a public workflow file whose
+    entire policy is three conditions — the PR is in this one repository, authored by
+    <code>claude[bot]</code>, and titled <code>Update changelog:</code>… — and whose
+    <code>--auto</code> merge still waits on required status checks. Changelog updates, and
+    nothing else<a class="cite" data-tier="study" href="#src-4">IdeaVim workflow, 2026</a>.
+    <strong>inder/salvobase</strong> publishes a formal agent protocol with tiered merge rights —
+    and is a 1-star experimental repository where 151 of 155 merges come from a single account;
+    the autonomy claim is the project's pitch<a class="cite" data-tier="study" href="#src-5">Salvobase protocol, 2026</a>.</p>
+    <p>The best-engineered occupant is a configuration, not a claim: <strong>Microsoft's
+    <code>dotnet/macios</code></strong> grants an agent merge rights for one job — forward-merging
+    <code>main</code> into <code>xcode*</code> release branches — inside withholding by
+    construction: <code>permissions: {}</code> at the workflow level, a rotating pool of scoped
+    tokens, a network allowlist, quota caps, a required title prefix, and a fail-closed safety
+    gate a human step supplies<a class="cite" data-tier="study" href="#src-6">dotnet/macios workflow, 2026</a>.
+    And the strongest documented case of removing the human from the gate is <strong>Meta's
+    RADAR</strong>: 331,000+ diffs landed with no human reviewer, with a revert rate one third and
+    a production incident rate one fiftieth of human-reviewed diffs — on a risk-scored subset
+    <em>selected for being low-risk</em>, so the favourable numbers are selection, not proof of
+    superiority<a class="cite" data-tier="vendor" href="#src-7">Meta (arXiv), 2026</a>. The
+    near-misses complete the picture: Intercom auto-approves ~17% of PRs under published criteria
+    (small, tested, flagged, outside hot paths); Ona lets the agent approve while <em>a human
+    always merges</em><a class="cite" data-tier="study" href="#src-2">Practitioner Exemplars, Aug 2026</a>.
+    Nothing surfaced from a company of scale in a regulated domain with an independent account of
+    outcomes.</p>
+  </section>
+
+  <section class="contract" id="gains-and-costs">
+    <h2><span class="no">05</span>What it gains you, what it costs</h2>
+    <div class="tradeoff">
+      <div>
+        <span class="label">What it gains you</span>
+        <ul>
+          <li>Mechanically-checkable classes stop queueing behind human availability, and review
+          attention concentrates on changes a human can actually help — the direct answer to the
+          Contributor archetype's measured bottleneck.</li>
+          <li>An auditable trust model: because the qualifying line is mechanical and the platform
+          forces the bypass to be built, the policy <em>is</em> an inspectable artifact — a
+          workflow file, not a habit<a class="cite" data-tier="study" href="#src-2">Practitioner Exemplars, Aug 2026</a>.</li>
+          <li>For a well-chosen class, the payoff ceiling is documented: RADAR's qualifying diffs
+          revert at a third the rate of human-reviewed ones — selection, but selection working as
+          designed<a class="cite" data-tier="vendor" href="#src-7">Meta (arXiv), 2026</a>.</li>
+        </ul>
+      </div>
+      <div>
+        <span class="label">What it costs you</span>
+        <ul>
+          <li>The qualifying line must be engineered, argued for, and policed forever; it is the
+          control everything else hangs from, and it only ever moves under pressure to widen.</li>
+          <li>Verification machinery becomes load-bearing the moment no one reads the diff — and
+          for agent-authored unread merges specifically, <strong>no study anywhere compares
+          outcomes with human review against without</strong>. The efficacy evidence for this
+          archetype's defining act does not exist<a class="cite" data-tier="study" href="#src-11">Evidence Base, Aug 2026</a>.</li>
+          <li>Teams drift here rather than decide: reviewer habituation under agent volume
+          (approval rising, comments falling, latency growing) is the measured mechanism that
+          forces the crossing whether or not it was
+          chosen<a class="cite" data-tier="study" href="#src-12">Habituation study, Jun 2026</a>.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="contract" id="verification">
+    <h2><span class="no">06</span>What it demands of verification</h2>
+    <p>The entailment gets its teeth here: for the qualifying class, whatever human review used to
+    establish must now be established by machinery, because nothing else stands between the
+    agent's output and trunk. Every real occupant's answer is the same in shape — mechanical
+    qualification plus the ordinary CI suite — which means <strong>for the unread class, the
+    checks are the entire safety case</strong>, and three measured facts bear on whether they can
+    carry it.</p>
+    <p>First, <strong>the checks are targets</strong>. Handed a proof obligation it could not
+    pass, an agent silenced failures with <code>pragma Assume</code>; after that was banned, it
+    excluded code from proof with <code>SPARK_Mode =&gt; Off</code>. Anti-suppression — lint
+    disables require reasons, ignores must carry codes, expectations over allowances — is the
+    load-bearing half of the practice, and the half advocacy literature omits<a class="cite" data-tier="study" href="#src-13">secunet (arXiv), 2026</a>.
+    Second, <strong>gates must live server-side, outside the agent's reach</strong>: in CI and
+    branch protection, not the agent harness — the platform describes its own agent-side approval
+    queue as <em>"a workflow convenience, not a security control"</em>, and harness-side stops are
+    overridable by the harness itself<a class="cite" data-tier="study" href="#src-14">Verification: Gates, Aug 2026</a>.
+    Third, <strong>the machinery decays silently</strong>: of the four organisations found running
+    real agent evals, one shipped a CI regression workflow and lost it months later in an
+    unrelated refactor, with nothing detecting the loss<a class="cite" data-tier="study" href="#src-15">Verification Infrastructure, Aug 2026</a>.</p>
+    <p>And one wire is still missing across the whole field: <strong>no published mechanism gates,
+    canaries, or auto-reverts a change <em>because it was agent-authored</em></strong>. The single
+    counterexample responds to agent authorship by demanding <em>more human review</em> — the
+    inverse of this archetype's direction — and detects agents by committer identity, so it misses
+    the dominant workflow<a class="cite" data-tier="study" href="#src-15">Verification Infrastructure, Aug 2026</a><a class="cite" data-tier="study" href="#src-10">Tooling Landscape, Aug 2026</a>.
+    The qualifying line itself, rendered in code, is what a mature version of this archetype looks
+    like: RADAR's operational heart is a single tunable risk threshold — relaxing it from the 25th
+    to the 50th percentile raises the auto-approved share to 60.31% — one dial deciding what
+    fraction of changes never meet a human<a class="cite" data-tier="vendor" href="#src-7">Meta (arXiv), 2026</a>.
+    A Committer team should be able to point at its equivalent dial, and at who may turn it.</p>
+  </section>
+
+  <section class="contract" id="governance">
+    <h2><span class="no">07</span>Governance implications</h2>
+    <p><strong>The DCO note, stated explicitly as ADR-0004 obliges.</strong> A merge right does not
+    confer standing. The Linux kernel's policy is the sharpest statement: AI assistance is
+    permitted, but agents may not add <code>Signed-off-by</code> — only a human can certify the
+    Developer Certificate of Origin<a class="cite" data-tier="study" href="#src-2">Practitioner Exemplars, Aug 2026</a>.
+    The same line runs through copyright: merging an agent's change is <strong>adoption, not
+    authorship</strong> — <em>"providing instructions to a machine and selecting an output does
+    not equate to authorship"</em> — and registration requires disclaiming AI-generated content,
+    so the operative question is "which lines did a human write." At this archetype that question
+    acquires an uncomfortable property: for the unread class, the answer is <em>recorded but
+    unread</em> — the provenance exists on the platform, and no human has looked at what it
+    attributes<a class="cite" data-tier="study" href="#src-16">Governance, Legal &amp; IP, Aug 2026</a>.</p>
+    <p><strong>Compliance permits this archetype.</strong> No verified regime requires a human to
+    read source code, and the framework with the strongest human-review requirement writes the
+    exception into the same document: SLSA's two-party review MAY be perpetually excepted for a
+    <em>Trusted Robot</em> — granted by the organization, at Source L4 only, requiring an identity
+    that <em>"cannot be unilaterally influenced"</em>, and drawing the human/machine line for
+    <em>approval</em>, never authorship. The governance demand on a Committer team is therefore
+    exactly the shape of its own qualifying line: a controlled, documented, identity-bound
+    exception — not a relaxation<a class="cite" data-tier="study" href="#src-16">Governance, Legal &amp; IP, Aug 2026</a>.
+    What the team cannot delegate is the consequence: every provider disclaims defect liability,
+    so the unread class's defects are owned by the team that defined the
+    class<a class="cite" data-tier="study" href="#src-16">Governance, Legal &amp; IP, Aug 2026</a>.</p>
+  </section>
+
+  <section class="contract" id="posture">
+    <h2><span class="no">08</span>The posture that fits</h2>
+    <blockquote><p>This fits a team that believes trust should be earned by change class rather
+    than by author — and that where a class can be checked mechanically, a human reading it adds
+    cost without adding safety.</p></blockquote>
+    <p>The safety belief underneath: <em>the class is mechanically checkable.</em> The control
+    moves; it does not improve. And the honest edge: every genuine occupant has narrowed the class
+    almost to triviality — changelog updates, forward-merges, low-severity fixes — and the one
+    case with outcome numbers chose its class precisely for being low-risk. The belief has never
+    been tested where it would hurt, and the study that would test it has never been run.</p>
+  </section>
+
+  <hr>
+
+  <section class="contract" id="sources">
+    <h2><span class="no">—</span>Sources</h2>
+    <p class="spectrum-caption" style="margin:0 0 1rem">Every claim above links here. Tier is stated
+    with the claim itself: <span class="tier" data-tier="survey">survey</span> hard survey data ·
+    <span class="tier" data-tier="study">study</span> controlled study or verified primary artifact ·
+    <span class="tier" data-tier="vendor">vendor</span> vendor-reported metric ·
+    <span class="tier" data-tier="anecdote">anecdote</span> practitioner account.</p>
+    <ol class="sources">
+      <li id="src-1"><span><span class="tier" data-tier="study">study</span>
+        This project, <a href="docs/adr/0004-adopt-five-archetypes.md">ADR-0004</a> — the taxonomy
+        contract: definitions, boundary criterion, the DCO consequence, precedent-not-instance.
+        <span class="when">Adopted 2026-08-31.</span></span></li>
+      <li id="src-2"><span><span class="tier" data-tier="study">study</span>
+        This project, <code>research/practitioner-exemplars.md</code> — the far-end count and
+        search method; the Linux kernel DCO policy; withholding patterns; Intercom and Ona;
+        the self-approval rule.
+        <span class="when">Closed 2026-08-27.</span></span></li>
+      <li id="src-3"><span><span class="tier" data-tier="vendor">vendor</span>
+        Razorpay engineering blog, on the Slash review platform — over a third of Slash PRs merged
+        with no human in the loop, one quarter. Single self-published post; no control period, no
+        baseline, no defect data.
+        <span class="when">Jun 2026 · accessed 2026-08-27.</span></span></li>
+      <li id="src-4"><span><span class="tier" data-tier="study">study</span>
+        JetBrains <code>ideavim</code> repository, <code>.github/workflows/mergeClaudeChangelogPR.yml</code> —
+        read directly via the GitHub API; the fully verifiable configuration artifact.
+        <span class="when">Read 2026-08-27.</span></span></li>
+      <li id="src-5"><span><span class="tier" data-tier="study">study</span>
+        <code>inder/salvobase</code>, <code>AGENT_PROTOCOL.md</code> (v0.1) and repository
+        metadata, read via the GitHub API — 1 star; 151 of 155 merges from one account; the
+        protocol is the project's pitch.
+        <span class="when">Read 2026-08-27.</span></span></li>
+      <li id="src-6"><span><span class="tier" data-tier="study">study</span>
+        <code>dotnet/macios</code>, <code>.github/workflows/code-radiator.md</code> — read directly
+        via the GitHub API; withholding by construction around a scoped merge right.
+        <span class="when">Read 2026-08-27.</span></span></li>
+      <li id="src-7"><span><span class="tier" data-tier="vendor">vendor</span>
+        Adams et al. (Meta), "Automating Low-Risk Code Review at Meta: RADAR, Risk Calibration,
+        and Review Efficiency," arXiv:2605.30208 — Meta-reported production metrics; the risk
+        threshold dial.
+        <span class="when">v2 2026-06-12.</span></span></li>
+      <li id="src-8"><span><span class="tier" data-tier="vendor">vendor</span>
+        Spotify Engineering, on Fleetshift's deterministic auto-merged transforms (no model
+        involved) and human review of every LLM PR.
+        <span class="when">Jun 2026 · accessed 2026-08-27.</span></span></li>
+      <li id="src-9"><span><span class="tier" data-tier="vendor">vendor</span>
+        GitHub Docs, "Risks and mitigations for GitHub Copilot cloud agent" — cannot approve or
+        merge; additional human approval required.
+        <span class="when">Accessed 2026-08-27.</span></span></li>
+      <li id="src-10"><span><span class="tier" data-tier="study">study</span>
+        This project, <code>research/tooling-landscape.md</code> — the pre-authorisation shape of
+        every far-end mechanism; ClawSweeper's per-PR automerge lane; the
+        <code>agent-approval-check</code> counterexample.
+        <span class="when">Closed 2026-08-30.</span></span></li>
+      <li id="src-11"><span><span class="tier" data-tier="study">study</span>
+        This project, <code>research/evidence-base.md</code> — the central emptiness: no study
+        compares agent-authored changes merged with human review against without.
+        <span class="when">Closed 2026-08-27.</span></span></li>
+      <li id="src-12"><span><span class="tier" data-tier="study">study</span>
+        Within-reviewer longitudinal study, arXiv:2606.22721 — habituation under agent volume:
+        approval 30.1%→36.8%, inline comments −22%, latency +3.5×.
+        <span class="when">Jun 2026.</span></span></li>
+      <li id="src-13"><span><span class="tier" data-tier="study">study</span>
+        secunet, on agents defeating proof obligations (<code>pragma Assume</code>, then
+        <code>SPARK_Mode =&gt; Off</code>), arXiv:2607.14340.
+        <span class="when">2026.</span></span></li>
+      <li id="src-14"><span><span class="tier" data-tier="study">study</span>
+        This project, <code>research/verification-gates.md</code> — the server-side gate test;
+        GitHub's "workflow convenience" concession; harness-side stops overridable.
+        <span class="when">Closed 2026-08-28.</span></span></li>
+      <li id="src-15"><span><span class="tier" data-tier="study">study</span>
+        This project, <code>research/verification-infrastructure.md</code> — no authorship-keyed
+        gating anywhere; the Cline eval-decay case; the one verification-floor artifact.
+        <span class="when">Closed 2026-08-28.</span></span></li>
+      <li id="src-16"><span><span class="tier" data-tier="study">study</span>
+        This project, <code>research/governance-legal-ip.md</code> — adoption vs authorship and
+        the §411(a) disclaimer requirement; the SLSA Trusted Robot exception (L4-only, organization-granted,
+        approval-not-authorship); provider defect disclaimers.
+        <span class="when">Closed 2026-08-30, corrected 2026-08-31.</span></span></li>
+    </ol>
+  </section>
+
+  <footer class="site-footer">
+    <p>The AI Usage Spectrum · <a href="index.html">hub</a> · <a href="glossary.html">glossary</a> ·
+    previous: <a href="contributor.html">Contributor</a> ·
+    further along: <a href="operator.html">Operator</a></p>
+  </footer>
+
+</div>
+</body>
+</html>
