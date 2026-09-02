@@ -57,6 +57,7 @@ Commit history of `docs/devel/code-provenance.rst`: policy introduced by **Danie
 **The proposed relaxation — [PRIMARY]** https://lists.nongnu.org/archive/html/qemu-devel/2026-05/msg07614.html — **Paolo Bonzini, 2026-05-28.** Would permit AI for mechanical changes, small bug fixes (**capped at 20 lines excluding tests**), tests, and documentation, with an **`AI-used-for:`** trailer naming categories. Explicitly rejects `Assisted-by`/`Generated-by` for QEMU.
 
 > ⚠️ **Verified negative finding: the patch was NOT merged as of 2026-08-27. The ban stands.** The two most recent commits to the file are a typo fix and a formatting fix. Phoronix's claim that "other QEMU developers appear onboard" is **[SECONDARY]** and, on the evidence of the tree, premature.
+> ✅ **Re-verified 2026-09-02 (ticket #12)** against the `qemu/qemu` GitHub mirror: still unmerged — the latest commits to `docs/devel/code-provenance.rst` remain 2026-03-19 (typos) and 2026-05-20 (formatting). The in-tree policy remains refusal with **no** disclosure trailer.
 
 ### 1.4 GCC — declines "legally significant" LLM contributions, with carve-outs
 
@@ -139,8 +140,8 @@ Decision was **staff's, not the community's**, despite broad community support. 
 
 - **The translation clause is the sharpest thing in the corpus.** Zig would rather read your untranslated native language than a machine translation. Nearly every other project carves translation *out*; Zig carves it *in*.
 - **Decision-maker:** **Andrew Kelley**, under Zig's declared BDFN governance.
-- ⚠️ **Date not pinned.** The commit adding the section was not located. Press dates it to late May 2026 **[SECONDARY]**. Zig migrated off GitHub to Codeberg **2025-11-26** **[PRIMARY]**. There is **no** `CONTRIBUTING.md`; the policy lives only in the README.
-- ⚠️ **All Kelley reasoning quotes are [SECONDARY]** — sourced to a JetBrains podcast that could not be reached. Reported: AI contributions are "invariably garbage", have "negative value" because they "consume limited review time"; AI is unteachable unlike a mentored human; the dynamic becomes "contributor poker" which destroys the project's ability to identify genuine talent.
+- ✅ **Date pinned, 2026-09-02 (ticket #12) — and the press dating is wrong by six months.** Bisecting the raw README across the path-filtered commit list (Codeberg API): the section is **absent at `f7d47aed47` (2025-10-15)** and **present at `9473011052` (2025-11-22, "README: add some content from the wiki")** — so the README section was added **2025-11-22**, four days before the Codeberg migration, and the commit message implies the policy pre-existed on the project wiki. Press dating it to "late May 2026" **[SECONDARY]** is off by ~6 months — that is plausibly when it was *noticed*, not when it was written. There is **no** `CONTRIBUTING.md`; the policy lives only in the README.
+- ⚠️ **All Kelley reasoning quotes remain [SECONDARY]** — sourced to a JetBrains podcast that could not be reached. A targeted primary hunt (andrewkelley.me and ziglang.org, 2026-09-02) found **no first-party statement of the reasoning**; the quotes stay unusable. Reported: AI contributions are "invariably garbage", have "negative value" because they "consume limited review time"; AI is unteachable unlike a mentored human; the dynamic becomes "contributor poker" which destroys the project's ability to identify genuine talent.
 
 ### 1.9 Redox OS — ban with an explicit no-appeal clause
 
@@ -153,6 +154,12 @@ Decision was **staff's, not the community's**, despite broad community support. 
 ### 1.10 Flathub — bans the *applications themselves*
 
 **[PRIMARY]** https://docs.flathub.org/docs/for-app-authors/requirements — "Generative AI policy":
+
+✅ **Policy dates pinned, 2026-09-02 (ticket #12)**, from the `flathub-infra/documentation` commit
+history: first AI note **2025-11-30** (`584f4ecb49`, "submission: Added a comprehensive note about
+AI use"); the detailed policy **2026-01-24** (`2f1a16e9d8`, "requirements: Add a more detailed
+gen-AI policy"); wording hardened **2026-05-28** (`992f57b30d`, "Reword LLM policy to make it
+clear it's not allowed").
 
 > "This policy applies to both the application being submitted to Flathub and the Flathub submission itself…
 > Submission pull requests must not be generated, opened, or automated using AI tools or agents…
@@ -544,7 +551,23 @@ She disclosed using **GPT-OSS 120b on a DGX Spark** to help edit that very post,
 
 ### 2.13 Linus Torvalds — position appears to have moved
 
-⚠️ **[SECONDARY, both, underlying LKML posts not reached]:** May 2026 — AI-generated vulnerability reports had made the Linux security list **"almost entirely unmanageable"**. July 2026 — **"Linux is not anti-AI"**. The kernel's own documents (§1.23) are consistent with the second.
+✅ **Both LKML posts read first-party in a real browser, 2026-09-02 (ticket #12). Both quotes upgraded to [PRIMARY], with corrections to the press glosses.**
+
+**Post 1 — the Linux 7.1-rc4 announcement**, LKML, Sun 17 May 2026 14:29:22 -0700,
+`lore.kernel.org/lkml/CAHk-=wi+JvcuKF2NaD_rGiYrwkR6rxh_2XZmx8BbYm00D1CvTA@mail.gmail.com`. Verbatim:
+
+> "the continued flood of AI reports has basically made the security list almost entirely unmanageable, with enormous duplication due to different people finding the same things with the same tools."
+> "AI detected bugs are pretty much by definition not secret, and treating them on some private list is a waste of time for everybody involved."
+
+⚠️ **Press gloss corrected:** the same post continues — *"AI tools are great, but only if they actually help… Feel free to use them, but use them in a way that is productive."* The complaint is about **process** (duplicate reports routed through a private list), not the tools; headlines dropped the pro-tool close.
+
+**Post 2 — "Re: Linking Patchwork with Sashiko?"**, linux-media + users@kernel.org, Tue 14 Jul 2026 20:06:14 -0700,
+`lore.kernel.org/all/CAHk-=wi4zC+Ze8e+p3tMv8TtG_80KzsZ1syL9anBtmEh5Z40vg@mail.gmail.com`. Verbatim:
+
+> "Linux is not one of those anti-AI projects, and if somebody has issues with that, they can do the open-source thing and fork it. Or just walk away."
+> "AI is a tool, just like other tools we use. And it's clearly a useful one. It may not have been that 'clearly' even just a year ago, but it's no longer in question today."
+
+⚠️ **The widely-circulated short form "Linux is not anti-AI" is a paraphrase** — the verbatim is "Linux is not one of those anti-AI projects." Quote the long form. The kernel's own documents (§1.23) are consistent with this post, and read together the two posts are one position, not a move: pro-tool, anti-bad-process, five weeks apart.
 
 ### 2.14 What could not be documented
 
@@ -742,5 +765,8 @@ He states that "some national defense organizations have responded… by restric
 - **WSJ** — paywalled (the originating Apple/Copilot scoop).
 - **openjdk.org/guide/** — HTTP 403 (the `/legal/ai` page was reachable via curl with a browser UA).
 - **iso.org**, **IEEE Xplore** — paywalled standards text.
-- **LKML posts** underlying both Torvalds quotes — not reached.
-- **JetBrains podcast** carrying Kelley's reasoning — not reached.
+- **LKML posts** underlying both Torvalds quotes — ✅ resolved 2026-09-02: both read first-party in
+  a real browser (the Anubis gate is automation-only, as with Fedora and CMORG). See §2.13 — both
+  quotes upgraded to [PRIMARY], with two press-gloss corrections.
+- **JetBrains podcast** carrying Kelley's reasoning — still not reached (2026-09-02); a primary
+  hunt on andrewkelley.me and ziglang.org also found nothing. The reasoning quotes stay unusable.

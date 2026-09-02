@@ -659,6 +659,14 @@ own coding guidance says most coding tasks do not meet it.
   system. A private first-party write-up, a conference talk not indexed, or a case study published
   after 2026-08-30 could falsify it. It should be re-checked before publication and carried with an
   explicit "as of 2026-08-30."
+- ✅ **Resolved 2026-09-02 (ticket #12): the CAIPE blog body renders in a real browser** (the page
+  is client-rendered; automated fetch got only the shell). Verified verbatim from
+  `outshift.cisco.com/blog/inside-outshift/caipe-building-open-source-multi-agent-systems-for-platform-engineering`:
+  *"By using CAIPE, Outshift's team has automated around a third of its internal platform
+  engineering tasks. They've reduced the average incident response time from hours to seconds."*
+  Both figures are now vendor-primary (Cisco on Cisco — the interested-party caveat stands). The
+  10× figure was **not** on this page; it remains sourced to the CAIPE white paper / LangChain
+  customer post only.
 - **The Cisco Outshift / CAIPE figures.** The blog bodies did not render (see below); the "one third
   of internal platform engineering tasks" and "hours to seconds" figures come from a search-engine
   summary of Cisco's own pages, not from a page this strand read directly. **Verify against the
