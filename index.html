@@ -1,30 +1,33 @@
 <!doctype html>
-<!-- PROTOTYPE — throwaway demo of the hub-page spectrum visual + expandable
-     archetype cards (ticket #9). The real home of this markup is index.html
-     when the hub is written; card copy here is DRAFT and is finalised by the
-     archetype writing tickets. Keep the answer, delete this file. -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PROTOTYPE — hub spectrum visual</title>
+<title>The AI Usage Spectrum</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <nav class="site-nav">
   <a class="wordmark" href="index.html">The AI Usage Spectrum</a>
+  <a href="index.html" aria-current="page">All archetypes</a>
   <a href="glossary.html">Glossary</a>
 </nav>
 
 <div class="page">
   <header>
-    <p class="specimen-badge">Prototype — hub demo, draft copy, delete after ticket #9 resolves</p>
     <p class="eyebrow">The spectrum</p>
     <h1>Five archetypes, ordered by reach</h1>
-    <p class="standfirst">An archetype is a team's configured ceiling for model-generated changes.
-    Each boundary is a capability the previous archetype structurally lacks. Click an archetype to
-    see what it is made of.</p>
+    <p class="standfirst">An archetype is a team's configured ceiling for model-generated changes —
+    what the settings and policies permit, not what any individual change receives. The spectrum
+    orders archetypes by what the agent's output can reach with no human action in between, and
+    each boundary is a capability the previous archetype structurally lacks. Click an archetype to
+    see what it is made of; each links to a full, cited document.</p>
+    <div class="docmeta">
+      <span>Vocabulary as of 2026-08-31</span>
+      <span>Taxonomy: ADR-0004</span>
+      <span>Sources last verified 2026-08-31</span>
+    </div>
   </header>
 
   <div class="spectrum-scroll full">
@@ -83,7 +86,8 @@
   <p class="spectrum-caption">Kinds, not ranks: no archetype is the goal state. Moving further
   along the spectrum means replacing human-in-the-loop verification with <em>engineered</em>
   verification — more rigor, not less. Human oversight varies independently within every
-  archetype.</p>
+  archetype: every document below states separately what the agent can reach, what a human still
+  gates, and what verification must replace them.</p>
 
   <!-- ===================== expandable archetype cards ===================== -->
 
@@ -94,22 +98,27 @@
         <span class="reach">reaches the open file</span></summary>
       <div class="body">
         <dl class="facts">
-          <dt>Made of</dt><dd>no tool surface — the model proposes into the open file and a human accepts every edit</dd>
-          <dt>Demands first</dt><dd>nothing new — the existing review process carries all the weight it always did</dd>
+          <dt>Made of</dt><dd>no tool surface — the model proposes ghost text into the open file,
+          and a human commits every edit with a keypress. The only archetype whose ceiling is
+          architectural rather than configured</dd>
+          <dt>Demands first</dt><dd>nothing new to build — the demand is the discipline of staying
+          here deliberately, one keypress from the surfaces that act</dd>
         </dl>
         <div class="tradeoff">
           <div><span class="label">What it gains you</span><ul>
-            <li>Every line is read by the person shipping it.</li>
-            <li>No new verification or governance surface at all.</li>
+            <li>Every line is read by the person shipping it, at the moment it appears.</li>
+            <li>The only region with clean randomised evidence in its favour — and the only one
+            where data egress can be eliminated outright rather than managed.</li>
           </ul></div>
           <div><span class="label">What it costs you</span><ul>
-            <li>Human attention is the throughput ceiling.</li>
-            <li>None of the review burden is relieved.</li>
+            <li>The smallest delta on the spectrum: the human still does everything but type.</li>
+            <li>Reading becomes a continuous stream of micro-decisions whose acceptance rate
+            measures satisfaction, not output.</li>
           </ul></div>
         </div>
         <p class="fits">Fits a team that believes reading every line is non-negotiable, and that
         anything reducing what a human reads costs more than it saves.</p>
-        <a class="more" href="#">Read the full document →</a>
+        <a class="more" href="autocomplete.html">Read the full document →</a>
       </div>
     </details>
 
@@ -118,22 +127,27 @@
         <span class="reach">reaches the working tree</span></summary>
       <div class="body">
         <dl class="facts">
-          <dt>Made of</dt><dd>file-write and shell tool surfaces, no push credential — the agent acts across the working tree, locally</dd>
-          <dt>Demands first</dt><dd>containment: a sandbox or container, an egress allowlist, least-privilege tool scopes</dd>
+          <dt>Made of</dt><dd>file-write and shell tool surfaces, no push credential — the agent
+          acts across the working tree, locally; nothing leaves the machine without a human</dd>
+          <dt>Demands first</dt><dd>containment: a sandbox, an egress allowlist, least-privilege
+          tool scopes — which the tool field mostly does not ship by default</dd>
         </dl>
         <div class="tradeoff">
           <div><span class="label">What it gains you</span><ul>
-            <li>Real multi-file work happens without a human approving each step.</li>
-            <li>Blast radius is bounded by the machine, whoever is watching.</li>
+            <li>Delegated implementation with real feedback loops — the agent edits, builds, runs
+            and tests its own work; one human can direct several agents in parallel.</li>
+            <li>A bounded worst case, <em>if the bounds are built</em>: local, and largely
+            revertible.</li>
           </ul></div>
           <div><span class="label">What it costs you</span><ul>
-            <li>Containment becomes load-bearing and must be engineered.</li>
-            <li>The review burden arrives all at once, at push time.</li>
+            <li>Containment becomes load-bearing exactly where the field invests least.</li>
+            <li>The lethal trifecta — private data, untrusted content, external communication —
+            assembles here by default unless engineered away.</li>
           </ul></div>
         </div>
         <p class="fits">Fits a team that believes risk is bounded by what the agent can reach, not
         by who is watching it.</p>
-        <a class="more" href="#">Read the full document →</a>
+        <a class="more" href="workspace.html">Read the full document →</a>
       </div>
     </details>
 
@@ -142,23 +156,30 @@
         <span class="reach">reaches the shared repository</span></summary>
       <div class="body">
         <dl class="facts">
-          <dt>Made of</dt><dd>a push credential — the agent opens pull requests; a human merges every one</dd>
-          <dt>Demands first</dt><dd>review hygiene at volume: queue visibility, and honesty about rubber-stamping as approvals accumulate</dd>
+          <dt>Made of</dt><dd>a push credential — the agent opens pull requests under its own
+          identity; a human merges every change. The archetype the tool market ships and the
+          platform enforces</dd>
+          <dt>Demands first</dt><dd>protection of the review: server-side gates, invitation-only
+          PR creation, task-eligibility classifiers, retry caps — reviewer attention treated as an
+          engineered budget</dd>
         </dl>
         <div class="tradeoff">
           <div><span class="label">What it gains you</span><ul>
-            <li>The agent works end to end; everything still passes a human gate.</li>
-            <li>Agent work comes through the same front door as anyone else's.</li>
+            <li>Authoring at volume with the team's merge discipline unchanged — agent work comes
+            through the same front door as anyone else's.</li>
+            <li>The cheapest ceiling to hold: the boundary above is platform-enforced, so staying
+            here means not building a bypass.</li>
           </ul></div>
           <div><span class="label">What it costs you</span><ul>
-            <li>The review queue becomes the bottleneck.</li>
-            <li>Reviewer attention degrades exactly as volume grows.</li>
+            <li>The review queue becomes the bottleneck, measurably.</li>
+            <li>Reviewer habituation is measured and worsens with the volume this archetype itself
+            generates — the safety belief eroding under its own output.</li>
           </ul></div>
         </div>
         <p class="fits">Fits a team that believes review is the load-bearing control and should
         stay human — and that an agent's work should come through the same front door as anyone
         else's.</p>
-        <a class="more" href="#">Read the full document →</a>
+        <a class="more" href="contributor.html">Read the full document →</a>
       </div>
     </details>
 
@@ -167,23 +188,29 @@
         <span class="reach">reaches trunk, unread</span></summary>
       <div class="body">
         <dl class="facts">
-          <dt>Made of</dt><dd>merge rights for a defined change class — that class reaches trunk with no human reading it; a human gates release</dd>
-          <dt>Demands first</dt><dd>the qualifying gate itself: a mechanical definition of which changes may merge unread, and revert machinery for when it is wrong</dd>
+          <dt>Made of</dt><dd>merge rights for a defined change class, identified mechanically —
+          author identity, title prefix, severity, risk score — which reaches trunk with no human
+          reading it; a human still gates release</dd>
+          <dt>Demands first</dt><dd>the qualifying line rendered in code, anti-suppression on the
+          checks, gates enforced server-side, and revert machinery for when the line is wrong</dd>
         </dl>
         <div class="tradeoff">
           <div><span class="label">What it gains you</span><ul>
-            <li>Mechanically-checkable classes stop queueing behind humans.</li>
-            <li>Review attention concentrates where a human can actually help.</li>
+            <li>Mechanically-checkable classes stop queueing behind human availability; review
+            attention concentrates where a human can actually help.</li>
+            <li>An auditable trust model — every occupant's policy is an inspectable artifact, a
+            workflow file rather than a habit.</li>
           </ul></div>
           <div><span class="label">What it costs you</span><ul>
-            <li>The qualifying line must be engineered, argued for, and policed.</li>
-            <li>Verification is load-bearing the moment no one reads the diff.</li>
+            <li>The qualifying line must be engineered, argued for, and policed forever.</li>
+            <li>Verification is load-bearing the moment no one reads the diff — and no study
+            anywhere tests unread agent merges against reviewed ones.</li>
           </ul></div>
         </div>
         <p class="fits">Fits a team that believes trust should be earned by change class rather
         than by author — and that where a class can be checked mechanically, a human reading it
         adds cost without adding safety.</p>
-        <a class="more" href="#">Read the full document →</a>
+        <a class="more" href="committer.html">Read the full document →</a>
       </div>
     </details>
 
@@ -192,26 +219,47 @@
         <span class="reach">reaches running production</span></summary>
       <div class="body">
         <dl class="facts">
-          <dt>Made of</dt><dd>a pre-authorised path to production — nothing human stands between the agent's change and running prod, whether by CD-from-trunk or agent-held deploy credentials</dd>
-          <dt>Demands first</dt><dd>the full engineered chain: gates, canaries, auto-revert, provenance — built before the path opens, not after</dd>
+          <dt>Made of</dt><dd>a pre-authorised path to production — nothing human stands between
+          the agent's change and running prod, whether continuous deployment carries an unread
+          merge or the agent holds deploy credentials</dd>
+          <dt>Demands first</dt><dd>the full engineered chain — gates, canaries, auto-revert,
+          provenance — trusted <em>before</em> the path opens; almost none of it exists wired to
+          autonomy anywhere</dd>
         </dl>
         <div class="tradeoff">
           <div><span class="label">What it gains you</span><ul>
             <li>Full pipeline speed for the change classes that qualify.</li>
+            <li>The clearest possible safety case: stated in machinery, not in habit.</li>
           </ul></div>
           <div><span class="label">What it costs you</span><ul>
-            <li>Engineered verification must be made a stronger check than a human in the path.</li>
-            <li>Observed as no team's ceiling — reached by narrowing what qualifies, never by widening who may act.</li>
+            <li>First-of-kind wiring, built and policed by you; liability keys to the setting.</li>
+            <li>Observed as no team's ceiling — reached per change-class, by narrowing what
+            qualifies, never by widening who may act.</li>
           </ul></div>
         </div>
         <p class="fits">Fits a team that believes engineered verification can be made a stronger
         check than a human in the path — and that the honest route there is to narrow what
         qualifies, never to widen who may act.</p>
-        <a class="more" href="#">Read the full document →</a>
+        <a class="more" href="operator.html">Read the full document →</a>
       </div>
     </details>
 
   </div>
+
+  <p class="spectrum-caption">Every claim in the five documents carries a citation chip with its
+  source, date, and evidence tier — hard survey data, controlled study or verified primary
+  artifact, vendor-reported metric, or practitioner account — stated with the claim itself. The
+  <a href="glossary.html">glossary</a> holds the ruling vocabulary these pages are written in.</p>
+
+  <footer class="site-footer">
+    <p>The AI Usage Spectrum ·
+    <a href="autocomplete.html">Autocomplete</a> ·
+    <a href="workspace.html">Workspace</a> ·
+    <a href="contributor.html">Contributor</a> ·
+    <a href="committer.html">Committer</a> ·
+    <a href="operator.html">Operator</a> ·
+    <a href="glossary.html">glossary</a></p>
+  </footer>
 </div>
 
 <script>
