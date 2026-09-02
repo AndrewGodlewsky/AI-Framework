@@ -25,7 +25,7 @@
     <div class="docmeta">
       <span>Vocabulary as of 2026-08-31</span>
       <span>Taxonomy: ADR-0004</span>
-      <span>Sources last verified 2026-08-31</span>
+      <span>Sources last verified 2026-09-02</span>
     </div>
   </header>
 
@@ -259,11 +259,16 @@
     Third, <strong>the machinery decays silently</strong>: of the four organisations found running
     real agent evals, one shipped a CI regression workflow and lost it months later in an
     unrelated refactor, with nothing detecting the loss<a class="cite" data-tier="study" href="#src-15">Verification Infrastructure, Aug 2026</a>.</p>
-    <p>And one wire is still missing across the whole field: <strong>no published mechanism gates,
-    canaries, or auto-reverts a change <em>because it was agent-authored</em></strong>. The single
-    counterexample responds to agent authorship by demanding <em>more human review</em> — the
-    inverse of this archetype's direction — and detects agents by committer identity, so it misses
-    the dominant workflow<a class="cite" data-tier="study" href="#src-15">Verification Infrastructure, Aug 2026</a><a class="cite" data-tier="study" href="#src-10">Tooling Landscape, Aug 2026</a>.
+    <p>And one wire is still missing across the whole field: <strong>no adopted mechanism gates,
+    canaries, or auto-reverts a change <em>because it was agent-authored</em></strong> — at the
+    delivery layer no published mechanism at all (re-verified with search, 2026-09-02), and the
+    merge layer holds exactly two published, unadopted artifacts: one that responds to agent
+    authorship by demanding <em>more human review</em> — the inverse of this archetype's
+    direction — and detects agents by committer identity, so it misses the dominant
+    workflow<a class="cite" data-tier="study" href="#src-15">Verification Infrastructure, Aug 2026</a><a class="cite" data-tier="study" href="#src-10">Tooling Landscape, Aug 2026</a>,
+    and one marketplace product that risk-scores and auto-merges by per-agent trust, in this
+    archetype's own direction, with no observed adopter and no activity since days after its
+    March 2026 launch.
     The qualifying line itself, rendered in code, is what a mature version of this archetype looks
     like: RADAR's operational heart is a single tunable risk threshold — relaxing it from the 25th
     to the 50th percentile raises the auto-approved share to 60.31% — one dial deciding what

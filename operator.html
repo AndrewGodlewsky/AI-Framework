@@ -25,7 +25,7 @@
     <div class="docmeta">
       <span>Vocabulary as of 2026-08-31</span>
       <span>Taxonomy: ADR-0004</span>
-      <span>Sources last verified 2026-08-31</span>
+      <span>Sources last verified 2026-09-02</span>
     </div>
   </header>
 
@@ -236,14 +236,21 @@
     <blockquote><p>Further along the spectrum, more rigor is <em>required</em> — and the evidence
     that anyone has built it is thin, vendor-dominated, and in several documented cases decayed
     silently after it was built.<a class="cite" data-tier="study" href="#src-13">Verification Infrastructure, Aug 2026</a></p></blockquote>
-    <p>Concretely, an Operator team is building first-of-kind wiring. <strong>No published mechanism
-    anywhere gates, canaries, or auto-reverts a change <em>because it was agent-authored</em></strong> —
-    progressive delivery is applied to changes, never to authorship classes, and the provenance and
-    delivery layers have never been connected<a class="cite" data-tier="study" href="#src-14">Verification Observability, Aug 2026</a>.
-    The single published counterexample gates in the opposite direction: <code>agent-approval-check</code>
-    (Anthropic, merged 2026-06-30) responds to agent authorship by requiring <em>more human
-    approvals</em>, not more engineered checking — and detects agents by committer identity, so it
-    does not fire for the dominant workflow<a class="cite" data-tier="study" href="#src-2">Tooling Landscape, Aug 2026</a>.
+    <p>Concretely, an Operator team is building first-of-kind wiring. <strong>No adopted mechanism
+    anywhere gates, canaries, or auto-reverts a change <em>because it was agent-authored</em> — and
+    at the canary and auto-revert layer, no published mechanism at all</strong> (re-verified with
+    search, 2026-09-02) — progressive delivery is applied to changes, never to authorship classes,
+    and the provenance and delivery layers have never been connected in
+    practice<a class="cite" data-tier="study" href="#src-14">Verification Observability, Aug 2026</a>.
+    The published counterexamples sit at the merge layer only, and neither is in use:
+    <code>agent-approval-check</code> (Anthropic, merged 2026-06-30) responds to agent authorship by
+    requiring <em>more human approvals</em>, not more engineered checking — and detects agents by
+    committer identity, so it does not fire for the dominant
+    workflow<a class="cite" data-tier="study" href="#src-2">Tooling Landscape, Aug 2026</a> — and
+    one marketplace product (MergeShield, Mar 2026) risk-scores agent PRs by per-agent trust and
+    auto-merges below thresholds, in this archetype's own direction, but has no observed adopter
+    and has been dormant since days after
+    launch<a class="cite" data-tier="study" href="#src-14">Verification Observability, Aug 2026</a>.
     Exactly one artifact in the corpus ties a verification floor to an autonomy level, and it counts
     assertions, not coverage<a class="cite" data-tier="study" href="#src-13">Verification Infrastructure, Aug 2026</a>.</p>
     <p>Two measured facts shape what must be built. First, supervision cannot be the substitute:
