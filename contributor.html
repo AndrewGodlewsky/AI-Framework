@@ -25,7 +25,7 @@
     <div class="docmeta">
       <span>Vocabulary as of 2026-08-31</span>
       <span>Taxonomy: ADR-0004</span>
-      <span>Sources last verified 2026-09-02</span>
+      <span>Sources last verified 2026-09-13</span>
     </div>
   </header>
 
@@ -199,6 +199,15 @@
     structural fact recurs across every account in this section, reported independently by almost
     all of them: <strong>the constraint moved to review, and nobody reports having solved
     it</strong><a class="cite" data-tier="study" href="#src-2">Practitioner Exemplars, Aug 2026</a>.</p>
+    <p>The archetype also carries a vendor's endorsement — to be read as a recommendation, dated,
+    not as observed practice. Anthropic's <em>AI-Native SDLC Playbook</em> (2026) makes Contributor
+    its recommended end state at the repository: <em>"Anything the agent writes arrives as a PR…
+    the agent has no route to push to main"</em>, code-owner approval stays on every pull request,
+    and the agent's reach is stated to stop one boundary short of production — <em>"the agent may
+    act up to the production gate and cannot pass it."</em> Nowhere does the vendor recommend
+    granting merge rights on the agent's judgement. The course publishes no measurements, so what
+    it corroborates is this page's structural claim, not its
+    numbers<a class="cite" data-tier="vendor" href="#src-16">Anthropic playbook, L10 &amp; L12, 2026</a>.</p>
   </section>
 
   <section class="contract" id="gains-and-costs">
@@ -254,6 +263,18 @@
     The only independent evaluation of any AI reviewer found 56.3% of its comments rejected, and
     six of eight surveyed tools have no published accuracy figure from anyone, vendor
     included<a class="cite" data-tier="study" href="#src-13">Verification: Gates, Aug 2026</a>.</p>
+    <p>The vendor says as much in its own teaching. Anthropic's playbook states that its
+    reviewer's <em>"Findings do not approve or block a PR on their own"</em>, that a platform
+    engineer who wants to gate on them must build the gate from the check run's
+    <em>"machine-readable tally"</em>, and that <em>"the agent that wrote the code has no way to
+    approve it."</em> It names this archetype's throughput limit as reviewer attention —
+    <em>"add sessions only while review is keeping up"</em> — and prescribes for evals what this
+    section asks of every gate: live suites whose <em>"cases that once discriminated stop doing
+    so"</em>, gated on pass rate in CI. One caution travels with the citation. The course's
+    opening table promises <em>"human review reserved for regulated and critical code"</em>, a
+    Committer-shaped claim the plays themselves never make — every play keeps code-owner approval
+    on every pull request. Cite the plays, not the
+    table<a class="cite" data-tier="vendor" href="#src-16">Anthropic playbook, L1, L7, L9 &amp; L10, 2026</a>.</p>
     <p>What the well-run occupants build instead: <strong>gates that live server-side, outside
     the agent's reach</strong> — CI and branch protection, not the agent harness (GitHub describes
     its own agent-side approval queue as <em>"a workflow convenience, not a security control"</em>,
@@ -277,6 +298,15 @@
     The caveat travels with the record: the surviving attribution is platform-hosted, not
     repository-hosted, and dies in plain git under squash — the clean answer exists on the forge,
     not in every clone<a class="cite" data-tier="study" href="#src-14">Governance, Legal &amp; IP, Aug 2026</a>.</p>
+    <p>One vendor artifact proposes a repository-hosted answer to a neighbouring question.
+    Anthropic's playbook recommends committing the whole chain — an intent file, a specification,
+    a plan, the diff and its tests, the pull request with its findings, the incident record — so
+    that <em>"The chain of commits is also the audit trail: who asked for what, what the agent
+    produced, and who approved it."</em> It answers "who asked for it" where the corpus's question
+    was "which lines did a human write", and it is a recommended practice with no adoption
+    evidence; but it lives in committed files, which survive the squash that kills co-author
+    trailers, rather than in commit metadata or on the
+    forge<a class="cite" data-tier="vendor" href="#src-16">Anthropic playbook, L1–L4, 2026</a>.</p>
     <p><strong>Compliance neither forces this archetype nor forbids the next.</strong> The
     strongest human-review requirement in any published framework sits exactly at this archetype's
     upper boundary — SLSA's Source Track Level 4 requires changes to protected branches be agreed
@@ -381,6 +411,15 @@
       <li id="src-15"><span><span class="tier" data-tier="vendor">vendor</span>
         GitHub Terms of Service §J.4 (contract text).
         <span class="when">Effective 2026-04-27.</span></span></li>
+      <li id="src-16"><span><span class="tier" data-tier="vendor">vendor</span>
+        This project, <code>research/ai-native-sdlc-playbook.md</code> — digest of Anthropic
+        Academy's <em>The AI-Native SDLC Playbook</em> (14 lessons; © Anthropic, reference copy in
+        <code>reference/</code>). The vendor's recommended practice for its own product: indicators
+        defined for every play, values reported for none — nothing here is an outcome. Cited on
+        this page: L1 (the shifts table — cite the plays, not the table), L2–L4 (the committed
+        intent → spec → plan chain), L7 (reviewer attention), L9 (continuous evals), L10 (the
+        PR review loop), L12 (the withheld production gate).
+        <span class="when">Retrieved and digested 2026-09-02.</span></span></li>
     </ol>
   </section>
 

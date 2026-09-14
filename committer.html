@@ -25,7 +25,7 @@
     <div class="docmeta">
       <span>Vocabulary as of 2026-08-31</span>
       <span>Taxonomy: ADR-0004</span>
-      <span>Sources last verified 2026-09-02</span>
+      <span>Sources last verified 2026-09-13</span>
     </div>
   </header>
 
@@ -259,6 +259,23 @@
     Third, <strong>the machinery decays silently</strong>: of the four organisations found running
     real agent evals, one shipped a CI regression workflow and lost it months later in an
     unrelated refactor, with nothing detecting the loss<a class="cite" data-tier="study" href="#src-15">Verification Infrastructure, Aug 2026</a>.</p>
+    <p>One vendor has now written its own version of all three demands — as recommendations, with
+    no outcomes attached. Anthropic's <em>AI-Native SDLC Playbook</em> (2026) prescribes the
+    anti-suppression defence exactly: <em>"an agent fixing code must not be able to weaken the
+    check on that code"</em> — the failing test committed before the fix, a hook blocking
+    test-file edits during it. It prescribes evals as live suites with every incident becoming a
+    permanent case, the answer to the decay above. And it locates the ceiling in an
+    administrator's file: a managed-settings play in which engineers <em>"cannot edit or override
+    any of the settings"</em>, with only managed hooks allowed to run. Here the tension with the
+    server-side test must be stated rather than smoothed: the playbook's release gates are
+    <em>hooks</em> — agent-side controls, however tamper-proofed — while the test above puts
+    gates in CI and branch protection, outside the agent's reach. The playbook half-answers itself
+    by re-grounding the boundary that matters in branch protection (<em>"the agent has no route to
+    push to main"</em>) and by recommending no unread merge at all: its only pre-authorised
+    execution is a rehearsed runbook, and its detection layer <em>"stays entirely deterministic,
+    with no model involved"</em> — the Spotify boundary, restated as design guidance. The vendor,
+    in other words, recommends the archetype before this
+    one<a class="cite" data-tier="vendor" href="#src-17">Anthropic playbook, L8, L9 &amp; L11–L13, 2026</a>.</p>
     <p>And one wire is still missing across the whole field: <strong>no adopted mechanism gates,
     canaries, or auto-reverts a change <em>because it was agent-authored</em></strong> — at the
     delivery layer no published mechanism at all (re-verified with search, 2026-09-02), and the
@@ -394,6 +411,15 @@
         the §411(a) disclaimer requirement; the SLSA Trusted Robot exception (L4-only, organization-granted,
         approval-not-authorship); provider defect disclaimers.
         <span class="when">Closed 2026-08-30, corrected 2026-08-31.</span></span></li>
+      <li id="src-17"><span><span class="tier" data-tier="vendor">vendor</span>
+        This project, <code>research/ai-native-sdlc-playbook.md</code> — digest of Anthropic
+        Academy's <em>The AI-Native SDLC Playbook</em> (14 lessons; © Anthropic, reference copy in
+        <code>reference/</code>). The vendor's recommended practice for its own product: indicators
+        defined for every play, values reported for none — nothing here is an outcome. Cited on
+        this page: L8 (the anti-suppression hook), L9 (continuous evals), L11 (hooks as approval
+        gates; managed settings), L12 (branch protection as the boundary), L13 (deterministic
+        detection; the pre-approved runbook).
+        <span class="when">Retrieved and digested 2026-09-02.</span></span></li>
     </ol>
   </section>
 

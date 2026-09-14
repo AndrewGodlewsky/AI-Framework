@@ -29,7 +29,7 @@ mode for the build phase, a Contributor ceiling at the repository, and a Committ
 pre-authorisation only for rehearsed runbooks** — with the production gate explicitly withheld:
 *"the agent may act up to the production gate and cannot pass it"* (L12). Nowhere does the vendor
 recommend granting merge rights on the agent's judgment or an unattended path to production. The
-platform's own structural pin (branch protection; *"anything the agent writes arrives as a PR…
+platform's own structural pin (branch protection; *"Anything the agent writes arrives as a PR…
 the agent has no route to push to main"*, L12) is presented as the governing principle, not a
 limitation to engineer around. This is the fullest single vendor artifact organizing an entire
 SDLC around the spectrum's near-middle, and it corroborates the corpus's Contributor finding: the
@@ -42,7 +42,7 @@ archetype the tool market ships.
 | L1 | Introduction | — | The spine's premise, vendor-stated: per-line human reading does not scale past Autocomplete |
 | L2 | Capture as intent.md | Plan | Pre-archetype (non-engineers, claude.ai/Cowork); begins the committed-artifact provenance chain |
 | L3 | Requirements and design | Design | **Contributor** once automated: a non-interactive job fires on the intent merge and *commits spec.md as a pull request* |
-| L4 | Plan mode as the default start | Build | **Workspace**, gated (plan mode "can read the codebase without changing anything"); the *auto mode* subsection recommends moving oversight within Workspace — "away from watching the agent make edits… toward the review of artifacts after longer autonomous sessions" — as guardrails mature |
+| L4 | Plan mode as the default start | Build | **Workspace**, gated (plan mode "can read the codebase without changing anything"); the *auto mode* subsection recommends moving oversight within Workspace — "away from the user watching the agent make the edits and reviewing actions, toward the review of artifacts after longer autonomous sessions" — as guardrails mature |
 | L5 | The CLAUDE.md | Build | Context engineering as a reviewable artifact; knowledge, not a control |
 | L6 | Skills as institutional knowledge (+ build-time hooks) | Build | Workspace; **the advisory/deterministic split stated by the vendor** (§3.1) |
 | L7 | Parallel sessions and subagents | Build | Workspace parallelism via worktrees; reviewer attention named as the ceiling — "add sessions only while review is keeping up" |

@@ -25,7 +25,7 @@
     <div class="docmeta">
       <span>Vocabulary as of 2026-08-31</span>
       <span>Taxonomy: ADR-0004</span>
-      <span>Sources last verified 2026-09-02</span>
+      <span>Sources last verified 2026-09-13</span>
     </div>
   </header>
 
@@ -198,6 +198,18 @@
     <strong>Simon Willison</strong> runs multiple agents in parallel — <em>"surprisingly effective,
     if mentally exhausting"</em> — and keeps architecture, specifications, review and manual QA
     human<a class="cite" data-tier="anecdote" href="#src-9">Willison, Oct 2025</a>.</p>
+    <p>The vendor's own recommended practice lands here too, and should be read as a
+    recommendation, dated, not as an observation. Anthropic's <em>AI-Native SDLC Playbook</em>
+    (fourteen lessons, 2026) organises the build phase around a Workspace ceiling: plan mode as
+    the default start, because it <em>"can read the codebase without changing anything"</em>,
+    then — as a team's controls mature — auto mode, with the shift stated as <em>"away from the user
+    watching the agent make the edits and reviewing actions, toward the review of artifacts after
+    longer autonomous sessions."</em> Parallel sessions are recommended with reviewer attention
+    named as the limit — <em>"The practical ceiling is how many streams one person can review
+    properly"</em>, so add sessions <em>"only while review is keeping up."</em> The course
+    defines indicators for every play and reports a value for none, so it evidences what the
+    vendor advises, not what any team has
+    achieved<a class="cite" data-tier="vendor" href="#src-15">Anthropic playbook, L4 &amp; L7, 2026</a>.</p>
     <p>Set Ronacher beside antirez (the Autocomplete anchor) and the spectrum's real argument comes
     into focus: they sit at opposite ends of the delegation question and are arguing about the same
     thing — <em>verification</em>, not capability. antirez keeps the human in the loop by
@@ -263,6 +275,21 @@
     session's tests passed." Every rule matches the shape of the call, never the state of the work;
     a team that wants the join must build it from
     hooks<a class="cite" data-tier="study" href="#src-3">Tooling: Agentic CLIs, Aug 2026</a>.</p>
+    <p>The vendor's own playbook states the same split and, unusually, assembles the containment
+    into one artifact. Its instruction modules (Agent Skills) are declared advisory — <em>"nothing
+    forces a session to comply"</em> — and anything that must always hold is pushed to a
+    deterministic hook: <em>"The skill makes violations rare and the hook makes them close to
+    impossible."</em> Its managed-settings play then writes the ceiling as a single MDM-deployed
+    file that engineers <em>"cannot edit or override"</em>: bypass mode disabled, only managed
+    permission rules and hooks honoured, the sandbox made a precondition that refuses to start
+    without it, credential paths denied and named environment variables stripped from sandboxed
+    commands. That is the five scattered administrator-pinnable constraints this corpus found
+    across eleven CLIs, collected by one vendor into a single reviewable posture — a
+    recommendation, with no adoption or outcome data behind it. The same playbook recommends auto
+    mode as the default for routine work, which sits against this vendor's own telemetry in §03
+    and the published attack on its auto-mode classifier; both halves come from one source, and
+    a team should hold
+    both<a class="cite" data-tier="vendor" href="#src-15">Anthropic playbook, L4, L6 &amp; L11, 2026</a>.</p>
     <p>Two honest limits on what containment buys. Version control is itself a containment
     mechanism at this ceiling — one tool (Aider) commits every agent edit automatically so the diff
     is always isolated and revertible, and worktree-per-agent isolation is shipped and
@@ -384,6 +411,14 @@
         This project, <code>research/governance-legal-ip.md</code> — provider defect disclaimers;
         attribution survival under squash merges; the authorship-vs-adoption threshold.
         <span class="when">Closed 2026-08-30, corrected 2026-08-31.</span></span></li>
+      <li id="src-15"><span><span class="tier" data-tier="vendor">vendor</span>
+        This project, <code>research/ai-native-sdlc-playbook.md</code> — digest of Anthropic
+        Academy's <em>The AI-Native SDLC Playbook</em> (14 lessons; © Anthropic, reference copy in
+        <code>reference/</code>). The vendor's recommended practice for its own product: indicators
+        defined for every play, values reported for none — nothing here is an outcome. Cited on
+        this page: L4 (plan mode; auto mode), L6 (advisory Agent Skills vs deterministic
+        hooks), L7 (parallel sessions), L11 (managed settings).
+        <span class="when">Retrieved and digested 2026-09-02.</span></span></li>
     </ol>
   </section>
 

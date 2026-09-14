@@ -25,7 +25,7 @@
     <div class="docmeta">
       <span>Vocabulary as of 2026-08-31</span>
       <span>Taxonomy: ADR-0004</span>
-      <span>Sources last verified 2026-09-02</span>
+      <span>Sources last verified 2026-09-13</span>
     </div>
   </header>
 
@@ -192,6 +192,13 @@
     operation of all, Spotify's 2.5 million auto-merged maintenance PRs, is <strong>the non-AI
     precedent, not an instance</strong>: those are scripted, deterministic transforms with no model
     involved, while Spotify human-reviews every LLM PR<a class="cite" data-tier="vendor" href="#src-10">Spotify, Jun 2026</a>.</p>
+    <p>One vendor's own playbook declines this archetype too. Anthropic's <em>AI-Native SDLC
+    Playbook</em> (2026) carries the agent through the pipeline to a withheld gate — <em>"the agent
+    may act up to the production gate and cannot pass it"</em> — and grants unattended execution
+    only to a <em>"pre-approved runbook"</em> rehearsed in advance. A vendor's recommendation, not
+    an observation, but it has the shape §02 found everywhere: a human authorises the path, and
+    only the execution is
+    unattended<a class="cite" data-tier="vendor" href="#src-22">Anthropic playbook, L12 &amp; L13, 2026</a>.</p>
     <p>The pattern across all of it is the page's thesis: <strong>teams reach the far end by
     narrowing what qualifies, never by widening who may act.</strong> And the refusal voice is worth
     hearing at full strength — from a company whose product <em>is</em> production infrastructure:
@@ -252,7 +259,13 @@
     and has been dormant since days after
     launch<a class="cite" data-tier="study" href="#src-14">Verification Observability, Aug 2026</a>.
     Exactly one artifact in the corpus ties a verification floor to an autonomy level, and it counts
-    assertions, not coverage<a class="cite" data-tier="study" href="#src-13">Verification Infrastructure, Aug 2026</a>.</p>
+    assertions, not coverage<a class="cite" data-tier="study" href="#src-13">Verification Infrastructure, Aug 2026</a>.
+    A second has since appeared, as a vendor's recommendation rather than a deployed system:
+    Anthropic's playbook describes response bands held in version-controlled configuration — at
+    one standard deviation the agent logs, at two it diagnoses read-only, at three it may act
+    <em>"only by opening a PR into the review gate or triggering a pre-approved runbook."</em> That
+    wires a production signal to a permitted action; it still keys nothing to
+    authorship<a class="cite" data-tier="vendor" href="#src-22">Anthropic playbook, L13, 2026</a>.</p>
     <p>Two measured facts shape what must be built. First, supervision cannot be the substitute:
     the vendor holding the telemetry reports permission-prompt approval at ~93% rising to 97%, and
     measures human review catching 13.6% of dangerous commands against 89% for automated
@@ -264,6 +277,18 @@
     And the machinery decays silently: of the four organisations found running real agent evals (all
     four agent vendors), Cline shipped a CI regression workflow in February 2026 and lost it in May
     in an unrelated refactor, with nothing detecting the loss<a class="cite" data-tier="study" href="#src-13">Verification Infrastructure, Aug 2026</a>.</p>
+    <p>The same vendor's playbook is also the fullest published articulation of the
+    administrator-flippable ceiling this page keeps meeting. Its managed-settings play deploys the
+    whole posture as one file engineers <em>"cannot edit or override"</em> — bypass mode disabled,
+    only managed permission rules and hooks honoured, the sandbox a precondition, credential paths
+    denied — and its release gates are hooks. That is where it must be cited in tension with the
+    server-side test rather than as its refutation: a hook is an agent-side control, however
+    tamper-proofed, and the playbook itself re-grounds the boundary that matters in branch
+    protection. Its anti-suppression rule matches the secunet case to the letter — <em>"an agent
+    fixing code must not be able to weaken the check on that code"</em> — and its rollback is
+    <em>"a single command… exercised regularly in staging"</em>, proven before the path opens.
+    Every one of these is a prescription; the course reports no value for any indicator it
+    defines<a class="cite" data-tier="vendor" href="#src-22">Anthropic playbook, L8, L11 &amp; L12, 2026</a>.</p>
     <p>RADAR is what the demand looks like partially met — and its own scoping is the discipline this
     section asks for: the favourable revert and incident rates are <em>selection, not proof of
     superiority</em>, because the qualifying diffs are chosen precisely for being low-risk. The
@@ -410,6 +435,15 @@
         CMORG, "Firm Guidance For Frontier AI," Final v1.0, TLP:CLEAR — read in full from the
         public PDF.
         <span class="when">4 Jun 2026 · read 2026-08-31.</span></span></li>
+      <li id="src-22"><span><span class="tier" data-tier="vendor">vendor</span>
+        This project, <code>research/ai-native-sdlc-playbook.md</code> — digest of Anthropic
+        Academy's <em>The AI-Native SDLC Playbook</em> (14 lessons; © Anthropic, reference copy in
+        <code>reference/</code>). The vendor's recommended practice for its own product: indicators
+        defined for every play, values reported for none — nothing here is an outcome. Cited on
+        this page: L8 (the anti-suppression hook), L11 (managed settings; hooks as approval gates),
+        L12 (the withheld production gate; rehearsed rollback), L13 (response bands; the
+        pre-approved runbook).
+        <span class="when">Retrieved and digested 2026-09-02.</span></span></li>
     </ol>
   </section>
 
